@@ -7,17 +7,32 @@
   import CreditsButton from './lib/abox/CreditsButton.svelte';
   import NextButton from './lib/abox/NextButton.svelte';
   import RefreshButton from './lib/abox/RefreshButton.svelte';
+
+  let screenLocation = 0;
+
+  function nextPage() {
+    if(screenLocation < 18)
+    screenLocation++;
+  }
+  
 </script>
 
 <main>
  <!--HEADER-->
  <Header></Header>
+ 
  <!--INFO BOX-->
- <Narration></Narration>
+ {#if screenLocation != 2}
+ <Narration scriptPage={screenLocation}></Narration>
+ {/if}
  <!--VISUAL BOX-->
  <Animation></Animation>
  <!--ACTION BOX-->
- <NextButton></NextButton>
+ {#if screenLocation == 18}
+  <CreditsButton></CreditsButton>
+ {:else}
+ <NextButton on:message={nextPage}></NextButton>
+ {/if}
 </main>
 
 <style>
