@@ -8,8 +8,8 @@ STATIC IMAGE
 
 <style>
     main {
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        aspect-ratio: 1;
         background-color: rgb(159, 138, 199);
     }
 </style>

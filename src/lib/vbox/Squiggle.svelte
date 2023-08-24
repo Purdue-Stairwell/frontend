@@ -8,8 +8,8 @@
 
 <style>
     main {
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        aspect-ratio: 1;
         background-color: rgb(199, 138, 138);
     }
 </style>
