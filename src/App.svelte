@@ -8,10 +8,13 @@
   import NextButton from './lib/abox/NextButton.svelte';
   import RefreshButton from './lib/abox/RefreshButton.svelte';
   import WhoFive from './lib/vbox/WhoFive.svelte';
+  import ProjectButton from './lib/abox/ProjectButton.svelte';
 
   import { crossfade } from 'svelte/transition';
   import { quintOut } from 'svelte/easing';
-	import ProjectButton from './lib/abox/ProjectButton.svelte';
+  import { onMount } from 'svelte';
+
+	
 
   const [send, receive] = crossfade({
     duration: 1500,
@@ -36,36 +39,44 @@
   function projectSquiggle() {
     alert("You have been squiggled!");
   }
-  
-  let canvas;
-      document.body.addEventListener(
-        "touchstart",
-        function (e) {
-          if (e.target == canvas) {
-            e.preventDefault();
-          }
-        },
-        { passive: false }
-      );
-      document.body.addEventListener(
-        "touchend",
-        function (e) {
-          if (e.target == canvas) {
-            e.preventDefault();
-          }
-        },
-        { passive: false }
-      );
-      document.body.addEventListener(
-        "touchmove",
-        function (e) {
-          if (e.target == canvas) {
-            e.preventDefault();
-          }
-        },
-        { passive: false }
-      );
 
+  let canvasElement;
+  onMount(() => {
+        console.log(canvasElement)
+        document.body.addEventListener(
+          "touchstart",
+          (e) => {
+            console.log(e.target);
+            if (e.target == canvasElement) {
+              console.log("bingo");
+              e.preventDefault();
+            }
+          },
+          { passive: false }
+        );
+        document.body.addEventListener(
+          "touchend",
+          (e) => {
+            if (e.target == canvasElement) {
+              console.log("bingo");
+              e.preventDefault();
+            }
+          },
+          { passive: false }
+        );
+        document.body.addEventListener(
+          "touchmove",
+          (e) => {
+            if (e.target == canvasElement) {
+              console.log("bingo");
+              e.preventDefault();
+            }
+          },
+          { passive: false }
+        );
+  });
+
+    
 </script>
 
 <main>
@@ -87,7 +98,7 @@
  {:else if screenLocation >= 7 && screenLocation <= 11}
  <WhoFive on:whofive={updateWhoFiveScore} questionNumber={screenLocation-7} value={whoFiveScores[screenLocation-7]}></WhoFive>
  {:else if screenLocation == 2 || screenLocation == 14}
- <Squiggle bind:this="{canvas}" sketchWidth={300} sketchHeight={300}></Squiggle>
+ <Squiggle bind:this={canvasElement} sketchWidth={300} sketchHeight={300}></Squiggle>
  {:else}
  <Animation></Animation>
  {/if}
@@ -106,7 +117,8 @@
   
   main {
     background-color: #246EB9;
-    width: 100vw;
-    height: 100vh;
+    margin: 0 auto;
+    width: 390px;
+    height: 844px;
   }
 </style>

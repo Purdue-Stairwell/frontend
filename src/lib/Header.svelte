@@ -15,7 +15,7 @@
         justify-content: center;
     }
     h1 {
-        
+        letter-spacing: 0.5rem;
         font-size: 24pt;
         color: #FF0035;
         font-weight: bold;
