@@ -5,7 +5,9 @@ export let screenLocation;
 </script>
 
 <main in:fade>
-    {#if screenLocation == 1}
+    {#if screenLocation == 0}
+        <img src="stairs.png" alt="Abstract representation of the StairWELL sculpture">
+    {:else if screenLocation == 1}
         <img src="sculpture.png" alt="concept art of the stairWELL sculpture">
     {:else}
         STATIC IMAGE!
@@ -18,16 +20,15 @@ export let screenLocation;
         margin: 25px;
         aspect-ratio: 1;
         border-radius: 15px;
-        background-color: rgb(159, 138, 199);
+        border: #2c2e35 solid 5px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 24pt;
-        box-shadow: 3px 3px 2px #000015;
     }
     img {
         width: 95%;
         aspect-ratio: 1;
-        border-radius: 15px;
+        border-radius: 10px;
     }
 </style>

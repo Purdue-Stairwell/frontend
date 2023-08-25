@@ -17,7 +17,7 @@
 
   let screenLocation = 0;
 
-  let credits = true;
+  let credits = false;
 
   let whoFiveScores = [5,5,5,5,5];
 
@@ -36,13 +36,10 @@
 
   let canvasElement;
   onMount(() => {
-        console.log(canvasElement)
         document.body.addEventListener(
           "touchstart",
           (e) => {
-            console.log(e.target);
             if (e.target == canvasElement) {
-              console.log("bingo");
               e.preventDefault();
             }
           },
@@ -52,7 +49,6 @@
           "touchend",
           (e) => {
             if (e.target == canvasElement) {
-              console.log("bingo");
               e.preventDefault();
             }
           },
@@ -62,7 +58,6 @@
           "touchmove",
           (e) => {
             if (e.target == canvasElement) {
-              console.log("bingo");
               e.preventDefault();
             }
           },
@@ -99,7 +94,7 @@
     {/if}
     <!--ACTION BOX-->
     {#if screenLocation == 18}
-      <CreditsButton></CreditsButton>
+      <CreditsButton on:credits={() => (credits = true)}></CreditsButton>
     {:else if screenLocation == 14}
       <ProjectButton on:message={nextPage} on:project={projectSquiggle}></ProjectButton>
     {:else}
@@ -108,12 +103,16 @@
   {:else}
     <Resources></Resources>
   {/if}
-  <div>
+  <div id="purduep">
     <img src="./justthep.png" alt="Purdue P Logo">
   </div>
 </main>
 
 <style>
+
+  #purduep {
+    margin-top: 5px;
+  }
   
   main {
     background-color: #FFFFFF;

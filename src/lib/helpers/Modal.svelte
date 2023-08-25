@@ -1,0 +1,72 @@
+<script>
+	export let showModal; // boolean
+
+	let dialog; // HTMLDialogElement
+
+	$: if (dialog && showModal) dialog.showModal();
+</script>
+
+<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
+<dialog
+	bind:this={dialog}
+	on:close={() => (showModal = false)}
+	on:click|self={() => dialog.close()}
+>
+	<!-- svelte-ignore a11y-no-static-element-interactions -->
+	<div on:click|stopPropagation>
+        <!-- svelte-ignore a11y-autofocus -->
+		<button autofocus on:click={() => dialog.close()}>X</button>
+		<slot name="header" />
+		<slot />
+		
+	</div>
+</dialog>
+
+<style>
+	dialog {
+		max-width: 300px;
+		border-radius: 15px;
+		border: 5px solid #2c2e35;
+        margin: auto auto;
+	}
+	dialog::backdrop {
+		background: rgba(0, 0, 0, 0.3);
+	}
+	dialog > div {
+		padding: 1em;
+	}
+	dialog[open] {
+		animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+	}
+	@keyframes zoom {
+		from {
+			transform: scale(0.95);
+		}
+		to {
+			transform: scale(1);
+		}
+	}
+	dialog[open]::backdrop {
+		animation: fade 0.2s ease-out;
+	}
+	@keyframes fade {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	button {
+        margin-left: calc(100% - 3rem);
+		display: block;
+        font-size: 24pt;
+        width: 3rem;
+        height: 2.2rem;
+        border: none;
+        color: white;
+        font-weight: bolder;
+        border-radius:10px;
+        background-color: #2c2e35;
+	}
+</style>

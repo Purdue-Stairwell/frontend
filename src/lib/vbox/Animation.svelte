@@ -12,12 +12,11 @@ import { fade } from 'svelte/transition';
         margin: 25px;
         aspect-ratio: 1;
         border-radius: 15px;
-        background-color: rgb(138, 199, 148);
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 24pt;
-        box-shadow: 3px 3px 2px #000015
+        border: #2c2e35 solid 5px;
     }
     img {
         width: 95%;

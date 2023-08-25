@@ -5,8 +5,7 @@
     const dispatch = createEventDispatcher();
     
     function displayCredits() {
-        //FIX LATER
-        alert("Credits");
+        dispatch('credits');
     }
     
     </script>
