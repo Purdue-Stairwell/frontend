@@ -1,8 +1,8 @@
 <script>
-
+import { fade, fly } from 'svelte/transition';
 </script>
 
-<main>
+<main transition:fade>
     ANIMATION
 </main>
 

@@ -1,8 +1,8 @@
 <script>
-
+import { fade, fly } from 'svelte/transition';
 </script>
 
-<main>
+<main transition:fade>
     SQUIGGLE
 </main>
 
@@ -11,5 +11,9 @@
         width: 100%;
         aspect-ratio: 1;
         background-color: rgb(199, 138, 138);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24pt;
     }
 </style>

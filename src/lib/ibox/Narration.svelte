@@ -1,4 +1,5 @@
 <script>
+    import { fade, fly } from 'svelte/transition';
     //import Typewriter from 'typewriter-effect/dist/core';
     const script = fetch('script.json').then(res => res.json());
 
@@ -7,11 +8,7 @@
 </script>
 
 <main>
-    {#await script}
-        <p>Loading Text :)</p>
-    {:then result}
-        <p>{result.script[scriptPage]}</p>
-    {/await}
+    <p transition:fade>{scriptPage}</p>
 </main>
 
 <style>
@@ -20,6 +17,6 @@
         height: 200px;
         background-color: aquamarine;
         padding: 10px;
-
+        font-size: 100%;
     }
 </style>

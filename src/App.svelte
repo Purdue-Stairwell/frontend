@@ -9,9 +9,11 @@
   import RefreshButton from './lib/abox/RefreshButton.svelte';
   import WhoFive from './lib/vbox/WhoFive.svelte';
 
+  const script = fetch('script.json').then(res => res.json());
+
   let screenLocation = 0;
 
-  let whoFiveScores = [0,0,0,0,0];
+  let whoFiveScores = [5,5,5,5,5];
 
   function nextPage() {
     if(screenLocation < 18)
@@ -20,7 +22,6 @@
 
   function updateWhoFiveScore(event) {
     whoFiveScores[event.detail.number] = event.detail.answer;
-    console.table(whoFiveScores);
   }
   
 </script>
@@ -28,10 +29,14 @@
 <main>
  <!--HEADER-->
  <Header></Header>
- 
+ {#key screenLocation}
  <!--INFO BOX-->
  {#if screenLocation != 2 && screenLocation != 13}
- <Narration scriptPage={screenLocation}></Narration>
+  {#await script}
+    <p>Loading Script :)</p>
+  {:then result}
+    <Narration scriptPage={result.script[screenLocation]}></Narration>
+  {/await}
  {/if}
  <!--VISUAL BOX-->
  <!-- 0       1     2     3     4    5    6    7   8   9   10  11  12   13    14     14-->
@@ -39,7 +44,7 @@
  {#if screenLocation < 2 || screenLocation > 13}
  <StaticImage></StaticImage>
  {:else if screenLocation > 6 && screenLocation < 12}
- <WhoFive on:whofive={updateWhoFiveScore} questionNumber={screenLocation-7}></WhoFive>
+ <WhoFive on:whofive={updateWhoFiveScore} questionNumber={screenLocation-7} value={whoFiveScores[screenLocation-7]}></WhoFive>
  {:else if screenLocation == 2 || screenLocation == 13}
  <Squiggle></Squiggle>
  {:else}
@@ -51,6 +56,7 @@
  {:else}
  <NextButton on:message={nextPage}></NextButton>
  {/if}
+ {/key}
 </main>
 
 <style>
