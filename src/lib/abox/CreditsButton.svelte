@@ -12,21 +12,23 @@
     </script>
     <main>
     <button on:click={displayCredits}>
-        Next
+        Credits
     </button>
     </main>
     <style>
         main {
             display: flex;
-            justify-content: center
+            justify-content: flex-start
         }
         button {
             border: none;
-            border-radius: 25px;
+            border-radius: 15px;
+            box-shadow: 3px 3px 2px #000015;
             font-size: 36pt;
-            background-color: rgb(32, 126, 27);
-            padding: 10px 20px;
-            margin: 5px;
-            color: white;
+            background-color: #FF0035;
+            padding: 5px 15px;
+            margin: 0px 25px;
+            color: #90D7FF;
+            font-weight: bold;
         }
     </style>

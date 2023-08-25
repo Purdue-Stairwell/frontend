@@ -9,6 +9,15 @@
   import RefreshButton from './lib/abox/RefreshButton.svelte';
   import WhoFive from './lib/vbox/WhoFive.svelte';
 
+  import { crossfade } from 'svelte/transition';
+  import { quintOut } from 'svelte/easing';
+	import ProjectButton from './lib/abox/ProjectButton.svelte';
+
+  const [send, receive] = crossfade({
+    duration: 1500,
+    easing: quintOut
+  });
+
   const script = fetch('script.json').then(res => res.json());
 
   let screenLocation = 0;
@@ -23,6 +32,10 @@
   function updateWhoFiveScore(event) {
     whoFiveScores[event.detail.number] = event.detail.answer;
   }
+
+  function projectSquiggle() {
+    alert("You have been squiggled!");
+  }
   
 </script>
 
@@ -31,32 +44,33 @@
  <Header></Header>
  {#key screenLocation}
  <!--INFO BOX-->
- {#if screenLocation != 2 && screenLocation != 13}
   {#await script}
     <p>Loading Script :)</p>
   {:then result}
     <Narration scriptPage={result.script[screenLocation]}></Narration>
   {/await}
- {/if}
+  {/key}
  <!--VISUAL BOX-->
- <!-- 0       1     2     3     4    5    6    7   8   9   10  11  12   13    14     14-->
- <!--static static squig animm anim anim anim who who who who who anim squig static static-->
- {#if screenLocation < 2 || screenLocation > 13}
- <StaticImage></StaticImage>
- {:else if screenLocation > 6 && screenLocation < 12}
+ <!-- 0       1     2     3     4    5    6    7   8   9   10  11  12   13    14   15     16-->
+ <!--static static squig animm anim anim anim who who who who who anim anim squig static static-->
+ {#if screenLocation < 2 || screenLocation > 14}
+ <StaticImage screenLocation={screenLocation}></StaticImage>
+ {:else if screenLocation >= 7 && screenLocation <= 11}
  <WhoFive on:whofive={updateWhoFiveScore} questionNumber={screenLocation-7} value={whoFiveScores[screenLocation-7]}></WhoFive>
- {:else if screenLocation == 2 || screenLocation == 13}
- <Squiggle></Squiggle>
+ {:else if screenLocation == 2 || screenLocation == 14}
+ <Squiggle sketchWidth={300} sketchHeight={300}></Squiggle>
  {:else}
  <Animation></Animation>
  {/if}
  <!--ACTION BOX-->
  {#if screenLocation == 18}
   <CreditsButton></CreditsButton>
+ {:else if screenLocation == 14}
+ <ProjectButton on:message={nextPage} on:project={projectSquiggle}></ProjectButton>
  {:else}
  <NextButton on:message={nextPage}></NextButton>
  {/if}
- {/key}
+ 
 </main>
 
 <style>

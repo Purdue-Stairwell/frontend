@@ -17,15 +17,17 @@ function goNext() {
 <style>
     main {
         display: flex;
-        justify-content: center
+        justify-content: flex-end
     }
     button {
         border: none;
-        border-radius: 25px;
-        font-size: 36pt;
-        background-color: rgb(32, 126, 27);
-        padding: 10px 20px;
-        margin: 5px;
-        color: white;
+        border-radius: 15px;
+        box-shadow: 3px 3px 2px #000015;
+        font-size: 32pt;
+        background-color: #061826;
+        padding: 5px 15px;
+        margin: 0px 25px;
+        color: #ffffff;
+        font-weight: bold;
     }
 </style>

@@ -10,10 +10,11 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "p5": "^1.7.0",
     "svelte": "^4.0.5",
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "typewriter-effect": "^2.20.1"
+    "p5-svelte": "^3.1.2"
   }
 }
