@@ -3,21 +3,23 @@
 </script>
 
 <main>
-    <h1>StairWELL</h1>
+    <div></div>
 </main>
 
 <style>
     main {
         width: 100%;
-        background-color: #061826;
+        background-color: #ffffff;
         padding: 5px;
         display: flex;
         justify-content: center;
     }
-    h1 {
-        letter-spacing: 0.5rem;
-        font-size: 24pt;
-        color: #FF0035;
-        font-weight: bold;
+    div {
+        background-image: url("/stairwell_header.png");
+        background-position: center;
+        background-size: 75%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100px;
     }
 </style>
