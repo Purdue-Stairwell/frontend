@@ -313,41 +313,10 @@ const sketch = (p5) => {
 }
 
 //makes sure drawing works on mobile
-    let canvas;
-      document.body.addEventListener(
-        "touchstart",
-        function (e) {
-          // @ts-ignore
-          if (e.target == canvas) {
-            e.preventDefault();
-          }
-        },
-        { passive: false }
-      );
-      document.body.addEventListener(
-        "touchend",
-        function (e) {
-          // @ts-ignore
-          if (e.target == canvas) {
-            e.preventDefault();
-          }
-        },
-        { passive: false }
-      );
-      document.body.addEventListener(
-        "touchmove",
-        function (e) {
-          // @ts-ignore
-          if (e.target == canvas) {
-            e.preventDefault();
-          }
-        },
-        { passive: false }
-      );
 </script>
 
-<main id="canvasContainer" in:fade>
-    <P5 bind:this="{canvas}" {sketch} />
+<main in:fade>
+    <P5 {sketch} />
 </main>
 
 <style>

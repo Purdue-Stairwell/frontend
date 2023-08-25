@@ -37,6 +37,35 @@
     alert("You have been squiggled!");
   }
   
+  let canvas;
+      document.body.addEventListener(
+        "touchstart",
+        function (e) {
+          if (e.target == canvas) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+      document.body.addEventListener(
+        "touchend",
+        function (e) {
+          if (e.target == canvas) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+      document.body.addEventListener(
+        "touchmove",
+        function (e) {
+          if (e.target == canvas) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
 </script>
 
 <main>
@@ -58,7 +87,7 @@
  {:else if screenLocation >= 7 && screenLocation <= 11}
  <WhoFive on:whofive={updateWhoFiveScore} questionNumber={screenLocation-7} value={whoFiveScores[screenLocation-7]}></WhoFive>
  {:else if screenLocation == 2 || screenLocation == 14}
- <Squiggle sketchWidth={300} sketchHeight={300}></Squiggle>
+ <Squiggle bind:this="{canvas}" sketchWidth={300} sketchHeight={300}></Squiggle>
  {:else}
  <Animation></Animation>
  {/if}
