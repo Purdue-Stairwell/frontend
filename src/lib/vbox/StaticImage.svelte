@@ -8,7 +8,7 @@ export let screenLocation;
     {#if screenLocation == 1}
         <img src="sculpture.png" alt="concept art of the stairWELL sculpture">
     {:else}
-        STATIC IMAGE
+        STATIC IMAGE!
     {/if}
 
 </main>
