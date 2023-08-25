@@ -313,7 +313,7 @@ const sketch = (p5) => {
 }
 
 //makes sure drawing works on mobile
-let canvas = document.getElementsByClassName("p5Canvas");
+    let canvas;
       document.body.addEventListener(
         "touchstart",
         function (e) {
@@ -346,8 +346,8 @@ let canvas = document.getElementsByClassName("p5Canvas");
       );
 </script>
 
-<main in:fade>
-    <P5 {sketch} />
+<main id="canvasContainer" in:fade>
+    <P5 bind:this="{canvas}" {sketch} />
 </main>
 
 <style>
