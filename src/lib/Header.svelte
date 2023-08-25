@@ -9,10 +9,14 @@
 <style>
     main {
         width: 100%;
-        background-color: bisque;
+        background-color: #061826;
         padding: 5px;
+        display: flex;
+        justify-content: center;
     }
     h1 {
         font-size: 24pt;
+        color: #FF0035;
+        font-weight: bold;
     }
 </style>

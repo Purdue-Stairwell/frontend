@@ -16,10 +16,12 @@
 
 <style>
     main {
-        width: 100%;
+        width: fit-content;
         height: 200px;
-        background-color: aquamarine;
+        background-color: #90D7FF;
         padding: 10px;
+        border-radius: 15px;
+        margin: 15px;
 
     }
 </style>

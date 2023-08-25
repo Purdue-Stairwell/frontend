@@ -56,7 +56,7 @@
 <style>
   
   main {
-    background-color: aliceblue;
+    background-color: #246EB9;
     width: 100vw;
     height: 100vh;
   }
