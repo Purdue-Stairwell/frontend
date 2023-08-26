@@ -10,8 +10,11 @@
   import ProjectButton from './lib/abox/ProjectButton.svelte';
   import Resources from './lib/Resources.svelte';
 
-  import { onMount } from 'svelte';
+  import SocketIO from 'socket.io-client';
 	
+  //TESTING URL
+  const socket = SocketIO("ws://127.0.0.1:3000");
+  console.log("connected to websocket");
 
   const script = fetch('script.json').then(res => res.json());
 
@@ -20,6 +23,7 @@
   let credits = false;
 
   let whoFiveScores = [5,5,5,5,5];
+  let points = [];
 
   function nextPage() {
     if(screenLocation < 18)
@@ -30,42 +34,20 @@
     whoFiveScores[event.detail.number] = event.detail.answer;
   }
 
-  function projectSquiggle() {
-    alert("You have been squiggled!");
+  function updatePoints(event) {
+    points = event.detail.points;
+    console.log(points);  
   }
 
-  let canvasElement;
-  onMount(() => {
-        document.body.addEventListener(
-          "touchstart",
-          (e) => {
-            if (e.target == canvasElement) {
-              e.preventDefault();
-            }
-          },
-          { passive: false }
-        );
-        document.body.addEventListener(
-          "touchend",
-          (e) => {
-            if (e.target == canvasElement) {
-              e.preventDefault();
-            }
-          },
-          { passive: false }
-        );
-        document.body.addEventListener(
-          "touchmove",
-          (e) => {
-            if (e.target == canvasElement) {
-              e.preventDefault();
-            }
-          },
-          { passive: false }
-        );
-  });
+  function projectSquiggle() {
+    socket.emit("frontend to backend", points, whoFiveScores);
+  }
 
-    
+  //sends data
+function sendData() {
+	
+}
+ 
 </script>
 
 <main>
@@ -88,7 +70,7 @@
     {:else if screenLocation >= 7 && screenLocation <= 11}
       <WhoFive on:whofive={updateWhoFiveScore} questionNumber={screenLocation-7} value={whoFiveScores[screenLocation-7]}></WhoFive>
     {:else if screenLocation == 2 || screenLocation == 14}
-      <Squiggle bind:this={canvasElement} sketchWidth={300} sketchHeight={300}></Squiggle>
+      <Squiggle on:squiggleDrawn={updatePoints} sketchWidth={300} sketchHeight={300}></Squiggle>
     {:else}
       <Animation></Animation>
     {/if}
