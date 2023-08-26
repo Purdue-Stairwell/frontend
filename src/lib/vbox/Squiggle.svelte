@@ -2,184 +2,194 @@
 
 <script>
 import { fade } from 'svelte/transition';
+import { createEventDispatcher, onMount } from 'svelte';
 import P5 from 'p5-svelte';
 
 export let sketchWidth, sketchHeight;
+
+export let points = [];
+
+const dispatch = createEventDispatcher();
+
+
+function finishedDrawing(event) {
+    dispatch('squiggleDrawn', points);
+}
 
 const sketch = (p5) => {
     let inc = 0.05;
 
     class Gesture {
-    constructor(seed, colorVar, girth, cap, join, x, y, speed, wiggle, smoothness) {
-        this.seed = seed;
-        this.points = [];
-        this.color = colorVar;
-        this.girth = girth;
-        this.cap = cap;
-        this.join = join;
-        this.pos = p5.createVector(x, y);
-        this.vel = p5.createVector(0, 0);
-        this.acc = p5.createVector(0, 0);
-        this.maxSpeed = speed;
-        this.wiggle = wiggle;
-        this.smooth = smoothness;
-        this.scl = 50;
-    }
+        constructor(seed, colorVar, girth, cap, join, x, y, speed, wiggle, smoothness) {
+            this.seed = seed;
+            this.points = [];
+            this.color = colorVar;
+            this.girth = girth;
+            this.cap = cap;
+            this.join = join;
+            this.pos = p5.createVector(x, y);
+            this.vel = p5.createVector(0, 0);
+            this.acc = p5.createVector(0, 0);
+            this.maxSpeed = speed;
+            this.wiggle = wiggle;
+            this.smooth = smoothness;
+            this.scl = 50;
+        }
 
-    addPoint(x, y) {
-        let newPoint = p5.createVector(x, y);
-        this.points.push(newPoint);
-    }
+        addPoint(x, y) {
+            let newPoint = p5.createVector(x, y);
+            this.points.push(newPoint);
+        }
 
-    render() {
-        p5.stroke(this.color);
-        p5.strokeWeight(this.girth);
-        editStrokeAttributes(this.cap, this.join);
-        p5.noFill();
-        p5.push();
-        p5.translate(this.pos.x, this.pos.y);
-        p5.beginShape();
-        this.points.forEach((p) => {
-            p5.vertex(p.x, p.y);
-        });
-        p5.endShape();
-        p5.pop();
-    }
+        render() {
+            p5.stroke(this.color);
+            p5.strokeWeight(this.girth);
+            editStrokeAttributes(this.cap, this.join);
+            p5.noFill();
+            p5.push();
+            p5.translate(this.pos.x, this.pos.y);
+            p5.beginShape();
+            this.points.forEach((p) => {
+                p5.vertex(p.x, p.y);
+            });
+            p5.endShape();
+            p5.pop();
+        }
 
-    update(time) {
-        let x = p5.floor(this.pos.x / this.scl);
-        let y = p5.floor(this.pos.y / this.scl);
-        p5.noiseSeed(this.seed);
-        let angle = p5.noise(x * inc, y * inc, time) * p5.TWO_PI;
-        let v = p5.Vector.fromAngle(angle);
-        v.setMag(1);
-        this.acc.add(v);
+        update(time) {
+            let x = p5.floor(this.pos.x / this.scl);
+            let y = p5.floor(this.pos.y / this.scl);
+            p5.noiseSeed(this.seed);
+            let angle = p5.noise(x * inc, y * inc, time) * p5.TWO_PI;
+            let v = p5.Vector.fromAngle(angle);
+            v.setMag(1);
+            this.acc.add(v);
 
-        this.vel.add(this.acc);
-        this.vel.limit(this.maxSpeed);
-        this.pos.add(this.vel);
-        this.acc.mult(0);
+            this.vel.add(this.acc);
+            this.vel.limit(this.maxSpeed);
+            this.pos.add(this.vel);
+            this.acc.mult(0);
 
-        let stillIn = false;
-        this.points.forEach((p) => {
-        if (p.x > -p5.width / 2 && p.x < p5.width / 2 && p.y > -p5.height / 2 && p.y < p5.height / 2) {
-            stillIn = true;
+            let stillIn = false;
+            this.points.forEach((p) => {
+            if (p.x > -p5.width / 2 && p.x < p5.width / 2 && p.y > -p5.height / 2 && p.y < p5.height / 2) {
+                stillIn = true;
+            }
+            });
+            if (!stillIn) {
+            console.log(stillIn);
+            }
+            stillIn = false;
+            if (this.pos.x > p5.width / 2 + 200 && !stillIn) {
+            this.pos.x = -p5.width / 2 - 150;
+            }
+            if (this.pos.x < -p5.width / 2 - 200 && !stillIn) {
+            this.pos.x = p5.width / 2 + 150;
+            }
+            if (this.pos.y > p5.height / 2 + 200 && !stillIn) {
+            this.pos.y = -p5.height / 2 - 150;
+            }
+            if (this.pos.y < -p5.height / 2 - 200 && !stillIn) {
+            this.pos.y = p5.height / 2 + 150;
+            }
         }
-        });
-        if (!stillIn) {
-        console.log(stillIn);
-        }
-        stillIn = false;
-        if (this.pos.x > p5.width / 2 + 200 && !stillIn) {
-        this.pos.x = -p5.width / 2 - 150;
-        }
-        if (this.pos.x < -p5.width / 2 - 200 && !stillIn) {
-        this.pos.x = p5.width / 2 + 150;
-        }
-        if (this.pos.y > p5.height / 2 + 200 && !stillIn) {
-        this.pos.y = -p5.height / 2 - 150;
-        }
-        if (this.pos.y < -p5.height / 2 - 200 && !stillIn) {
-        this.pos.y = p5.height / 2 + 150;
-        }
-    }
 
-    normalizePoints() {
-        for (let i = 1; i < this.points.length; i++) {
-        this.points[i].x -= this.points[0].x;
-        this.points[i].y -= this.points[0].y;
-        this.points[i].x = this.points[i].x * 0.5;
-        this.points[i].y = this.points[i].y * 0.5;
+        normalizePoints() {
+            for (let i = 1; i < this.points.length; i++) {
+            this.points[i].x -= this.points[0].x;
+            this.points[i].y -= this.points[0].y;
+            this.points[i].x = this.points[i].x * 0.5;
+            this.points[i].y = this.points[i].y * 0.5;
+            }
+            this.points[0].x = 0;
+            this.points[0].y = 0;
         }
-        this.points[0].x = 0;
-        this.points[0].y = 0;
-    }
 
-    drawBezier(time) {
-        p5.stroke(this.color);
-        p5.strokeWeight(this.girth);
-        editStrokeAttributes(this.cap, this.join);
-        p5.noFill();
-        p5.push();
-        p5.translate(this.pos.x, this.pos.y);
-        p5.beginShape();
-        //draw first point if points exist
-        if (this.points.length > 0) {
-        let offsetX0 = p5.map(
-            p5.noise(p5.sin(time * 20), this.seed),
-            0,
-            1,
-            -this.wiggle,
-            this.wiggle
-        );
-        let offsetY0 = p5.map(
-            p5.noise(p5.cos(time * 20), this.seed),
-            0,
-            1,
-            -this.wiggle,
-            this.wiggle
-        );
-        p5.vertex(this.points[0].x + offsetX0, this.points[0].y + offsetY0);
+        drawBezier(time) {
+            p5.stroke(this.color);
+            p5.strokeWeight(this.girth);
+            editStrokeAttributes(this.cap, this.join);
+            p5.noFill();
+            p5.push();
+            p5.translate(this.pos.x, this.pos.y);
+            p5.beginShape();
+            //draw first point if points exist
+            if (this.points.length > 0) {
+            let offsetX0 = p5.map(
+                p5.noise(p5.sin(time * 20), this.seed),
+                0,
+                1,
+                -this.wiggle,
+                this.wiggle
+            );
+            let offsetY0 = p5.map(
+                p5.noise(p5.cos(time * 20), this.seed),
+                0,
+                1,
+                -this.wiggle,
+                this.wiggle
+            );
+            p5.vertex(this.points[0].x + offsetX0, this.points[0].y + offsetY0);
+            }
+            //iterate through the rest of the points and calc control points and add bezier
+            for (let i = 1; i < this.points.length - 2; i += 2) {
+            let offsetX = p5.map(
+                p5.noise(p5.sin(time * 20 + i), this.seed),
+                0,
+                1,
+                -this.wiggle,
+                this.wiggle
+            );
+            let offsetY = p5.map(
+                p5.noise(p5.cos(time * 20 + i), this.seed),
+                0,
+                1,
+                -this.wiggle,
+                this.wiggle
+            );
+            let x1 = (this.points[i].x + this.points[i + 1].x) / 2;
+            let y1 = (this.points[i].y + this.points[i + 1].y) / 2;
+            let x2 = (this.points[i + 1].x + this.points[i + 2].x) / 2;
+            let y2 = (this.points[i + 1].y + this.points[i + 2].y) / 2;
+            let x3 = this.points[i + 2].x;
+            let y3 = this.points[i + 2].y;
+            p5.bezierVertex(
+                x1 + offsetX,
+                y1 + offsetY,
+                x2 + offsetX,
+                y2 + offsetY,
+                x3 + offsetX,
+                y3 + offsetY
+            );
+            }
+            p5.endShape();
+            p5.pop();
         }
-        //iterate through the rest of the points and calc control points and add bezier
-        for (let i = 1; i < this.points.length - 2; i += 2) {
-        let offsetX = p5.map(
-            p5.noise(p5.sin(time * 20 + i), this.seed),
-            0,
-            1,
-            -this.wiggle,
-            this.wiggle
-        );
-        let offsetY = p5.map(
-            p5.noise(p5.cos(time * 20 + i), this.seed),
-            0,
-            1,
-            -this.wiggle,
-            this.wiggle
-        );
-        let x1 = (this.points[i].x + this.points[i + 1].x) / 2;
-        let y1 = (this.points[i].y + this.points[i + 1].y) / 2;
-        let x2 = (this.points[i + 1].x + this.points[i + 2].x) / 2;
-        let y2 = (this.points[i + 1].y + this.points[i + 2].y) / 2;
-        let x3 = this.points[i + 2].x;
-        let y3 = this.points[i + 2].y;
-        p5.bezierVertex(
-            x1 + offsetX,
-            y1 + offsetY,
-            x2 + offsetX,
-            y2 + offsetY,
-            x3 + offsetX,
-            y3 + offsetY
-        );
-        }
-        p5.endShape();
-        p5.pop();
-    }
     }
 
     function editStrokeAttributes(cap, join) {
-    switch (cap) {
-        case "ROUND":
-        p5.strokeCap(p5.ROUND);
-        break;
-        case "SQUARE":
-        p5.strokeCap(p5.SQUARE);
-        break;
-        case "PROJECT":
-        p5.strokeCap(p5.PROJECT);
-        break;
-    }
-    switch (join) {
-        case "MITER":
-        p5.strokeJoin(p5.MITER);
-        break;
-        case "BEVEL":
-        p5.strokeJoin(p5.BEVEL);
-        break;
-        case "ROUND":
-        p5.strokeJoin(p5.ROUND);
-        break;
-    }
+        switch (cap) {
+            case "ROUND":
+            p5.strokeCap(p5.ROUND);
+            break;
+            case "SQUARE":
+            p5.strokeCap(p5.SQUARE);
+            break;
+            case "PROJECT":
+            p5.strokeCap(p5.PROJECT);
+            break;
+        }
+        switch (join) {
+            case "MITER":
+            p5.strokeJoin(p5.MITER);
+            break;
+            case "BEVEL":
+            p5.strokeJoin(p5.BEVEL);
+            break;
+            case "ROUND":
+            p5.strokeJoin(p5.ROUND);
+            break;
+        }
     }
 
     let maxPoints = 10;
@@ -191,7 +201,7 @@ const sketch = (p5) => {
 
     //setup of canvas and 2 gests
     p5.setup = () => {
-        p5.cnv = p5.createCanvas(sketchWidth, sketchHeight);
+        cnv = p5.createCanvas(sketchWidth, sketchHeight);
         p5.frameRate(24);
 
         hex = "#FF0000";//document.querySelector('input[name="colors"]:checked').value;
@@ -245,6 +255,7 @@ const sketch = (p5) => {
             gest.render();
         } else {
             //gest2.update();
+            finishedDrawing();
             gest2.drawBezier(p5.frameCount * 0.001, 0);
         }
     }
@@ -313,10 +324,40 @@ const sketch = (p5) => {
 }
 
 //makes sure drawing works on mobile
+let canvasElement;
+  onMount(() => {
+        document.body.addEventListener(
+          "touchstart",
+          (e) => {
+            if (e.target == canvasElement) {
+              e.preventDefault();
+            }
+          },
+          { passive: false }
+        );
+        document.body.addEventListener(
+          "touchend",
+          (e) => {
+            if (e.target == canvasElement) {
+              e.preventDefault();
+            }
+          },
+          { passive: false }
+        );
+        document.body.addEventListener(
+          "touchmove",
+          (e) => {
+            if (e.target == canvasElement) {
+              e.preventDefault();
+            }
+          },
+          { passive: false }
+        );
+  });
 </script>
 
 <main in:fade>
-    <P5 {sketch} />
+    <P5 bind:this={canvasElement} {sketch} />
 </main>
 
 <style>

@@ -15,6 +15,7 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "p5-svelte": "^3.1.2"
+    "p5-svelte": "^3.1.2",
+    "socket.io-client": "^4.7.2"
   }
 }
