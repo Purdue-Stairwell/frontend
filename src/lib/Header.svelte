@@ -1,9 +1,5 @@
-<script>
-
-</script>
-
 <main>
-    <div></div>
+    <div />
 </main>
 
 <style>
@@ -17,7 +13,7 @@
     div {
         background-image: url("/stairwell_header.png");
         background-position: center;
-        background-size: 75%;
+        background-size: 90%;
         background-repeat: no-repeat;
         width: 100%;
         height: 100px;
