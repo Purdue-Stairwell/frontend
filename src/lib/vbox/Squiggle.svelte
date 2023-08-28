@@ -7,14 +7,22 @@ import P5 from 'p5-svelte';
 
 export let sketchWidth, sketchHeight;
 
-export let points = [];
+export let globalPoints;
 
 const dispatch = createEventDispatcher();
 
+let maxPoints = 24;
+let noDraw = false;
 
-function finishedDrawing(event) {
-    dispatch('squiggleDrawn', points);
+let gest;
+let cnv;
+let hex;
+
+function squiggleDrawn() {
+    globalPoints = gest.points;
+    dispatch('squiggleDrawn', globalPoints);
 }
+
 
 const sketch = (p5) => {
     let inc = 0.05;
@@ -44,7 +52,8 @@ const sketch = (p5) => {
         render() {
             p5.stroke(this.color);
             p5.strokeWeight(this.girth);
-            editStrokeAttributes(this.cap, this.join);
+            p5.strokeCap(p5.ROUND);
+            p5.strokeJoin(p5.ROUND);
             p5.noFill();
             p5.push();
             p5.translate(this.pos.x, this.pos.y);
@@ -108,7 +117,8 @@ const sketch = (p5) => {
         drawBezier(time) {
             p5.stroke(this.color);
             p5.strokeWeight(this.girth);
-            editStrokeAttributes(this.cap, this.join);
+            p5.strokeCap(p5.ROUND);
+            p5.strokeJoin(p5.ROUND);
             p5.noFill();
             p5.push();
             p5.translate(this.pos.x, this.pos.y);
@@ -167,46 +177,13 @@ const sketch = (p5) => {
         }
     }
 
-    function editStrokeAttributes(cap, join) {
-        switch (cap) {
-            case "ROUND":
-            p5.strokeCap(p5.ROUND);
-            break;
-            case "SQUARE":
-            p5.strokeCap(p5.SQUARE);
-            break;
-            case "PROJECT":
-            p5.strokeCap(p5.PROJECT);
-            break;
-        }
-        switch (join) {
-            case "MITER":
-            p5.strokeJoin(p5.MITER);
-            break;
-            case "BEVEL":
-            p5.strokeJoin(p5.BEVEL);
-            break;
-            case "ROUND":
-            p5.strokeJoin(p5.ROUND);
-            break;
-        }
-    }
-
-    let maxPoints = 10;
-    let noDraw = false;
-
-    let gest, gest2;
-    let cnv;
-    let hex;
-
-    //setup of canvas and 2 gests
+    //setup of canvas and gesture
     p5.setup = () => {
         cnv = p5.createCanvas(sketchWidth, sketchHeight);
         p5.frameRate(24);
 
-        hex = "#FF0000";//document.querySelector('input[name="colors"]:checked').value;
-        //                 seed, hue,      girth, cap, join, x, y, alpha, speed, wiggle, smoothness
-        //                 seed, colorVar, girth, cap, join, x, y,        speed, wiggle, smoothness
+        hex = "#FF0000";
+        // seed, colorVar, girth, cap, join, x, y, speed, wiggle, smoothness
         gest = new Gesture(
             100,
             p5.color(p5.hexToRgb(hex).r, p5.hexToRgb(hex).g, p5.hexToRgb(hex).b),
@@ -219,49 +196,29 @@ const sketch = (p5) => {
             5,
             5
         );
-        gest2 = new Gesture(
-            0,
-            p5.color(p5.hexToRgb(hex).r, p5.hexToRgb(hex).g, p5.hexToRgb(hex).b),
-            10,
-            "ROUND",
-            "ROUND",
-            0,
-            0,
-            0,
-            0,
-            0
-        );
+        gest.points = globalPoints;
     }
 
     let index = 0;
 
     p5.draw = () => {
         p5.background(255);
-        if (!noDraw) {
             if (p5.pmouseX < p5.width && p5.pmouseX > 0) {
                 if (p5.pmouseY < p5.height && p5.pmouseY > 0) {
-                    if (p5.mouseIsPressed && gest2.points.length < maxPoints) {
+                    if (p5.mouseIsPressed && gest.points.length < maxPoints) {
                         gest.addPoint(p5.pmouseX, p5.pmouseY);
-                        if (p5.frameCount % 2 == 0) {
-                            gest2.addPoint(p5.pmouseX, p5.pmouseY);
-                            index++;
-                            if (index > maxPoints) {
-                                index = 0;
-                            }
+                        index++;
+                        if (index > maxPoints) {
+                            index = 0;
                         }
                     }
                 }
             }
-            gest.render();
-        } else {
-            //gest2.update();
-            finishedDrawing();
-            gest2.drawBezier(p5.frameCount * 0.001, 0);
-        }
+            gest.drawBezier(p5.frameCount * 0.001, 0);
     }
 
     p5.updateColor = () => {
-        hex = "#FF0000";//document.querySelector('input[name="colors"]:checked').value;
+        hex = "#FF0000";
         gest.color = p5.color(p5.hexToRgb(hex).r, p5.hexToRgb(hex).g, p5.hexToRgb(hex).b);
     }
 
@@ -271,45 +228,12 @@ const sketch = (p5) => {
             if (p5.pmouseX < p5.width && p5.pmouseX > 0) {
                 if (p5.pmouseY < p5.height && p5.pmouseY > 0) {
                     gest.points = [];
-                    gest2.points = [];
                 }
             }
         }
     }
 
-    const caps = ["ROUND", "SQUARE", "PROJECT"];
-    const joins = ["MITER", "BEVEL", "ROUND"];
 
-    //seed, hue, girth, cap, join, x, y, alpha, speed, wiggle, smoothness
-    let seed = 0;
-    let girth = 20;
-    let cap = "ROUND";
-    let join = "ROUND";
-    let alphaVar = 255;
-    let speed = 5;
-    let wiggle = 250;
-    let smoothness = 5;
-
-    p5.updateGesture = () => {
-        let colorResult = p5.hexToRgb("#FF0000"/*document.querySelector('input[type="radio"]:checked').value*/);
-        /* girth = p5.map(document.querySelector("#a").value, 0, 100, 5, 150);
-        alphaVar = p5.map(document.querySelector("#b").value, 0, 100, 128, 255);
-        speed = p5.map(document.querySelector("#c").value, 0, 100, 1, 10);
-        wiggle = p5.map(document.querySelector("#d").value, 0, 100, 10, 400);
-        smoothness = p5.map(document.querySelector("#e").value, 0, 100, 1, 10); */
-        //seed, hue, girth, cap, join, x, y, alpha, speed, wiggle, smoothness
-        gest2.color = p5.color(colorResult.r, colorResult.g, colorResult.b, alphaVar);
-        gest2.girth = girth;
-        gest2.cap = cap;
-        gest2.join = join;
-        gest2.speed = speed;
-        gest2.wiggle = wiggle;
-        gest2.smoothness = smoothness;
-        if (!noDraw) {
-            //gest2.normalizePoints();
-        }
-        noDraw = true;
-    }
 
     p5.hexToRgb = (hex) => {
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -324,13 +248,13 @@ const sketch = (p5) => {
 }
 
 //makes sure drawing works on mobile
-let canvasElement;
   onMount(() => {
         document.body.addEventListener(
           "touchstart",
           (e) => {
-            if (e.target == canvasElement) {
-              e.preventDefault();
+            // @ts-ignore
+            if (e.target.className === 'p5Canvas') {
+                e.preventDefault();
             }
           },
           { passive: false }
@@ -338,8 +262,10 @@ let canvasElement;
         document.body.addEventListener(
           "touchend",
           (e) => {
-            if (e.target == canvasElement) {
-              e.preventDefault();
+            // @ts-ignore
+            if (e.target.className === 'p5Canvas') {
+                e.preventDefault();
+                squiggleDrawn();
             }
           },
           { passive: false }
@@ -347,9 +273,11 @@ let canvasElement;
         document.body.addEventListener(
           "touchmove",
           (e) => {
-            if (e.target == canvasElement) {
-              e.preventDefault();
+            // @ts-ignore
+            if (e.target.className === 'p5Canvas') {
+                e.preventDefault();
             }
+
           },
           { passive: false }
         );
@@ -357,7 +285,7 @@ let canvasElement;
 </script>
 
 <main in:fade>
-    <P5 bind:this={canvasElement} {sketch} />
+    <P5 {sketch} />
 </main>
 
 <style>

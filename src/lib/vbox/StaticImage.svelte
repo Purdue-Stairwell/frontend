@@ -21,6 +21,7 @@
     main {
         margin: 25px;
         border-radius: 15px;
+        aspect-ratio: 1;
         border: #2c2e35 solid 5px;
         display: flex;
         justify-content: center;

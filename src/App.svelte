@@ -34,8 +34,7 @@
     }
 
     function updatePoints(event) {
-        points = event.detail.points;
-        console.log(points);
+        points = event.detail;
     }
 
     function projectSquiggle() {
@@ -70,7 +69,7 @@
                 value={whoFiveScores[screenLocation - 7]}
             />
         {:else if screenLocation == 2 || screenLocation == 14}
-            <Squiggle
+            <Squiggle globalPoints={points}
                 on:squiggleDrawn={updatePoints}
                 sketchWidth={300}
                 sketchHeight={300}
