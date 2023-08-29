@@ -14,6 +14,7 @@
 
     //TESTING URL
     const socket = SocketIO("ws://127.0.0.1:3000");
+    //const socket = SocketIO();
     console.log("connected to websocket");
 
     const script = fetch("script.json").then((res) => res.json());
@@ -37,8 +38,14 @@
         points = event.detail;
     }
 
-    function projectSquiggle() {
-        socket.emit("frontend to backend", points, whoFiveScores);
+    async function projectSquiggle() {
+        try {
+            await socket.emit("frontend to backend", points, whoFiveScores)
+            console.log('projecting squiggle');
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
 
     //sends data
