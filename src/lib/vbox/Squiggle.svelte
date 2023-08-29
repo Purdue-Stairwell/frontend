@@ -1,5 +1,3 @@
-
-
 <script>
 import { fade } from 'svelte/transition';
 import { createEventDispatcher, onMount } from 'svelte';
@@ -19,6 +17,7 @@ let cnv;
 let hex;
 
 function squiggleDrawn() {
+    console.log("Gesture Points", gest.points);
     globalPoints = gest.points;
     dispatch('squiggleDrawn', globalPoints);
 }
@@ -26,7 +25,7 @@ function squiggleDrawn() {
 
 const sketch = (p5) => {
     let inc = 0.05;
-
+    console.log("Global Points", globalPoints);
     class Gesture {
         constructor(seed, colorVar, girth, cap, join, x, y, speed, wiggle, smoothness) {
             this.seed = seed;
@@ -249,38 +248,20 @@ const sketch = (p5) => {
 
 //makes sure drawing works on mobile
   onMount(() => {
-        document.body.addEventListener(
-          "touchstart",
-          (e) => {
+        
+        function detectDrawing(e) {
             // @ts-ignore
             if (e.target.className === 'p5Canvas') {
                 e.preventDefault();
+                if(e.type === 'touchend' || e.type === 'mouseup') {
+                    squiggleDrawn();
+                }
             }
-          },
-          { passive: false }
-        );
-        document.body.addEventListener(
-          "touchend",
-          (e) => {
-            // @ts-ignore
-            if (e.target.className === 'p5Canvas') {
-                e.preventDefault();
-                squiggleDrawn();
-            }
-          },
-          { passive: false }
-        );
-        document.body.addEventListener(
-          "touchmove",
-          (e) => {
-            // @ts-ignore
-            if (e.target.className === 'p5Canvas') {
-                e.preventDefault();
-            }
-
-          },
-          { passive: false }
-        );
+        }
+        document.body.addEventListener("touchend",detectDrawing, {passive: false});
+        document.body.addEventListener("mouseup", detectDrawing, {passive: false});
+        document.body.addEventListener("touchmove",detectDrawing, {passive: false});
+        document.body.addEventListener("touchstart",detectDrawing, {passive: false});
   });
 </script>
 
