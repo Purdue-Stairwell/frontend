@@ -12,8 +12,8 @@
 
     import SocketIO from "socket.io-client";
 
-    //TESTING URL
-    const socket = SocketIO("ws://127.0.0.1:3000");
+    //live URL
+    const socket = SocketIO("ws://navinate.com:3000");
     //const socket = SocketIO();
     console.log("connected to websocket");
 

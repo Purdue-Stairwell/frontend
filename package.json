@@ -1,21 +1,21 @@
 {
-  "name": "stairwell-frontend",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.4.2",
-    "p5": "^1.7.0",
-    "svelte": "^4.0.5",
-    "vite": "^4.4.5"
-  },
-  "dependencies": {
-    "p5-svelte": "^3.1.2",
-    "socket.io-client": "^4.7.2"
-  }
+	"name": "stairwell-frontend",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@sveltejs/vite-plugin-svelte": "^2.4.2",
+		"p5": "^1.7.0",
+		"svelte": "^4.0.5",
+		"vite": "^4.4.5"
+	},
+	"dependencies": {
+		"p5-svelte": "^3.1.2",
+		"socket.io-client": "^4.7.2"
+	}
 }
