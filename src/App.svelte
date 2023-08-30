@@ -43,6 +43,7 @@
         try {
             await socket.emit("frontend to backend", points, whoFiveScores)
             console.log('projecting squiggle');
+            nextPage();
         } catch (error) {
             console.log(error);
         }
@@ -109,8 +110,8 @@
     main {
         background-color: #ffffff;
         margin: 0 auto;
-        width: 390px;
-        height: 844px;
+        width: 100%;
+        height: 100%;
     }
     img {
         width: 50%;
