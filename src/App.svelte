@@ -111,6 +111,7 @@
         background-color: #ffffff;
         margin: 0 auto;
         width: 100%;
+        max-width: 500px;
         height: 100%;
     }
     img {
