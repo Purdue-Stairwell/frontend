@@ -13,7 +13,7 @@
     import SocketIO from "socket.io-client";
 
     //live URL
-    const socket = SocketIO("wss://navinate.com:3000", {secure: true});
+    const socket = SocketIO("wss://navinate.com", {secure: true});
     
     //const socket = SocketIO();
     console.log("connected to websocket");
