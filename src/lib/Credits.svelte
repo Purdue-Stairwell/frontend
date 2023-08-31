@@ -2,25 +2,23 @@
     import { fade } from "svelte/transition";
     import Modal from "./helpers/Modal.svelte";
 
-    let showModal = false;
-    let index;
-    let teamInfo;
-
-    async function getTeamInfo() {
-        teamInfo = await fetch('teamInfo.json')
-        .then(res => res.json());
-        console.log(teamInfo);
-    }
+    const teamData = fetch("/teamInfo.json").then((res) => res.json());
     
-    getTeamInfo();
+    let showModal = false;
+    let  index = 0;
 </script>
 
-<main>
-    {#await teamInfo}
-        <p>Loading Team Data :)</p>
+<main in:fade>
+    {#await teamData}
+        <h1>Loading StairWELL Team Information...</h1>
     {:then result}
-        {#each result as person}
-            <div>
+        {#each result.teamData as person, i}
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="gallery-unit" on:click={() => {
+                showModal = true;
+                index = i;
+            }}>
                 <img src={person.image} alt={person.name} />
                 <h1>{person.name}</h1>
                 <p>{person.title}</p>
@@ -28,18 +26,71 @@
         {/each}
         <Modal bind:showModal>
             <div class="modal-container">
-                <img src={teamInfo[index].image} alt={teamInfo[index].name} />
-                <h1>{teamInfo[index].name}</h1>
-                <p>{teamInfo[index].title}</p>
-                <br>
-                <p>{teamInfo[index].info}</p>
+                <img src={result.teamData[index].image} alt={result.teamData[index].name} />
+                <h1>{result.teamData[index].name}</h1>
+                <p>{result.teamData[index].title}</p>
+                <p>{result.teamData[index].info}</p>
             </div>
         </Modal>
     {/await}
-
-    
 </main>
 
 <style>
 
+    main {
+        /* grid of 2 by n */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 1fr;
+        /* GAP */
+        gap: 1rem;
+        margin: 0 1rem;
+    }
+
+    .gallery-unit {
+        border: 2px solid rgb(142, 111, 62);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.8rem;
+    }
+    .gallery-unit img {
+        object-fit: contain;
+        max-height: 100px;
+        max-width: 100%;
+    }
+    .gallery-unit h1 {
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+    .gallery-unit p {
+        font-size: 0.8rem;
+    }
+
+    .modal-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.8rem;
+    }
+    .modal-container img {
+        object-fit: contain;
+        max-height: 100px;
+        max-width: 100%;
+    }
+    .modal-container h1 {
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .modal-container p {
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+    }
 </style>

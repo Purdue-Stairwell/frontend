@@ -1,48 +1,41 @@
 <script>
     import { fade } from "svelte/transition";
     import Modal from "./helpers/Modal.svelte";
+    
+    const resourceInfo = fetch("/sponsorInfo.json").then((res) => res.json());
 
     let showModal = false;
-    let index;
-
-    let names = ["", "", "", "", "", "", ""];
-    let links = [];
-    let srcs = [
-        "/Convos_Black.png",
-        "/ROBERTS.png",
-        "/CounPsy_H-Full-RGB_1.png",
-        "/LSIS_H-Full-RGB_1.png",
-        "/Polytech_H-Full-RGB.png",
-        "/STL_H-Full-RGB.png",
-        "/Theatre_H-Full-RGB.png",
-        ];
+    let index = 0;
 </script>
 <main in:fade>
-    {#each srcs as imageSRC, i}
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <!-- svelte-ignore a11y-no-static-element-interactions -->
-        {#if !showModal}
-            <!--  -->
-            <button class="sponsor-button" on:click={()=>{
-                showModal = true;
-                index = i;
-            }}>
-            <img src={imageSRC} alt="Logo for {names[i]}" />
-        </button>
-        {:else}
-        <button class="sponsor-button">
-        <img src={imageSRC} alt="Logo for {names[i]}" />
-        </button>
-        {/if}
-    {/each}
-    <Modal bind:showModal>
-        <div class="modal-container">
-            <img src={srcs[index]} alt="Logo for {names[index]}" />
-            <p>INFORMATION TO FILL OUT</p>
-            <a href={links[index]}>Link to Resource</a>
-        </div>
-    </Modal>
-    
+    {#await resourceInfo}
+        <h1>Loading Resource Info...</h1>
+    {:then result}
+        {#each result.sponsorInfo as sponsor, i}
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            {#if !showModal}
+                <!--  -->
+                <button class="sponsor-button" on:click={()=>{
+                    showModal = true;
+                    index = i;
+                }}>
+                <img src={sponsor.image} alt="Logo for {sponsor.name}" />
+            </button>
+            {:else}
+            <button class="sponsor-button">
+            <img src={sponsor.image} alt="Logo for {sponsor.name}" />
+            </button>
+            {/if}
+        {/each}
+        <Modal bind:showModal>
+            <div class="modal-container">
+                <img src={result.sponsorInfo[index].image} alt="Logo for {result.sponsorInfo[index].name}" />
+                <p>{result.sponsorInfo[index].info}</p>
+                <a href={result.sponsorInfo[index].link}>Link to Resource</a>
+            </div>
+        </Modal>
+    {/await}
 </main>
 <style>
     /*full width, full height, grid 1 column, 6 rows */
@@ -53,8 +46,8 @@
     }
 
     img {
-        object-fit: contain;
-        max-height: 100px;
+        object-fit:contain;
+        max-height: 150px;
         max-width: 100%;
     }
     .modal-container {

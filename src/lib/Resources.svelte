@@ -1,61 +1,37 @@
 <script>
     import { fade } from "svelte/transition";
     import Modal from "./helpers/Modal.svelte";
-    let names = [
-        "COUNSELING AND PSYCHOLOGICAL SERVICES(CAPS)",
-        "CENTER FOR ADVOCACY, RESPONSE AND EDUCATION",
-        "[NEED LINK] PURDUE GUIDANCE AND COUNSELING CENTER",
-        "PURDUE UNIVERSITY STUDENT HEALTH SERVICE (PUSH)",
-        "RECWELL WELLNESS",
-        "STUDENT OF CONCERN REPORT",
-        "OFFICE OF THE DEAN OF STUDENTS",
-        "DISABILITY RESOURCECENTER (DRC)",
-    ];
-    let links = [
-        "https://www.purdue.edu/caps/",
-        "https://care.purdue.edu/",
-        "",
-        "https://www.purdue.edu/push/",
-        "https://www.purdue.edu/recwell/",
-        "https://www.purdue.edu/advocacy/faculty/incident.html",
-        "https://www.purdue.edu/odos/",
-        "https://www.purdue.edu/drc/",
-    ];
+    
+    const resourceInfo = fetch("/resourceInfo.json").then((res) => res.json());
 
     let showModal = false;
-    let index;
-
+    let index = 0;
 </script>
 
 <main in:fade>
-    {#each names as name, i}
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <!-- svelte-ignore a11y-no-static-element-interactions -->
-        {#if !showModal}
-            <div
-                class="modal-button"
-                on:click={() => {
+    {#await resourceInfo}
+        <h1>Loading Resource Info...</h1>
+    {:then result}
+        {#each result.resourceInfo as resource, i}
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="modal-button" on:click={() => {
                     showModal = true;
                     index = i;
-                }}
-            >
-                <p>{name}</p>
+            }}>
+                <p>{resource.name}</p>
             </div>
-        {:else}
-            <div class="modal-button">
-                <p>{name}</p>
+        {/each}
+        <Modal bind:showModal>
+            <div class="modal-container">
+                <div class="modal-button">
+                    <img src={result.resourceInfo[index].image} alt={result.resourceInfo[index].name} />
+                </div>
+                <p>{result.resourceInfo[index].info}</p>
+                <a href={result.resourceInfo[index].link}>Link to Resource</a>
             </div>
-        {/if}
-    {/each}
-    <Modal bind:showModal>
-        <div class="modal-container">
-            <div class="modal-button">
-                <p>{names[index]}</p>
-            </div>
-            <p>INFORMATION TO FILL OUT</p>
-            <a href={links[index]}>Link to Resource</a>
-        </div>
-    </Modal>
+        </Modal>
+    {/await}
 </main>
 
 <style>
@@ -81,30 +57,14 @@
         padding-top: 10px;
     }
 
-    h2 {
-        margin: 5px 10px 0px 10px;
-        text-align: center;
-    }
-
-    h3 {
-        width: 100%;
-        text-align: center;
-        font-style: italic;
-        padding-bottom: 15px;
-        margin-top: 0px;
-    }
-
     .modal-button {
         width: 40%;
         height: 90px;
-        background-color: #ddc394;
         color: #2c2e35;
         font-weight: bolder;
         font-size: small;
         padding: 5px;
-        border: 5px solid #2c2e35;
-        border-radius: 15px;
-
+        border: 2px solid rgb(142, 111, 62);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -113,7 +73,17 @@
         cursor: pointer;
     }
 
+    .modal-button:hover, .modal-button:focus, .modal-button:active {
+        background-color: rgb(142, 111, 62);
+        color: white;
+    }
+
     .modal-container > .modal-button {
         width: 90%;
+    }
+    img {
+        object-fit:contain;
+        max-height: 150px;
+        max-width: 100%;
     }
 </style>
