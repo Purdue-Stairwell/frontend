@@ -8,7 +8,6 @@
     import NextButton from "./abox/NextButton.svelte";
     import WhoFive from "./vbox/WhoFive.svelte";
     import ProjectButton from "./abox/ProjectButton.svelte";
-    import Resources from "./Resources.svelte";
     import { fade } from "svelte/transition";
 
     import SocketIO from "socket.io-client";
@@ -101,14 +100,11 @@
         {:else}
             <NextButton on:message={nextPage} />
         {/if}
-    {:else}
-        <Resources />
     {/if}
 </main>
 
 <style>
     main {
-        background-color: #ffffff;
         margin: 0 auto;
         width: 100%;
         max-width: 500px;

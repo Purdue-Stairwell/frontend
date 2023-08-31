@@ -1,7 +1,6 @@
 <script>
     import { fade, fly } from 'svelte/transition';
     //import Typewriter from 'typewriter-effect/dist/core';
-    const script = fetch('script.json').then(res => res.json());
 
     export let scriptPage;
     

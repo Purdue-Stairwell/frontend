@@ -8,7 +8,7 @@
         reduceMotion = event.detail;
     }
 
-    let stage = "start";
+    let stage = "end";
     function changeStage(event) {
         stage = event.detail;
     }
@@ -27,7 +27,7 @@
             on:changeStage={changeStage}
         />
     {:else if stage == "end"}
-        <End />
+        <End reduceMotion={reduceMotion} />
     {/if}
 
 </main>

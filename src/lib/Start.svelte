@@ -3,6 +3,7 @@
     import Header from './Header.svelte';
     import Toggle from './helpers/Toggle.svelte';
     import { fade } from 'svelte/transition';
+    import PurdueButton from './helpers/PurdueButton.svelte';
 
     const dispatch = createEventDispatcher();
 
@@ -30,6 +31,7 @@
     <button on:click={changeStage}>
         Enter!
     </button>
+    <PurdueButton on:click={changeStage} text="Enter!" />
     <div>
         <Toggle on:stateChange={updateMotion}/>
         <p>Toggle Reduce Motion</p>
@@ -45,7 +47,7 @@
         margin: 0 auto;
         width: 100%;
         max-width: 500px;
-        height: 100%;
+        height: 100vh;
         padding: 0 1rem;
         display: flex;
         flex-flow: column nowrap;
@@ -61,23 +63,8 @@
         margin: 0 auto;
     }
 
-    button {
-        padding: 10px 2px;
-        background: none;
-        border: 2px solid rgb(142, 111, 62);
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    button:hover, button:active {
-        background-color: rgb(142, 111, 62);
-        color: white;
-    }
-
     div {
-        position: absolute;
-        width: 95%;
-        bottom: 0px;
+        width: 100%;
         display: flex;
         justify-content: space-around;
         gap: 0.5rem;

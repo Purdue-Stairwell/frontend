@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Trey Cluff",
+        "title": "Graduate Research Assistant,\nPurdue Polytechnic",
+        "image": "kiki.png",
+        "info": "My area of focus or expertise with the StairWELL project is backend data processing and visualization. I love how StairWELL has the potential to lower the barrier for self expression."
+    },
+    {
+        "name": "Esteban Garcia Bravo",
+        "title": "Associate Professor,\nDepartment of Computer Graphics Technology",
+        "image": "kiki.png",
+        "info": "My area of focus on the project is art direction and designing the visual concept of the sculpture and animations, as well as mentoring students to develop the technology and animations. I am inspired by being able to make something engaging in our campus and taking a creative step towards making our community a better place. This project started many years ago because a group of instructors were concerned with the amount of students who were struggling with depression and were looking for a creative outlet to express their feelings."
+    }
+]

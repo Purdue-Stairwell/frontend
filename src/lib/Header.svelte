@@ -20,7 +20,8 @@
         background-size: 90%;
         background-repeat: no-repeat;
         width: 100%;
-        height: 100px;
+        max-width: 384px;
+        height: 120px;
     }
     .stairwell {
         background-image: url("/stairwell_header.png");
