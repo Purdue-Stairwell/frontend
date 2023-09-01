@@ -271,7 +271,7 @@ const sketch = (p5) => {
         margin: 1rem;
         aspect-ratio: 1;
         border-radius: 15px;
-        background-color: rgb(199, 138, 171);
+        background-color: #f3aafb;
         display: flex;
         justify-content: center;
         align-items: center;

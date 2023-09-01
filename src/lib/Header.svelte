@@ -23,7 +23,7 @@
         height: 120px;
     }
     .stairwell-image {
-        background-image: url("anim/animatedlogo_small.gif");
+        background-image: url("/animatedlogo_small.gif");
     }
     .purdue-image {
         background-image: url("/purdue_header.png");

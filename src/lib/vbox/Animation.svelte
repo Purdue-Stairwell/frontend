@@ -13,13 +13,13 @@
     {#if screenLocation === 0}
         {#if !reduceMotion}
             <!-- svelte-ignore a11y-media-has-caption -->
-            <video autoplay loop >
+            <!-- <video autoplay loop >
                 <source src="assets/anim.mp4" type="video/mp4">
-            </video>
+            </video> -->
         {:else}
-            <video loop muted>
+            <!-- <video loop muted>
                 <source src="assets/anim.mp4" type="video/mp4">
-            </video>
+            </video> -->
         {/if}
     {:else if screenLocation === 2}
     {:else if screenLocation === 3}
