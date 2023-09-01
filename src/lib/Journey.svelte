@@ -3,7 +3,6 @@
     import Animation from "./vbox/Animation.svelte";
     import Squiggle from "./vbox/Squiggle.svelte";
     import Narration from "./ibox/Narration.svelte";
-    import CreditsButton from "./abox/CreditsButton.svelte";
     import NextButton from "./abox/NextButton.svelte";
     import WhoFive from "./vbox/WhoFive.svelte";
     import ProjectButton from "./abox/ProjectButton.svelte";
@@ -30,10 +29,17 @@
     let screenLocation = 0;
     export let reduceMotion;
 
-    let credits = false;
-
-    let whoFiveScores = [5, 5, 5, 5, 5];
+    let whoFiveScores = [0,0,0,0,0];
     let points = [];
+
+    //PLACEHOLDER
+    let attributes = {
+        girth: 15,
+        color: "#3c3e78",
+        opacity: 1,
+        speed: 10,
+        wiggle: 7
+    }
 
     function nextPage() {
         if (screenLocation < 15) screenLocation++;
@@ -46,6 +52,7 @@
 
     function updateWhoFiveScore(event) {
         whoFiveScores[event.detail.number] = event.detail.answer;
+        console.log("who5",whoFiveScores);
     }
 
     function updatePoints(event) {
@@ -70,7 +77,6 @@
 <main in:fade>
     <!--HEADER-->
     <Header mode="stairwell" />
-    {#if !credits}
         {#key screenLocation}
             <!--INFO BOX-->
             {#await script}
@@ -82,30 +88,28 @@
         <!--VISUAL BOX-->
         <!-- 0     1     2     3     4    5    6    7   8   9   10  11  12   13    14   15-->
         <!--anim squig animm anim anim anim who who who who who anim anim squig static static-->
-        {#if journeyState[screenLocation] == 0}
-            <Animation screenLocation={screenLocation}/>
-        {:else if journeyState[screenLocation] == 1}
+        {#if journeyState[screenLocation] === 0}
+            <Animation screenLocation={screenLocation} reduceMotion={reduceMotion}/>
+        {:else if journeyState[screenLocation] === 1}
             <Squiggle globalPoints={points}
                 on:squiggleDrawn={updatePoints}
                 sketchWidth={330}
                 sketchHeight={330}
             />
-        {:else if journeyState[screenLocation] == 2}
+        {:else if journeyState[screenLocation] === 2}
+            {#key screenLocation}
             <WhoFive
                 on:whofive={updateWhoFiveScore}
                 questionNumber={screenLocation - 6}
-                value={whoFiveScores[screenLocation - 6]}
             />
+            {/key}
         {/if}
         <!--ACTION BOX-->
-        {#if screenLocation == 18}
-            <CreditsButton on:credits={() => (credits = true)} />
-        {:else if screenLocation == 14}
+        {#if journeyState[screenLocation] === 1 && screenLocation > 10}
             <ProjectButton on:message={nextPage} on:project={projectSquiggle} />
         {:else}
             <NextButton on:message={nextPage} />
         {/if}
-    {/if}
 </main>
 
 <style>

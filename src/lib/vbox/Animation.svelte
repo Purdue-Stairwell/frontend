@@ -1,6 +1,7 @@
 <script>
     import { fade } from 'svelte/transition';
     export let screenLocation;
+    export let reduceMotion
 
     let journeyState = 
     //0     1     2    3    4    5    6   7   8   9   10  11   12   13    14   15-->
@@ -10,9 +11,16 @@
 
 <main in:fade>
     {#if screenLocation === 0}
-        <video autoplay loop muted>
-            <source src="assets/anim.mp4" type="video/mp4">
-        </video>
+        {#if !reduceMotion}
+            <!-- svelte-ignore a11y-media-has-caption -->
+            <video autoplay loop >
+                <source src="assets/anim.mp4" type="video/mp4">
+            </video>
+        {:else}
+            <video loop muted>
+                <source src="assets/anim.mp4" type="video/mp4">
+            </video>
+        {/if}
     {:else if screenLocation === 2}
     {:else if screenLocation === 3}
     {:else if screenLocation === 4}
