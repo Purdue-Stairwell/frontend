@@ -76,13 +76,16 @@
 
 <main in:fade>
     <!--HEADER-->
-    <Header mode="stairwell" />
+    <Header reduceMotion={reduceMotion} mode="stairwell" />
         {#key screenLocation}
             <!--INFO BOX-->
             {#await script}
                 <p>Loading Script :)</p>
             {:then result}
-                <Narration scriptPage={result.script[screenLocation]} />
+                <Narration
+                    reduceMotion={reduceMotion}
+                    scriptPage={result.script[screenLocation]}
+                />
             {/await}
         {/key}
         <!--VISUAL BOX-->
@@ -106,9 +109,9 @@
         {/if}
         <!--ACTION BOX-->
         {#if journeyState[screenLocation] === 1 && screenLocation > 10}
-            <ProjectButton on:message={nextPage} on:project={projectSquiggle} />
+            <ProjectButton on:next={nextPage} on:project={projectSquiggle} />
         {:else}
-            <NextButton on:message={nextPage} />
+            <NextButton on:next={nextPage} />
         {/if}
 </main>
 
@@ -119,6 +122,6 @@
         max-width: 500px;
         height: 100%;
         background: rgb(0,0,0);
-        background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 33%, rgba(60,62,121,1) 100%);
+        background: linear-gradient(180deg, #1f1669 0%, #5654ca  100%);
     }
 </style>

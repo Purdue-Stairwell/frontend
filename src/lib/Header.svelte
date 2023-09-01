@@ -1,9 +1,14 @@
 <script>
     export let mode;
+    export let reduceMotion;
 </script>
 
-<main class={mode + "-main"}>
+<main>
+    {#if reduceMotion  && mode == "stairwell"}
+        <div class={mode+"-reduce-motion"} />
+    {:else}
     <div class={mode+"-image"} />
+    {/if}
 </main>
 
 <style>
@@ -24,6 +29,9 @@
     }
     .stairwell-image {
         background-image: url("/animatedlogo_small.gif");
+    }
+    .stairwell-reduce-motion {
+        background-image: url("/stairwell_header.png");
     }
     .purdue-image {
         background-image: url("/purdue_header.png");

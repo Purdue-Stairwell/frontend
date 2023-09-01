@@ -21,7 +21,7 @@
 
 <main in:fade>
     <!--HEADER-->
-    <Header mode="purdue" />
+    <Header reduceMotion={reduceMotion} mode="purdue" />
     <p>Welcome to StairWELL, an interactive sculpture and gathering place.</p>
     <img
             src="purdue_stairs.png"
@@ -42,12 +42,13 @@
         background-color: #ffffff;
         margin: 0 auto;
         width: 100%;
+        height: 100dvh;
         max-width: 500px;
-        height: 100vh;
         padding: 0 1rem;
         display: flex;
+        justify-content: flex-start;
         flex-flow: column nowrap;
-        gap: 0.6rem;
+        gap: 0.5rem;
     }
 
     p {

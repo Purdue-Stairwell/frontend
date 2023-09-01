@@ -1,35 +1,42 @@
 <script>
     import { fade } from 'svelte/transition';
     export let screenLocation;
-    export let reduceMotion
+    export let reduceMotion;
 
     let journeyState = 
     //0     1     2    3    4    5    6   7   8   9   10  11   12   13    14   15-->
     //anim squig animm anim anim anim who who who who who anim anim squig static static-->
-    [0,    1,     0,   0,   0,   0,   2,  2,  2,  2,  2,  0,   0,   1,    0,     0]
+    [0,    1,     0,   0,   0,   0,   2,  2,  2,  2,  2,  0,   0,   1,    0,     0];
+
+    let srcs = [
+        "/anim/barret_idle_w_sound.mp4",
+        "SQUIGGLE",
+        "/anim/barret_idle_w_sound.mp4",
+        "/anim/barret_idle_w_sound.mp4",
+        "/anim/barret_idle_w_sound.mp4",
+        "/anim/barret_idle_w_sound.mp4",
+        "WHO",
+        "WHO",
+        "WHO",
+        "WHO",
+        "WHO",
+        "/anim/barret_idle_w_sound.mp4",
+        "/anim/barret_idle_w_sound.mp4",
+        "SQUIGGLE",
+        "/kiki.png",
+        "/kiki.png", 
+    ]
 </script>
 
 <main in:fade>
-    {#if screenLocation === 0}
-        {#if !reduceMotion}
-            <!-- svelte-ignore a11y-media-has-caption -->
-            <!-- <video autoplay loop >
-                <source src="assets/anim.mp4" type="video/mp4">
-            </video> -->
-        {:else}
-            <!-- <video loop muted>
-                <source src="assets/anim.mp4" type="video/mp4">
-            </video> -->
+        <!-- svelte-ignore a11y-media-has-caption -->
+        {#if screenLocation < 14}
+            <video autoplay={!reduceMotion} muted={reduceMotion} loop >
+                <source src={srcs[screenLocation]} type="video/mp4">
+            </video>
+        {:else if screenLocation >= 14}
+            <img src={srcs[screenLocation]} alt="Narrative Character reading the text">
         {/if}
-    {:else if screenLocation === 2}
-    {:else if screenLocation === 3}
-    {:else if screenLocation === 4}
-    {:else if screenLocation === 5}
-    {:else if screenLocation === 11}
-    {:else if screenLocation === 12}
-    {:else if screenLocation === 14}
-    {:else if screenLocation === 15}
-    {/if}
 </main>
 
 <style>
@@ -41,11 +48,18 @@
         justify-content: center;
         align-items: center;
         font-size: 24pt;
-        border: #ffffff solid 5px;
     }
     img {
-        width: 95%;
+        width: 100%;
         aspect-ratio: 1;
+        border-radius: 5px;
+    }
+
+    video {
+        width: 100%;
         border-radius: 15px;
+        aspect-ratio: 1;
+        border: #ffffff solid 3px;
+        box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
     }
 </style>

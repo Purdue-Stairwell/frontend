@@ -3,6 +3,7 @@
     import { createEventDispatcher, onMount } from "svelte";
 
     export let scriptPage;
+    export let reduceMotion
 
     var i = 0;
     var txt = scriptPage; /* The text */
@@ -18,12 +19,18 @@
     }
 
     onMount(() => {
-        typeWriter();
+        if(!reduceMotion) {
+            typeWriter();
+        }
     });
 </script>
 
 <main>
-    <p>{typed}</p>
+    {#if reduceMotion}
+        <p>{scriptPage}</p>
+    {:else}
+        <p>{typed}</p>
+    {/if}
 </main>
 
 <style>
@@ -34,7 +41,8 @@
         align-items: center;
         border-radius: 15px;
         margin: 15px 25px;
-        box-shadow: 3px 3px 2px #000015;
+        border: 3px solid #FFFFFF;
+        box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
     }
     p {
         line-height: 1.5;

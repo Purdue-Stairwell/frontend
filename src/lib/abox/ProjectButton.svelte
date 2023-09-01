@@ -1,6 +1,7 @@
 <script>
 
     import { createEventDispatcher } from 'svelte';
+    import NextButton from './NextButton.svelte';
     
     const dispatch = createEventDispatcher();
     
@@ -8,38 +9,40 @@
         dispatch('project');
     }
 
-    function goNext() {
-    dispatch('message');
+    function nextPage() {
+        dispatch('next');
     }
     
     </script>
     <main>
-    <button on:click|once={projectSquiggle} id="project">
-        Project!
-    </button>
-    <button on:click={goNext}>
-        Next
-    </button>
+        <NextButton on:next={nextPage} text="Skip" />
+        <button on:click|once={projectSquiggle}>
+            Project!
+        </button>
+    
     </main>
     <style>
         main {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
+            flex-flow: row no-wrap;
             margin: 25px;
         }
         button {
-            border: none;
+            border: #ffffff 3px solid;
             border-radius: 15px;
-            box-shadow: 3px 3px 2px #000015;
-            font-size: 32pt;
-            background-color: #061826;
+            box-shadow: 5x 5px 0px #ffffff;
+            font-size: 2rem;
+            background-color: #3ae7c7;
             padding: 5px 15px;
             color: #ffffff;
             font-weight: bold;
+            transition-duration: 0.1s;
+        }
+        button:hover, button:active, button:focus {
+            background-color: #a8ffef;
+            color: #000000;
         }
 
-        #project {
-            background-color: #90D7FF;
-            color: black;
-        }
+        
     </style>

@@ -4,15 +4,16 @@ import { createEventDispatcher } from 'svelte';
 
 const dispatch = createEventDispatcher();
 
+export let text = "Next";
+
 function goNext() {
-    dispatch('message');
+    dispatch('next');
 }
 
 </script>
 <main>
-    <button on:click={goNext}
-        class="button-56">
-        Next
+    <button on:click={goNext}>
+        {text}
     </button>
 </main>
 <style>
@@ -23,61 +24,21 @@ function goNext() {
         justify-content: flex-end;
         padding-right: 2rem;
     }
-    .button-56 {
-      align-items: center;
-      background-color: #90d7ff;
-      border: 2px solid #fff;
-      border-radius: 8px;
-      box-sizing: border-box;
-      color: #111;
-      cursor: pointer;
-      display: flex;
-      font-size: 2.5rem;
-      font-family: 'Dosis', sans-serif;
-      height: 48px;
-      justify-content: center;
-      line-height: 24px;
-      max-width: 100%;
-      padding: 0 1rem;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
+    button {
+            border: #ffffff 3px solid;
+            border-radius: 15px;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+            font-size: 32pt;
+            background-color: #3ae7c7;
+            padding: 5px 15px;
+            color: #ffffff;
+            font-weight: bold;
+            font-family: 'Dosis', sans-serif;
+            transition-duration: 0.1s;
     }
 
-.button-56::after {
-  background-color: #fff;
-  border-radius: 8px;
-  content: "";
-  display: block;
-  height: 48px;
-  left: 0;
-  width: 100%;
-  position: absolute;
-  top: -2px;
-  transform: translate(8px, 8px);
-  transition: transform .2s ease-out;
-  z-index: -1;
-}
-
-.button-56:hover:after {
-  transform: translate(0, 0);
-}
-
-.button-56:active {
-  background-color: #90d7ff;
-  outline: 0;
-}
-
-.button-56:hover {
-  outline: 0;
-}
-
-@media (min-width: 768px) {
-  .button-56 {
-    padding: 0 40px;
-  }
-}
+    button:hover, button:active, button:focus {
+            background-color: #a8ffef;
+            color: #000000;
+    }
 </style>
