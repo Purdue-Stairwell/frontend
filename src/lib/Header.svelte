@@ -2,14 +2,13 @@
     export let mode;
 </script>
 
-<main>
-    <div class={mode} />
+<main class={mode + "-main"}>
+    <div class={mode+"-image"} />
 </main>
 
 <style>
     main {
         width: 100%;
-        background-color: #ffffff;
         padding: 5px;
         display: flex;
         justify-content: center;
@@ -23,10 +22,10 @@
         max-width: 384px;
         height: 120px;
     }
-    .stairwell {
-        background-image: url("/stairwell_header.png");
+    .stairwell-image {
+        background-image: url("anim/animatedlogo_small.gif");
     }
-    .purdue {
+    .purdue-image {
         background-image: url("/purdue_header.png");
     }
 </style>

@@ -24,13 +24,9 @@
     <Header mode="purdue" />
     <p>Welcome to StairWELL, an interactive sculpture and gathering place.</p>
     <img
-            src="stairs.png"
+            src="purdue_stairs.png"
             alt="Abstract representation of the StairWELL sculpture"
     />
-
-    <button on:click={changeStage}>
-        Enter!
-    </button>
     <PurdueButton on:click={changeStage} text="Enter!" />
     <div>
         <Toggle on:stateChange={updateMotion}/>
@@ -51,7 +47,7 @@
         padding: 0 1rem;
         display: flex;
         flex-flow: column nowrap;
-        gap: 2rem;
+        gap: 0.6rem;
     }
 
     p {

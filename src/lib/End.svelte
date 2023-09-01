@@ -21,10 +21,6 @@
     <Header mode="purdue" />
     {#if endState === 'Back'}
         <p>Purdue has an amazing collection of people and services to help you thrive. Check out this portal…</p>
-        <img
-                src="stairs.png"
-                alt="Abstract representation of the StairWELL sculpture"
-        />
     <PurdueButton on:click={changeEndState} text="Resources" />
     <PurdueButton on:click={changeEndState} text="Sponsors" />
     <PurdueButton on:click={changeEndState} text="Credits" />
@@ -54,7 +50,7 @@
         padding: 0 1rem;
         display: flex;
         flex-flow: column nowrap;
-        gap: 2rem;
+        gap: 1rem;
     }
 
     p {

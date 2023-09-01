@@ -14,7 +14,7 @@ let noDraw = false;
 
 let gest;
 let cnv;
-let hex;
+let hex = "#3c3e78";
 
 function squiggleDrawn() {
     console.log("Gesture Points", gest.points);
@@ -180,8 +180,6 @@ const sketch = (p5) => {
     p5.setup = () => {
         cnv = p5.createCanvas(sketchWidth, sketchHeight);
         p5.frameRate(24);
-
-        hex = "#FF0000";
         // seed, colorVar, girth, cap, join, x, y, speed, wiggle, smoothness
         gest = new Gesture(
             100,
@@ -192,8 +190,8 @@ const sketch = (p5) => {
             0,
             0,
             5,
-            5,
-            5
+            7,
+            0
         );
         gest.points = globalPoints;
     }
@@ -217,7 +215,6 @@ const sketch = (p5) => {
     }
 
     p5.updateColor = () => {
-        hex = "#FF0000";
         gest.color = p5.color(p5.hexToRgb(hex).r, p5.hexToRgb(hex).g, p5.hexToRgb(hex).b);
     }
 
@@ -271,7 +268,7 @@ const sketch = (p5) => {
 
 <style>
     main {
-        margin: 25px;
+        margin: 1rem;
         aspect-ratio: 1;
         border-radius: 15px;
         background-color: rgb(199, 138, 171);

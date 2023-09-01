@@ -24,31 +24,31 @@ function goNext() {
         padding-right: 2rem;
     }
     .button-56 {
-  align-items: center;
-  background-color: #fee6e3;
-  border: 2px solid #111;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #111;
-  cursor: pointer;
-  display: flex;
-  font-size: 2.5rem;
-  font-family: 'Dosis', sans-serif;
-  height: 48px;
-  justify-content: center;
-  line-height: 24px;
-  max-width: 100%;
-  padding: 0 1rem;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
+      align-items: center;
+      background-color: #90d7ff;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      box-sizing: border-box;
+      color: #111;
+      cursor: pointer;
+      display: flex;
+      font-size: 2.5rem;
+      font-family: 'Dosis', sans-serif;
+      height: 48px;
+      justify-content: center;
+      line-height: 24px;
+      max-width: 100%;
+      padding: 0 1rem;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
 
 .button-56::after {
-  background-color: #111;
+  background-color: #fff;
   border-radius: 8px;
   content: "";
   display: block;
@@ -67,7 +67,7 @@ function goNext() {
 }
 
 .button-56:active {
-  background-color: #ffdeda;
+  background-color: #90d7ff;
   outline: 0;
 }
 

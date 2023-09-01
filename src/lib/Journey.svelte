@@ -1,6 +1,5 @@
 <script>
     import Header from "./Header.svelte";
-    import StaticImage from ".//vbox/StaticImage.svelte";
     import Animation from "./vbox/Animation.svelte";
     import Squiggle from "./vbox/Squiggle.svelte";
     import Narration from "./ibox/Narration.svelte";
@@ -9,8 +8,11 @@
     import WhoFive from "./vbox/WhoFive.svelte";
     import ProjectButton from "./abox/ProjectButton.svelte";
     import { fade } from "svelte/transition";
+    import { createEventDispatcher } from "svelte";
 
     import SocketIO from "socket.io-client";
+
+    const dispatch = createEventDispatcher();
 
     //live URL
     const socket = SocketIO("wss://navinate.com", {secure: true});
@@ -34,7 +36,12 @@
     let points = [];
 
     function nextPage() {
-        if (screenLocation < 18) screenLocation++;
+        if (screenLocation < 15) screenLocation++;
+        else changeStage();
+    }
+
+    function changeStage() {
+        dispatch("changeStage", "end");
     }
 
     function updateWhoFiveScore(event) {
@@ -76,21 +83,19 @@
         <!-- 0     1     2     3     4    5    6    7   8   9   10  11  12   13    14   15-->
         <!--anim squig animm anim anim anim who who who who who anim anim squig static static-->
         {#if journeyState[screenLocation] == 0}
-            <StaticImage {screenLocation} />
+            <Animation screenLocation={screenLocation}/>
+        {:else if journeyState[screenLocation] == 1}
+            <Squiggle globalPoints={points}
+                on:squiggleDrawn={updatePoints}
+                sketchWidth={330}
+                sketchHeight={330}
+            />
         {:else if journeyState[screenLocation] == 2}
             <WhoFive
                 on:whofive={updateWhoFiveScore}
-                questionNumber={screenLocation - 7}
-                value={whoFiveScores[screenLocation - 7]}
+                questionNumber={screenLocation - 6}
+                value={whoFiveScores[screenLocation - 6]}
             />
-        {:else if screenLocation == 2 || screenLocation == 14}
-            <Squiggle globalPoints={points}
-                on:squiggleDrawn={updatePoints}
-                sketchWidth={300}
-                sketchHeight={300}
-            />
-        {:else}
-            <Animation />
         {/if}
         <!--ACTION BOX-->
         {#if screenLocation == 18}
@@ -109,5 +114,7 @@
         width: 100%;
         max-width: 500px;
         height: 100%;
+        background: rgb(0,0,0);
+        background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 33%, rgba(60,62,121,1) 100%);
     }
 </style>

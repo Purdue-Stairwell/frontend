@@ -8,7 +8,7 @@
         reduceMotion = event.detail;
     }
 
-    let stage = "end";
+    let stage = "start";
     function changeStage(event) {
         stage = event.detail;
     }
@@ -32,5 +32,7 @@
 
 </main>
 <style>
-
+    main {
+        height: 100%;
+    }
 </style>
