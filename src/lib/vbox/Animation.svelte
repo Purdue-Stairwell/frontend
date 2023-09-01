@@ -31,7 +31,7 @@
 <main in:fade>
         <!-- svelte-ignore a11y-media-has-caption -->
         {#if screenLocation < 14}
-            <video autoplay={!reduceMotion} muted={reduceMotion} loop >
+            <video autoplay={!reduceMotion} muted={reduceMotion} loop playsinline>
                 <source src={srcs[screenLocation]} type="video/mp4">
             </video>
         {:else if screenLocation >= 14}
