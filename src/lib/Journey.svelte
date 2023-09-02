@@ -80,8 +80,7 @@
 		}
 	}
 
-	//sends data
-	function sendData() {}
+	let videoFinished;
 </script>
 
 <main in:fade>
@@ -101,13 +100,22 @@
 	{#if journeyState[screenLocation] === 0}
 		<Animation {screenLocation} {reduceMotion} />
 	{:else if journeyState[screenLocation] === 1}
-		<Squiggle
-			{screenLocation}
-			globalPoints={points}
-			on:squiggleDrawn={updatePoints}
-			sketchWidth={330}
-			sketchHeight={330}
-		/>
+		{#if !videoFinished}
+			<Animation
+				{screenLocation}
+				{reduceMotion}
+				loop={false}
+				bind:videoFinished
+			/>
+		{:else}
+			<Squiggle
+				{screenLocation}
+				globalPoints={points}
+				on:squiggleDrawn={updatePoints}
+				sketchWidth={330}
+				sketchHeight={330}
+			/>
+		{/if}
 	{:else if journeyState[screenLocation] === 2}
 		{#key screenLocation}
 			<WhoFive

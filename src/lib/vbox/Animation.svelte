@@ -2,6 +2,8 @@
 	import { fade } from 'svelte/transition';
 	export let screenLocation;
 	export let reduceMotion;
+	export let videoFinished = false;
+	export let loop = true;
 
 	let journeyState =
 		//0     1     2    3    4    5    6   7   8   9   10  11   12   13    14   15-->
@@ -9,8 +11,8 @@
 		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 0, 0];
 
 	let srcs = [
-		'/anim/barret_talking.mp4',
-		'SQUIGGLE',
+		'/anim/intro.mp4',
+		'/anim/user_sketch_light.mp4',
 		'/anim/barret_idle.mp4',
 		'/anim/barret_talking.mp4',
 		'/anim/barret_idle.mp4',
@@ -30,16 +32,26 @@
 
 <main in:fade>
 	<!-- svelte-ignore a11y-media-has-caption -->
-	{#if screenLocation < 14}
-		<video autoplay={!reduceMotion} muted={reduceMotion} loop playsinline>
-			<source src={srcs[screenLocation]} type="video/mp4" />
-		</video>
-	{:else if screenLocation >= 14}
-		<img
-			src={srcs[screenLocation]}
-			alt="Narrative Character reading the text"
-		/>
-	{/if}
+	{#key screenLocation}
+		{#if screenLocation < 14}
+			<video
+				autoplay={!reduceMotion}
+				muted={reduceMotion}
+				{loop}
+				playsinline
+				on:ended={() => {
+					videoFinished = true;
+				}}
+			>
+				<source src={srcs[screenLocation]} type="video/mp4" />
+			</video>
+		{:else if screenLocation >= 14}
+			<img
+				src={srcs[screenLocation]}
+				alt="Narrative Character reading the text"
+			/>
+		{/if}
+	{/key}
 </main>
 
 <style>
