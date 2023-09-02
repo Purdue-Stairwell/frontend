@@ -138,7 +138,7 @@
 		margin: 0 auto;
 		width: 100%;
 		max-width: 500px;
-		height: 100%;
+		height: 100dvh;
 		background: rgb(0, 0, 0);
 		background: linear-gradient(180deg, #1f1669 0%, #5654ca 100%);
 	}

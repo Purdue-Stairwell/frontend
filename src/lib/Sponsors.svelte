@@ -62,7 +62,7 @@
 
 	img {
 		object-fit: contain;
-		width: 30vw;
+		width: 100%;
 		aspect-ratio: 1;
 	}
 	.modal-container {
