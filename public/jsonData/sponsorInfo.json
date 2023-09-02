@@ -2,67 +2,67 @@
     "sponsorInfo": [
         {
             "name": "Purdue Counseling and Psychological Services",
-            "image": "public/sponsors/caps.png",
+            "image": "/sponsors/caps.png",
             "link": "https://www.purdue.edu/caps/",
             "info": ""
         },
         {
             "name": "Purdue Convocations",
-            "image": "public/sponsors/convos.png",
+            "image": "/sponsors/convos.png",
             "link": "https://convocations.purdue.edu/",
             "info": ""
         },
         {
             "name": "[NEED LINK] The Flora Roberts Fund",
-            "image": "public/sponsors/flora.png",
+            "image": "/sponsors/flora.png",
             "link": "",
             "info": ""
         },
         {
             "name": "Purdue Hall of Music",
-            "image": "public/sponsors/hallofmusic.png",
+            "image": "/sponsors/hallofmusic.png",
             "link": "https://www.purdue.edu/hallofmusic/",
             "info": ""
         },
         {
             "name": "Purdue College of Health and Human Sciences",
-            "image": "public/sponsors/HHS.png",
+            "image": "/sponsors/HHS.png",
             "link": "https://hhs.purdue.edu/",
             "info": ""
         },
         {
             "name": "[NEED LINK]Purdue Innovative Performace Fund",
-            "image": "public/sponsors/IPF.png",
+            "image": "/sponsors/IPF.png",
             "link": "",
             "info": ""
         },
         {
             "name": "Purdue Libraries and School of Information Studies",
-            "image": "public/sponsors/libraries.png",
+            "image": "/sponsors/libraries.png",
             "link": "https://www.lib.purdue.edu/",
             "info": ""
         },
         {
             "name": "Purdue Global",
-            "image": "public/sponsors/Pglobal.png",
+            "image": "/sponsors/Pglobal.png",
             "link": "https://www.purdueglobal.edu/",
             "info": ""
         },
         {
             "name": "Purdue Polytechnic Institute",
-            "image": "public/sponsors/polytechnic.png",
+            "image": "/sponsors/polytechnic.png",
             "link": "https://polytechnic.purdue.edu/",
             "info": ""
         },
         {
             "name": "Purdue Steps to Leaps",
-            "image": "public/sponsors/stepstoleaps.png",
+            "image": "/sponsors/stepstoleaps.png",
             "link": "https://www.purdue.edu/stepstoleaps/",
             "info": ""
         },
         {
             "name": "Purdue Department of Theatre",
-            "image": "public/sponsors/theatre.png",
+            "image": "/sponsors/theatre.png",
             "link": "https://www.cla.purdue.edu/academic/rueffschool/theatre/index.html",
             "info": ""
         }
