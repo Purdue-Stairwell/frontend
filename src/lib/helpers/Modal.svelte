@@ -14,20 +14,18 @@
 >
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div on:click|stopPropagation>
-        <!-- svelte-ignore a11y-autofocus -->
+		<!-- svelte-ignore a11y-autofocus -->
 		<button autofocus on:click={() => dialog.close()}>X</button>
 		<slot name="header" />
 		<slot />
-		
 	</div>
 </dialog>
 
 <style>
 	dialog {
-		max-width: 300px;
-		border-radius: 15px;
-		border: 5px solid #2c2e35;
-        margin: auto auto;
+		width: 90dvw;
+		border: 2px solid rgb(142, 111, 62);
+		margin: auto auto;
 	}
 	dialog::backdrop {
 		background: rgba(0, 0, 0, 0.3);
@@ -58,15 +56,19 @@
 		}
 	}
 	button {
-        margin-left: calc(100% - 3rem);
+		margin-left: calc(100% - 3rem);
 		display: block;
-        font-size: 24pt;
-        width: 3rem;
-        height: 2.2rem;
-        border: none;
-        color: white;
-        font-weight: bolder;
-        border-radius:10px;
-        background-color: #2c2e35;
+		font-size: 24pt;
+		border: 2px solid rgb(142, 111, 62);
+		background-color: transparent;
+		padding: 0rem 0.5rem;
+		color: black;
+		font-weight: bolder;
+	}
+
+	button:hover,
+	button:active {
+		background-color: rgb(142, 111, 62);
+		color: white;
 	}
 </style>

@@ -1,0 +1,112 @@
+{
+    "teamData":[
+        {
+            "name": "Mike Armintrout (he/him)",
+            "title": "Senior Associate Director, Purdue Convocations",
+            "image": "/teamPictures/armintrout.jpg",
+            "info": "My focus on the StairWELL project is that of programming and general producing; to help keep the project and it’s sub-teams moving forward towards completion. I have always believed that performing & visual arts have a way of inspiring and impacting our daily lives; well outside of the scope of simple entertainment. The StairWELL project has the ability to go well beyond any expectations I have ever had."
+        },
+        {
+            "name": "Dorothy Chan (she/her)",
+            "title": "Innovators in Residence/ Collaborating Artists, Chromic Duo",
+            "image": "/teamPictures/chan.jpg",
+            "info": "I am a musician and sound designer, and my work with Chromic Duo involves finding interactive solutions to build community using music and technology. Together, we will bring our experience in creating geo-location soundwalks and motion-reactive soundscapes to the StairWELL project. It inspires me to see a team coming together to find a creative solution that helps connect with a site specific community – especially a campus! The ability of being able to reach the students and community in this fun, interactive yet thoughtful way really excites me."
+        },
+        {
+            "name": "Trey Cluff (he/him)",
+            "title": "Graduate Research Assistant, Purdue Polytechnic",
+            "image": "/teamPictures/cluff.jpeg",
+            "info": "My area of focus or expertise with the StairWELL project is backend data processing and visualization. I love how StairWELL has the potential to lower the barrier for self expression."
+        },
+        {
+            "name": "Esteban Garcia Bravo (he/him)",
+            "title": "Associate Professor, Department of Computer Graphics Technology",
+            "image": "/teamPictures/garcia-bravo.jpeg",
+            "info": "My area of focus on the project is art direction and designing the visual concept of the sculpture and animations, as well as mentoring students to develop the technology and animations. I am inspired by being able to make something engaging in our campus and taking a creative step towards making our community a better place. This project started many years ago because a group of instructors were concerned with the amount of students who were struggling with depression and were looking for a creative outlet to express their feelings."
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "/teamPictures/giri.jpg",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "/teamPictures/hammoud.jpg",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "/teamPictures/hanes.jpg",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "/teamPictures/wetzel.jpeg",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "/teamPictures/yao.jpg",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "",
+            "info": ""
+        },
+        {
+            "name": "",
+            "title": "",
+            "image": "",
+            "info": ""
+        }
+    ]
+}
