@@ -43,15 +43,17 @@
 		margin: 15px 25px;
 		border: 3px solid #ffffff;
 		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+		transition-duration: 0.1s;
 	}
 	p {
-		line-height: 1.5;
-		font-size: 14pt;
-		height: 150px;
+		line-height: 1.4;
+		font-size: 12pt;
+		height: 6.2rem;
 		background-color: #90d7ff;
 		padding: 10px;
 		border-radius: 15px;
 		font-weight: 700;
 		flex: 1;
+		transition-duration: 0.1s;
 	}
 </style>

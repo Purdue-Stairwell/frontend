@@ -152,7 +152,7 @@
 		margin: 0 auto;
 		width: 100%;
 		max-width: 500px;
-		height: 100dvh;
+		height: 110vh;
 		background: rgb(0, 0, 0);
 	}
 

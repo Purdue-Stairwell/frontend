@@ -1,12 +1,12 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher } from "svelte";
 
 	const dispatch = createEventDispatcher();
 
-	export let text = 'Next';
+	export let text = "Next";
 
 	function goNext() {
-		dispatch('next');
+		dispatch("next");
 	}
 </script>
 
@@ -21,7 +21,7 @@
 		width: 100%;
 		display: flex;
 		justify-content: flex-end;
-		padding-right: 2rem;
+		padding-right: 1.6rem;
 	}
 	button {
 		border: #ffffff 3px solid;
@@ -32,7 +32,7 @@
 		padding: 5px 15px;
 		color: #ffffff;
 		font-weight: bold;
-		font-family: 'Dosis', sans-serif;
+		font-family: "Dosis", sans-serif;
 		transition-duration: 0.1s;
 	}
 

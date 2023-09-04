@@ -57,13 +57,13 @@
 
 <style>
 	main {
-		margin: 25px;
+		margin: 1rem auto;
 		aspect-ratio: 1;
 		border-radius: 15px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 24pt;
+		width: 80%;
 	}
 	img {
 		width: 100%;

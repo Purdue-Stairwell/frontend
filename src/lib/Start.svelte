@@ -1,21 +1,21 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-	import Header from './Header.svelte';
-	import Toggle from './helpers/Toggle.svelte';
-	import { fade } from 'svelte/transition';
-	import PurdueButton from './helpers/PurdueButton.svelte';
+	import { createEventDispatcher } from "svelte";
+	import Header from "./Header.svelte";
+	import Toggle from "./helpers/Toggle.svelte";
+	import { fade } from "svelte/transition";
+	import PurdueButton from "./helpers/PurdueButton.svelte";
 
 	const dispatch = createEventDispatcher();
 
 	export let reduceMotion;
 
 	function updateMotion(event) {
-		console.log('motion updated: ', event.detail);
-		dispatch('updateMotion', event.detail);
+		console.log("motion updated: ", event.detail);
+		dispatch("updateMotion", event.detail);
 	}
 
 	function changeStage() {
-		dispatch('changeStage', 'journey');
+		dispatch("changeStage", "journey");
 	}
 </script>
 
@@ -23,10 +23,7 @@
 	<!--HEADER-->
 	<Header {reduceMotion} mode="purdue" />
 	<p>Welcome to StairWELL, an interactive sculpture and gathering place.</p>
-	<img
-		src="purdue_stairs.png"
-		alt="Abstract representation of the StairWELL sculpture"
-	/>
+	<img src="purdue_stairs.png" alt="Abstract representation of the StairWELL sculpture" />
 	<PurdueButton on:click={changeStage} text="Enter!" />
 	<div>
 		<Toggle on:stateChange={updateMotion} />
@@ -36,7 +33,7 @@
 
 <style>
 	* {
-		font-family: 'United-Sans', sans-serif;
+		font-family: "United-Sans", sans-serif;
 	}
 	main {
 		background-color: #ffffff;
@@ -56,7 +53,7 @@
 		font-size: 2rem;
 	}
 	img {
-		width: 100%;
+		width: 70%;
 		margin: 0 auto;
 	}
 

@@ -1,22 +1,22 @@
 <script>
-	import { fade } from 'svelte/transition';
-	import { createEventDispatcher, onMount } from 'svelte';
-	import P5 from 'p5-svelte';
+	import { fade } from "svelte/transition";
+	import { createEventDispatcher, onMount } from "svelte";
+	import P5 from "p5-svelte";
 
 	export let sketchWidth, sketchHeight;
 	export let screenLocation;
 
-	const sketchStyle = 'border-radius: 15px; border: 5px solid red';
+	const sketchStyle = "border-radius: 15px; border: 5px solid red";
 
 	export let globalPoints;
 
-	const colors = ['#FF0000', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF'];
+	const colors = ["#FF0000", "#FFFF00", "#00FF00", "#00FFFF", "#0000FF"];
 	const sprites = [
-		'/anim/star01.gif',
-		'/anim/newblob.gif',
-		'/anim/star01.gif',
-		'/anim/star01.gif',
-		'/anim/star01.gif',
+		"/anim/star01.gif",
+		"/anim/newblob.gif",
+		"/anim/star01.gif",
+		"/anim/star01.gif",
+		"/anim/star01.gif",
 	];
 
 	const dispatch = createEventDispatcher();
@@ -31,24 +31,13 @@
 
 	function squiggleDrawn() {
 		globalPoints = gest.points;
-		dispatch('squiggleDrawn', [globalPoints, spriteChoice, hex]);
+		dispatch("squiggleDrawn", [globalPoints, spriteChoice, hex]);
 	}
 
 	const sketch = (p5) => {
 		let inc = 0.05;
 		class Gesture {
-			constructor(
-				seed,
-				colorVar,
-				girth,
-				cap,
-				join,
-				x,
-				y,
-				speed,
-				wiggle,
-				smoothness
-			) {
+			constructor(seed, colorVar, girth, cap, join, x, y, speed, wiggle, smoothness) {
 				this.seed = seed;
 				this.points = [];
 				this.color = colorVar;
@@ -101,12 +90,7 @@
 
 				let stillIn = false;
 				this.points.forEach((p) => {
-					if (
-						p.x > -p5.width / 2 &&
-						p.x < p5.width / 2 &&
-						p.y > -p5.height / 2 &&
-						p.y < p5.height / 2
-					) {
+					if (p.x > -p5.width / 2 && p.x < p5.width / 2 && p.y > -p5.height / 2 && p.y < p5.height / 2) {
 						stillIn = true;
 					}
 				});
@@ -148,52 +132,21 @@
 				p5.beginShape();
 				//draw first point if points exist
 				if (this.points.length > 0) {
-					let offsetX0 = p5.map(
-						p5.noise(p5.sin(time * 20), this.seed),
-						0,
-						1,
-						-this.wiggle,
-						this.wiggle
-					);
-					let offsetY0 = p5.map(
-						p5.noise(p5.cos(time * 20), this.seed),
-						0,
-						1,
-						-this.wiggle,
-						this.wiggle
-					);
+					let offsetX0 = p5.map(p5.noise(p5.sin(time * 20), this.seed), 0, 1, -this.wiggle, this.wiggle);
+					let offsetY0 = p5.map(p5.noise(p5.cos(time * 20), this.seed), 0, 1, -this.wiggle, this.wiggle);
 					p5.vertex(this.points[0].x + offsetX0, this.points[0].y + offsetY0);
 				}
 				//iterate through the rest of the points and calc control points and add bezier
 				for (let i = 1; i < this.points.length - 2; i += 2) {
-					let offsetX = p5.map(
-						p5.noise(p5.sin(time * 20 + i), this.seed),
-						0,
-						1,
-						-this.wiggle,
-						this.wiggle
-					);
-					let offsetY = p5.map(
-						p5.noise(p5.cos(time * 20 + i), this.seed),
-						0,
-						1,
-						-this.wiggle,
-						this.wiggle
-					);
+					let offsetX = p5.map(p5.noise(p5.sin(time * 20 + i), this.seed), 0, 1, -this.wiggle, this.wiggle);
+					let offsetY = p5.map(p5.noise(p5.cos(time * 20 + i), this.seed), 0, 1, -this.wiggle, this.wiggle);
 					let x1 = (this.points[i].x + this.points[i + 1].x) / 2;
 					let y1 = (this.points[i].y + this.points[i + 1].y) / 2;
 					let x2 = (this.points[i + 1].x + this.points[i + 2].x) / 2;
 					let y2 = (this.points[i + 1].y + this.points[i + 2].y) / 2;
 					let x3 = this.points[i + 2].x;
 					let y3 = this.points[i + 2].y;
-					p5.bezierVertex(
-						x1 + offsetX,
-						y1 + offsetY,
-						x2 + offsetX,
-						y2 + offsetY,
-						x3 + offsetX,
-						y3 + offsetY
-					);
+					p5.bezierVertex(x1 + offsetX, y1 + offsetY, x2 + offsetX, y2 + offsetY, x3 + offsetX, y3 + offsetY);
 				}
 				p5.endShape();
 				p5.pop();
@@ -209,8 +162,8 @@
 				100,
 				p5.color(p5.hexToRgb(hex).r, p5.hexToRgb(hex).g, p5.hexToRgb(hex).b),
 				15,
-				'ROUND',
-				'ROUND',
+				"ROUND",
+				"ROUND",
 				0,
 				0,
 				5,
@@ -265,23 +218,23 @@
 	onMount(() => {
 		function detectDrawing(e) {
 			// @ts-ignore
-			if (e.target.className === 'p5Canvas') {
+			if (e.target.className === "p5Canvas") {
 				e.preventDefault();
-				if (e.type === 'touchend' || e.type === 'mouseup') {
+				if (e.type === "touchend" || e.type === "mouseup") {
 					squiggleDrawn();
 				}
 			}
 		}
-		document.body.addEventListener('touchend', detectDrawing, {
+		document.body.addEventListener("touchend", detectDrawing, {
 			passive: false,
 		});
-		document.body.addEventListener('mouseup', detectDrawing, {
+		document.body.addEventListener("mouseup", detectDrawing, {
 			passive: false,
 		});
-		document.body.addEventListener('touchmove', detectDrawing, {
+		document.body.addEventListener("touchmove", detectDrawing, {
 			passive: false,
 		});
-		document.body.addEventListener('touchstart', detectDrawing, {
+		document.body.addEventListener("touchstart", detectDrawing, {
 			passive: false,
 		});
 	});
@@ -305,13 +258,7 @@
 	{#if screenLocation > 10}
 		<div>
 			{#each colors as color}
-				<input
-					name="hex"
-					type="radio"
-					value={color}
-					style="background-color: {color};"
-					bind:group={hex}
-				/>
+				<input name="hex" type="radio" value={color} style="background-color: {color};" bind:group={hex} />
 			{/each}
 		</div>
 	{/if}
@@ -337,8 +284,9 @@
 		width: 100%;
 	}
 
-	input[type='radio'] {
+	input[type="radio"] {
 		width: 3rem;
+		height: 3rem;
 		appearance: none;
 		aspect-ratio: 1;
 		outline: none;
@@ -349,7 +297,7 @@
 		background-repeat: no-repeat;
 	}
 
-	input[type='radio']:checked {
+	input[type="radio"]:checked {
 		outline: solid 3px white;
 		outline-offset: 2px;
 	}

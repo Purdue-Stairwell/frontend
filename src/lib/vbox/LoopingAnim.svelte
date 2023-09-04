@@ -50,18 +50,20 @@
 
 <style>
 	main {
-		margin: 25px;
+		margin: 1rem auto;
 		aspect-ratio: 1;
 		border-radius: 15px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 24pt;
+		width: 80%;
 	}
 	img {
 		width: 100%;
 		aspect-ratio: 1;
-		border-radius: 5px;
+		border-radius: 15px;
+		border: #ffffff solid 3px;
+		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
 	}
 
 	video {

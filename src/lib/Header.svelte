@@ -4,10 +4,10 @@
 </script>
 
 <main>
-	{#if reduceMotion && mode == 'stairwell'}
-		<div class={mode + '-reduce-motion'} />
+	{#if reduceMotion && mode == "stairwell"}
+		<div class={mode + "-reduce-motion"} />
 	{:else}
-		<div class={mode + '-image'} />
+		<div class={mode + "-image"} />
 	{/if}
 </main>
 
@@ -22,17 +22,17 @@
 		background-position: center;
 		background-size: 90%;
 		background-repeat: no-repeat;
-		width: 100%;
+		width: 90%;
 		max-width: 384px;
-		height: 120px;
+		height: 100px;
 	}
 	.stairwell-image {
-		background-image: url('/animatedlogo_small.gif');
+		background-image: url("/animatedlogo_small.gif");
 	}
 	.stairwell-reduce-motion {
-		background-image: url('/stairwell_header.png');
+		background-image: url("/stairwell_header.png");
 	}
 	.purdue-image {
-		background-image: url('/purdue_header.png');
+		background-image: url("/purdue_header.png");
 	}
 </style>
