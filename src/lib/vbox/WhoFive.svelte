@@ -35,7 +35,8 @@
 
 <style>
 	main {
-		margin: 25px;
+		margin: 0.5rem auto;
+		width: 80%;
 		aspect-ratio: 1;
 		border-radius: 15px;
 		background-color: #90d7ff;

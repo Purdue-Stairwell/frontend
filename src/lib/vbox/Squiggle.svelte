@@ -254,7 +254,6 @@
 			{/each}
 		</div>
 	{/if}
-	<P5 {sketch} />
 	{#if screenLocation > 10}
 		<div>
 			{#each colors as color}
@@ -262,16 +261,18 @@
 			{/each}
 		</div>
 	{/if}
+	<P5 {sketch} />
 </main>
 
 <style>
 	main {
-		margin: 1rem;
+		margin: 0.5rem auto;
 		aspect-ratio: 1;
 		display: flex;
 		flex-flow: column;
 		justify-content: center;
 		align-items: center;
+		width: 80%;
 	}
 
 	main > div {
@@ -305,6 +306,8 @@
 	:global(.p5Canvas) {
 		padding: 0px;
 		border-radius: 15px;
+		max-width: 100%;
+		aspect-ratio: 1;
 		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
 	}
 </style>

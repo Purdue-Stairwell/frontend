@@ -125,8 +125,8 @@
 				{screenLocation}
 				globalPoints={points}
 				on:squiggleDrawn={updatePoints}
-				sketchWidth={330}
-				sketchHeight={330}
+				sketchWidth={300}
+				sketchHeight={300}
 			/>
 			<!-- IS IT A WHO FIVE?-->
 		{:else if journeyState[screenLocation] === 2}
@@ -152,7 +152,7 @@
 		margin: 0 auto;
 		width: 100%;
 		max-width: 500px;
-		height: 110vh;
+		height: 120vh;
 		background: rgb(0, 0, 0);
 	}
 
