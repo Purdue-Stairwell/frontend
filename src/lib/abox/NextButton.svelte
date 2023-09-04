@@ -37,8 +37,7 @@
 	}
 
 	button:hover,
-	button:active,
-	button:focus {
+	button:active {
 		background-color: #a8ffef;
 		color: #000000;
 	}
