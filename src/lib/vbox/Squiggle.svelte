@@ -10,7 +10,7 @@
 
 	export let globalPoints;
 
-	const colors = ["#FF0000", "#FFFF00", "#00FF00", "#00FFFF", "#0000FF"];
+	const colors = ["#4d26db", "#05a59d", "#f6921e", "#ec1d23", "#ec008b"];
 	const sprites = [
 		"/anim/star01.gif",
 		"/anim/newblob.gif",
@@ -18,6 +18,8 @@
 		"/anim/star01.gif",
 		"/anim/star01.gif",
 	];
+
+	let images = [];
 
 	const dispatch = createEventDispatcher();
 
@@ -59,8 +61,8 @@
 			}
 
 			render() {
-				p5.stroke(this.color);
-				p5.strokeWeight(this.girth);
+				p5.stroke("#000000");
+				p5.strokeWeight(2);
 				p5.strokeCap(p5.ROUND);
 				p5.strokeJoin(p5.ROUND);
 				p5.noFill();
@@ -69,9 +71,18 @@
 				p5.beginShape();
 				this.points.forEach((p) => {
 					p5.vertex(p.x, p.y);
+					p5.ellipse(p.x, p.y, 7);
 				});
 				p5.endShape();
 				p5.pop();
+			}
+
+			drawSprites(spriteChoice) {
+				let img = images[sprites.indexOf(spriteChoice)];
+				for (let i = 0; i < this.points.length; i += 2) {
+					p5.tint(hex);
+					p5.image(img, this.points[i].x - 25, this.points[i].y - 25, 50, 50);
+				}
 			}
 
 			update(time) {
@@ -171,6 +182,10 @@
 				0
 			);
 			gest.points = globalPoints;
+
+			for (let i = 0; i < sprites.length; i++) {
+				images[i] = p5.loadImage(sprites[i]);
+			}
 		};
 
 		let index = 0;
@@ -189,6 +204,7 @@
 				}
 			}
 			gest.drawBezier(p5.frameCount * 0.001, 0);
+			gest.drawSprites(spriteChoice);
 		};
 
 		//handles reset

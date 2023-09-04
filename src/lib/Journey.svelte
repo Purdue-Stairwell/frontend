@@ -151,8 +151,8 @@
 	main {
 		margin: 0 auto;
 		width: 100%;
-		max-width: 500px;
-		height: 120vh;
+		height: fit-content;
+		padding-bottom: 3rem;
 		background: rgb(0, 0, 0);
 	}
 
