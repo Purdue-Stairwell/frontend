@@ -166,6 +166,7 @@
 	<!--ACTION BOX-->
 	<DefaultButton
 		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion}
+		showProject={screenLocation === 13}
 		on:next={nextPage}
 		on:back={backPage}
 	/>
