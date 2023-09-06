@@ -8,7 +8,7 @@
 	import WhoFive from "./vbox/WhoFive.svelte";
 	import ProjectButton from "./abox/ProjectButton.svelte";
 	import { fade } from "svelte/transition";
-	import { createEventDispatcher } from "svelte";
+	import { createEventDispatcher, onMount } from "svelte";
 
 	import SocketIO from "socket.io-client";
 	import AudioPlayer from "./helpers/AudioPlayer.svelte";
@@ -95,6 +95,17 @@
 			console.log(error);
 		}
 	}
+
+	onMount(() => {
+		document.body.addEventListener("click", () => {
+			if (screenLocation > 0 && screenLocation < 15) {
+				document.documentElement.style.setProperty('background-color', "#4b48b9");
+			}
+			else if (screenLocation >= 15) {
+				document.documentElement.style.setProperty('background-color', "#fff");
+			}
+		});
+	});
 </script>
 
 <main in:fade class={reduceMotion ? "reduceMotion" : "motion"}>
