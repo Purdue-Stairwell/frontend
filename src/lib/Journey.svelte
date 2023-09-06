@@ -70,8 +70,7 @@
 		oneShotEnded = false;
 		if (screenLocation < 15) {
 			screenLocation++;
-		}
-		else {
+		} else {
 			changeStage();
 		}
 	}
@@ -104,7 +103,7 @@
 	onMount(() => {
 		document.body.addEventListener("click", () => {
 			if (screenLocation >= 0 && screenLocation < 15) {
-				document.documentElement.style.setProperty('background-color', "#4b48b9");
+				document.documentElement.style.setProperty("background-color", "#4b48b9");
 			}
 		});
 	});
@@ -123,7 +122,7 @@
 	{/key}
 
 	<!--VISUAL BOX-->
-	<!-- 0     1     2     3     4    5    6    7   8   9   10  11  12   13    14   15-->
+	<!-- 0---1-----2-----3----4----5----6---7---8---9---10--11---12---13----14-----15-->
 	<!--anim squig animm anim anim anim who who who who who anim anim squig static static-->
 
 	<!-- IS THERE NOT A PRE ANIM OR IS IT FINISHED OR NO MOTION?-->
@@ -154,17 +153,28 @@
 	{#if journeyState[screenLocation] === 1 && screenLocation > 10}
 		<ProjectButton on:next={nextPage} on:project={projectSquiggle} />
 	{:else}
-		<NextButton on:next={nextPage} />
+		{#key oneShotEnded}
+			<NextButton disabled={!oneShotEnded && preAnim[screenLocation]} on:next={nextPage} />
+		{/key}
 	{/if}
-	{#key screenLocation}
-		<AudioPlayer state={journeyState[screenLocation]} />
+
+	{#key journeyState[screenLocation]}
+		{#if screenLocation !== 13}
+			<AudioPlayer state={journeyState[screenLocation]} />
+		{/if}
 	{/key}
+	{#if screenLocation >= 11}
+		<AudioPlayer state={4} loop={screenLocation >= 14 ? false : true} />
+		<AudioPlayer state={5} loop={screenLocation >= 14 ? false : true} />
+	{/if}
+	<AudioPlayer state={3} loop={screenLocation > 10 ? false : true} />
 </main>
 
 <style>
 	main {
 		margin: 0 auto;
 		width: 100%;
+		max-width: 800px;
 		height: fit-content;
 		padding-bottom: 3rem;
 		background: rgb(0, 0, 0);
