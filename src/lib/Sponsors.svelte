@@ -58,6 +58,7 @@
 		grid-template-rows: repeat(auto, 1fr);
 		gap: 0.2rem;
 		max-width: 100%;
+		padding-bottom: 1rem;
 	}
 
 	img {

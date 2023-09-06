@@ -50,6 +50,7 @@
 		/* GAP */
 		gap: 1rem;
 		margin: 0 1rem;
+		padding-bottom: 1rem;
 	}
 
 	.gallery-unit {
