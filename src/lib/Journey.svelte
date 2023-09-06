@@ -27,6 +27,7 @@
 		//0     1     2   3    4    5    6   7   8   9   10  11   12   13    14     15-->
 		//anim squig anim anim anim anim who who who who who anim anim squig static static-->
 		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 0, 0];
+
 	//             0     1     2      3      4      5      6      7      8      9      10     11     12     13     14     15
 	let preAnim = [
 		true, //intro
@@ -118,7 +119,6 @@
 		<!-- IS IT AN ANIMATION?-->
 		{#if journeyState[screenLocation] === 0}
 			<LoopingAnim {screenLocation} {reduceMotion} />
-
 			<!-- IS IT A SQUIGGLE?-->
 		{:else if journeyState[screenLocation] === 1}
 			<Squiggle
@@ -144,7 +144,9 @@
 	{:else}
 		<NextButton on:next={nextPage} />
 	{/if}
-	<AudioPlayer src="/sound/0803_Audio.mp3" />
+	{#key screenLocation}
+		<AudioPlayer state={journeyState[screenLocation]} />
+	{/key}
 </main>
 
 <style>
