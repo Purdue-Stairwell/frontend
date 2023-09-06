@@ -5,6 +5,7 @@
 	import PurdueButton from "./helpers/PurdueButton.svelte";
 	import Sponsors from "./Sponsors.svelte";
 	import Credits from "./Credits.svelte";
+	import { onMount } from "svelte";
 
 	export let reduceMotion;
 	let endState = "Back";
@@ -13,6 +14,8 @@
 		console.log("end state changed: ", event.detail);
 		endState = event.detail;
 	}
+
+	onMount(() => { document.documentElement.style.setProperty('background-color', "#fff"); });
 </script>
 
 <main in:fade>

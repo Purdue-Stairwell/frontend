@@ -67,8 +67,12 @@
 
 	function nextPage() {
 		oneShotEnded = false;
-		if (screenLocation < 15) screenLocation++;
-		else changeStage();
+		if (screenLocation < 15) {
+			screenLocation++;
+		}
+		else {
+			changeStage();
+		}
 	}
 
 	function changeStage() {
@@ -98,11 +102,8 @@
 
 	onMount(() => {
 		document.body.addEventListener("click", () => {
-			if (screenLocation > 0 && screenLocation < 15) {
+			if (screenLocation >= 0 && screenLocation < 15) {
 				document.documentElement.style.setProperty('background-color', "#4b48b9");
-			}
-			else if (screenLocation >= 15) {
-				document.documentElement.style.setProperty('background-color', "#fff");
 			}
 		});
 	});
