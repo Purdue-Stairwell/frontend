@@ -33,7 +33,7 @@
 
 <style>
 	* {
-		font-family: "United-Sans", sans-serif;
+		font-family: "Acumin Pro", sans-serif;
 	}
 	main {
 		background-color: #ffffff;

@@ -4,9 +4,8 @@
 	import OneShotAnim from "./vbox/OneShotAnim.svelte";
 	import Squiggle from "./vbox/Squiggle.svelte";
 	import Narration from "./ibox/Narration.svelte";
-	import NextButton from "./abox/NextButton.svelte";
+	import DefaultButton from "./abox/DefaultButton.svelte";
 	import WhoFive from "./vbox/WhoFive.svelte";
-	import ProjectButton from "./abox/ProjectButton.svelte";
 	import { fade } from "svelte/transition";
 	import { createEventDispatcher, onMount } from "svelte";
 
@@ -57,6 +56,8 @@
 	let spriteChoice;
 	let colorChoice;
 
+	let screenHeight;
+
 	//PLACEHOLDER
 	let attributes = {
 		girth: 15,
@@ -71,12 +72,21 @@
 		if (screenLocation < 15) {
 			screenLocation++;
 		} else {
-			changeStage();
+			changeStage("end");
 		}
 	}
 
-	function changeStage() {
-		dispatch("changeStage", "end");
+	function backPage() {
+		oneShotEnded = false;
+		if (screenLocation > 0) {
+			screenLocation--;
+		} else {
+			changeStage("start");
+		}
+	}
+
+	function changeStage(destination) {
+		dispatch("changeStage", destination);
 	}
 
 	function updateWhoFiveScore(event) {
@@ -109,9 +119,13 @@
 	});
 </script>
 
+<svelte:window bind:innerHeight={screenHeight} />
+
 <main in:fade class={reduceMotion ? "reduceMotion" : "motion"}>
 	<!--HEADER-->
-	<Header {reduceMotion} mode="stairwell" />
+	{#if screenHeight > 800}
+		<Header {reduceMotion} mode="stairwell" />
+	{/if}
 	{#key screenLocation}
 		<!--INFO BOX-->
 		{#await script}
@@ -150,13 +164,11 @@
 	{/if}
 
 	<!--ACTION BOX-->
-	{#if journeyState[screenLocation] === 1 && screenLocation > 10}
-		<ProjectButton on:next={nextPage} on:project={projectSquiggle} />
-	{:else}
-		{#key oneShotEnded}
-			<NextButton disabled={!oneShotEnded && preAnim[screenLocation]} on:next={nextPage} />
-		{/key}
-	{/if}
+	<DefaultButton
+		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion}
+		on:next={nextPage}
+		on:back={backPage}
+	/>
 
 	{#key journeyState[screenLocation]}
 		{#if screenLocation !== 13}
@@ -175,8 +187,8 @@
 		margin: 0 auto;
 		width: 100%;
 		max-width: 800px;
-		height: fit-content;
-		padding-bottom: 3rem;
+		height: 100vh;
+		padding: 0.5rem 0 3rem 0;
 		background: rgb(0, 0, 0);
 	}
 

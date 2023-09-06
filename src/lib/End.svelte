@@ -15,7 +15,9 @@
 		endState = event.detail;
 	}
 
-	onMount(() => { document.documentElement.style.setProperty('background-color', "#fff"); });
+	onMount(() => {
+		document.documentElement.style.setProperty("background-color", "#fff");
+	});
 </script>
 
 <main in:fade>
@@ -27,7 +29,12 @@
 		<PurdueButton on:click={changeEndState} text="Sponsors" />
 		<PurdueButton on:click={changeEndState} text="Credits" />
 		<p>Or...</p>
-		<PurdueButton on:click={ e => { location.reload(); } } text="Restart" />
+		<PurdueButton
+			on:click={(e) => {
+				location.reload();
+			}}
+			text="Restart"
+		/>
 	{:else if endState === "Resources"}
 		<PurdueButton on:click={changeEndState} text="Back" />
 		<Resources on:changeState={changeEndState} />
@@ -42,7 +49,7 @@
 
 <style>
 	* {
-		font-family: "United-Sans", sans-serif;
+		font-family: "Acumin Pro", sans-serif;
 	}
 	main {
 		background-color: #ffffff;
