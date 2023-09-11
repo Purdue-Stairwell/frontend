@@ -5,17 +5,18 @@
 	const dispatch = createEventDispatcher();
 
 	const options = [
-		"All of the time",
-		"Most of the time",
-		"More than half the time",
-		"Less than half the time",
-		"Some of the time",
 		"At no time",
+		"Some of the time",
+		"Less than half the time",
+		"More than half the time",
+		"Most of the time",
+		"All of the time",
 	];
 
 	export let questionNumber;
-
 	let answer;
+
+	
 
 	function updateAnswer(event) {
 		dispatch("whofive", { number: questionNumber, answer: event.target.value });
@@ -23,11 +24,17 @@
 </script>
 
 <main in:fade>
-	{#each [5, 4, 3, 2, 1, 0] as number}
+	{#each [0, 1, 2, 3, 4, 5] as number}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-		<label on:click={updateAnswer}>
-			<input type="radio" name="who5" value={number} bind:group={answer} />
+		<label >
+			<input
+				on:click={updateAnswer}
+				type="radio"
+				name="who5"
+				value={number}
+				bind:group={answer}
+			/>
 			<p>{options[number]}</p>
 		</label>
 	{/each}

@@ -5,6 +5,7 @@
 
 	export let disabled = false;
 	export let showProject = false;
+	export let showSave = false;
 
 	function goNext() {
 		dispatch("next");
@@ -18,6 +19,10 @@
 		dispatch("project");
 	}
 
+	function save() {
+		dispatch("save");
+	}
+
 	let w;
 	$: projectFontSize = w / 13 + "px";
 </script>
@@ -27,11 +32,13 @@
 		<img src="/icons/back.svg" width={projectFontSize} alt="arrow pointing back" />
 	</button>
 	{#if showProject}
-		<button class="project" style="font-size: {projectFontSize};" on:click={project}> Project! </button>
+		<button class="project" style="font-size: {projectFontSize};" on:click={project}>Project!</button>
+	{:else if showSave}
+		<button class="project" style="font-size: {projectFontSize};" on:click={save}>Save!</button>
 	{:else}
 		<div class="spacer" />
 	{/if}
-	<button on:click={goNext} {disabled}>
+	<button on:click={goNext}><!-- {disabled} -->
 		<img src="/icons/next.svg" width={projectFontSize} alt="arrow pointing forwards" />
 	</button>
 </main>

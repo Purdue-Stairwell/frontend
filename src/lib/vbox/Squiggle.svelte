@@ -9,6 +9,7 @@
 	const sketchStyle = 'border-radius: 15px; border: 5px solid red';
 
 	export let globalPoints;
+	export let saveMode = false;
 
 	const colors = ['#4d26db', '#05a59d', '#f6921e', '#ec1d23', '#ec008b'];
 	const sprites = [
@@ -25,11 +26,12 @@
 
 	let maxPoints = 24;
 	let noDraw = false;
+	let saveFlag = false;
 
 	let gest;
 	let cnv;
-	let spriteChoice = sprites[0];
-	let hex = colors[0];
+	export let spriteChoice = sprites[0];
+	export let hex = colors[0];
 
 	function squiggleDrawn() {
 		globalPoints = gest.points;
@@ -37,6 +39,7 @@
 	}
 
 	const sketch = (p5) => {
+
 		let inc = 0.05;
 		class Gesture {
 			constructor(
@@ -92,7 +95,13 @@
 				let img = images[sprites.indexOf(spriteChoice)];
 				for (let i = 0; i < this.points.length; i += 2) {
 					p5.tint(hex);
-					p5.image(img, this.points[i].x - 25, this.points[i].y - 25, 50, 50);
+					if(saveMode) {
+						img.pause();
+						img.setFrame(0);
+						p5.image(img, this.points[i].x - 25, this.points[i].y - 25, 50, 50);
+					} else {
+						p5.image(img, this.points[i].x - 25, this.points[i].y - 25, 50, 50);
+					}
 				}
 			}
 
@@ -233,37 +242,45 @@
 			for (let i = 0; i < sprites.length; i++) {
 				images[i] = p5.loadImage(sprites[i]);
 			}
+
 		};
 
 		let index = 0;
 
 		p5.draw = () => {
 			p5.background(255);
-			if (p5.pmouseX < p5.width && p5.pmouseX > 0) {
-				if (p5.pmouseY < p5.height && p5.pmouseY > 0) {
-					if (p5.mouseIsPressed && gest.points.length < maxPoints) {
-						gest.addPoint(p5.pmouseX, p5.pmouseY);
-						index++;
-						if (index > maxPoints) {
-							index = 0;
+			if(!saveMode) {
+				if (p5.pmouseX < p5.width && p5.pmouseX > 0) {
+					if (p5.pmouseY < p5.height && p5.pmouseY > 0) {
+						if (p5.mouseIsPressed && gest.points.length < maxPoints) {
+							gest.addPoint(p5.pmouseX, p5.pmouseY);
+							index++;
+							if (index > maxPoints) {
+								index = 0;
+							}
 						}
 					}
 				}
-			}
-			if (gest.points.length == 0) {
-				p5.textSize(40);
-				p5.noStroke();
-				p5.fill(225);
-				p5.text('Draw Here', 50, 150);
+				if (gest.points.length == 0) {
+					p5.textSize(40);
+					p5.noStroke();
+					p5.fill(225);
+					p5.text('Draw Here', 50, 150);
+				}
 			}
 
-			gest.drawBezier(p5.frameCount * 0.001, 0);
+			gest.drawBezier(p5.frameCount * 0.001);
 			gest.drawSprites(spriteChoice);
+
+			if(saveFlag) {
+				p5.saveCanvas(cnv, 'mySquiggle', 'jpg');
+				saveFlag = false;
+			}
 		};
 
 		//handles reset
 		p5.mousePressed = () => {
-			if (!noDraw) {
+			if (!noDraw  && !saveMode) {
 				if (p5.pmouseX < p5.width && p5.pmouseX > 0) {
 					if (p5.pmouseY < p5.height && p5.pmouseY > 0) {
 						gest.points = [];
@@ -308,14 +325,19 @@
 			passive: false,
 		});
 	});
+
+	export const saveSketch = () => {
+		saveFlag = true;
+	}
 </script>
 
 <main in:fade>
-	{#if screenLocation > 10}
+	{#if screenLocation === 13}
 		<div>
 			{#each sprites as sprite}
 				<input
 					bind:group={spriteChoice}
+					on:click={squiggleDrawn}
 					name="spriteChoice"
 					type="radio"
 					value={sprite}
@@ -331,6 +353,7 @@
 					value={color}
 					style="background-color: {color};"
 					bind:group={hex}
+					on:click={squiggleDrawn}
 				/>
 			{/each}
 		</div>

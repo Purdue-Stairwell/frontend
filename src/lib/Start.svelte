@@ -7,7 +7,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	export let reduceMotion;
+	export let reduceMotion = false;
 
 	function updateMotion(event) {
 		console.log("motion updated: ", event.detail);
@@ -25,10 +25,10 @@
 	<p>Welcome to StairWELL, an interactive sculpture and gathering place.</p>
 	<img src="purdue_stairs.png" alt="Abstract representation of the StairWELL sculpture" />
 	<PurdueButton on:click={changeStage} text="Enter!" />
-	<div>
+	<!-- <div>
 		<Toggle on:stateChange={updateMotion} />
 		<p>Toggle Reduce Motion</p>
-	</div>
+	</div> -->
 </main>
 
 <style>

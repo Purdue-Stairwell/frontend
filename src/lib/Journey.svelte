@@ -24,8 +24,8 @@
 
 	let journeyState =
 		//0     1     2   3    4    5    6   7   8   9   10  11   12   13    14     15-->
-		//anim squig anim anim anim anim who who who who who anim anim squig static static-->
-		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 0, 0];
+		//anim squig anim anim anim anim who who who who who anim anim squig squig static-->
+		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 1, 0];
 
 	//             0     1     2      3      4      5      6      7      8      9      10     11     12     13     14     15
 	let preAnim = [
@@ -51,7 +51,7 @@
 	export let reduceMotion;
 	let oneShotEnded = false;
 
-	let whoFiveScores = [0, 0, 0, 0, 0];
+	let whoFiveScores = [undefined, undefined, undefined, undefined, undefined];
 	let points = [];
 	let spriteChoice;
 	let colorChoice;
@@ -91,7 +91,6 @@
 
 	function updateWhoFiveScore(event) {
 		whoFiveScores[event.detail.number] = event.detail.answer;
-		console.log("who5", whoFiveScores);
 	}
 
 	function updatePoints(event) {
@@ -108,6 +107,12 @@
 		} catch (error) {
 			console.log(error);
 		}
+	}
+
+	//NOT FINISHED
+	let squiggle;
+	function saveSquiggle() {
+		squiggle.saveSketch();
 	}
 
 	onMount(() => {
@@ -146,13 +151,19 @@
 			<LoopingAnim {screenLocation} {reduceMotion} />
 			<!-- IS IT A SQUIGGLE?-->
 		{:else if journeyState[screenLocation] === 1}
+			{#key screenLocation}
 			<Squiggle
 				{screenLocation}
+				saveMode={screenLocation === 14}
+				hex={colorChoice}
+				spriteChoice={spriteChoice}
 				globalPoints={points}
+				bind:this={squiggle}
 				on:squiggleDrawn={updatePoints}
 				sketchWidth={300}
 				sketchHeight={300}
 			/>
+			{/key}
 			<!-- IS IT A WHO FIVE?-->
 		{:else if journeyState[screenLocation] === 2}
 			{#key screenLocation}
@@ -167,7 +178,10 @@
 	<DefaultButton
 		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion}
 		showProject={screenLocation === 13}
+		showSave={screenLocation === 14}
 		on:next={nextPage}
+		on:project={projectSquiggle}
+		on:save={saveSquiggle}
 		on:back={backPage}
 	/>
 

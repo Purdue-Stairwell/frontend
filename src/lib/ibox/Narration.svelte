@@ -67,6 +67,6 @@
 		transition-duration: 0.1s;
 	}
 	span {
-		color: rgba(0, 0, 0, 0.5);
+		color: rgba(0, 0, 0, 0.2);
 	}
 </style>
