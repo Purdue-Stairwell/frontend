@@ -25,6 +25,7 @@
 	<Header {reduceMotion} mode="purdue" />
 	{#if endState === "Back"}
 		<p>Purdue has an amazing collection of people and services to help you thrive. Check out this portal…</p>
+		<a href="https://it.purdue.edu/services/qualtrics.php"><PurdueButton text="Take a 2 min survey!" /></a>
 		<PurdueButton on:click={changeEndState} text="Resources" />
 		<PurdueButton on:click={changeEndState} text="Sponsors" />
 		<PurdueButton on:click={changeEndState} text="Credits" />
@@ -60,11 +61,14 @@
 		padding: 0 1rem;
 		display: flex;
 		flex-flow: column nowrap;
-		gap: 1rem;
+		gap: 0.5rem;
+	}
+	a {
+		width: 100%;
 	}
 
 	p {
 		text-align: center;
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
 </style>
