@@ -29,12 +29,12 @@
 		<PurdueButton on:click={changeEndState} text="Resources" />
 		<PurdueButton on:click={changeEndState} text="Sponsors" />
 		<PurdueButton on:click={changeEndState} text="Credits" />
-		<p>Or...</p>
+		<hr>
 		<PurdueButton
 			on:click={(e) => {
 				location.reload();
 			}}
-			text="Restart"
+			text="Go Again?"
 		/>
 	{:else if endState === "Resources"}
 		<PurdueButton on:click={changeEndState} text="Back" />

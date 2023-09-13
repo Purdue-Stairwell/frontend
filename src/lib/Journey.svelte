@@ -4,6 +4,7 @@
 	import OneShotAnim from "./vbox/OneShotAnim.svelte";
 	import Squiggle from "./vbox/Squiggle.svelte";
 	import Narration from "./ibox/Narration.svelte";
+	import StyleNarration from "./ibox/StyleNarration.svelte";
 	import DefaultButton from "./abox/DefaultButton.svelte";
 	import WhoFive from "./vbox/WhoFive.svelte";
 	import { fade } from "svelte/transition";
@@ -21,6 +22,8 @@
 	console.log("connected to websocket");
 
 	const script = fetch("/jsonData/script.json").then((res) => res.json());
+
+	const styleScript = fetch("/jsonData/styleScript.json").then((res) => res.json());
 
 	let journeyState =
 		//0     1     2   3    4    5    6   7   8   9   10  11   12   13    14     15-->
@@ -131,12 +134,19 @@
 	{#if screenHeight > 800}
 		<Header {reduceMotion} mode="stairwell" />
 	{/if}
-	{#key screenLocation}
-		<!--INFO BOX-->
+	<!-- {#key screenLocation}
 		{#await script}
 			<p>Loading Script :)</p>
 		{:then result}
 			<Narration {reduceMotion} scriptPage={result.script[screenLocation]} />
+		{/await}
+	{/key} -->
+	{#key screenLocation}
+		<!--INFO BOX-->
+		{#await styleScript}
+			<p>Loading Script :)</p>
+		{:then result}
+			<StyleNarration {reduceMotion} scriptPage={result.script[screenLocation]} />
 		{/await}
 	{/key}
 

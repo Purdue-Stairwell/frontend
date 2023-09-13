@@ -1,0 +1,124 @@
+{
+	"script": [
+		[
+			{
+				"text": "Welcome to StairWELL, an interactive sculpture and gathering place.  ",
+				"style" : "",
+				"typed": true
+			},
+			{
+				"text": "What makes it interactive is that ",
+				"style" : "",
+				"typed": true
+			},
+			{
+				"text": "YOU",
+				"style" : "text-align: center; display: block; font-size: 24pt; color: #ff0000;",
+				"typed": false
+			},
+			{
+				"text": "create the art.  ",
+				"style" : "",
+				"typed": true
+			},
+			{
+				"text": "We know you’re busy. But this is easy– just take a moment for yourself.",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		],
+		[
+			{
+				"text": "",
+				"style" : "",
+				"typed": true
+			}
+		]
+	]
+}
+		
+		

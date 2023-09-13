@@ -36,37 +36,36 @@
 
 <main>
 	{#if reduceMotion}
-		<p>{scriptPage}</p>
+		<span>{scriptPage}</span>
 	{:else}
-		<p>{typed}<span>{pretyped}</span></p>
+		<span>{typed}<span class="pretyped">{pretyped}</span></span>
 	{/if}
 </main>
 
 <style>
 	main {
+		
 		display: flex;
 		justify-content: space-around;
-		background-color: #90d7ff;
 		align-items: center;
 		border-radius: 15px;
 		margin: 0 25px;
-		border: 3px solid #ffffff;
-		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+		/* box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5); */
 		transition-duration: 0.1s;
 	}
 
-	p {
+	span {
 		line-height: 1.4;
+		color: white;
 		font-size: 16pt;
 		height: fit-content;
-		background-color: #90d7ff;
 		padding: 10px;
-		border-radius: 15px;
 		font-weight: 700;
 		flex: 1;
 		transition-duration: 0.1s;
+		text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
 	}
-	span {
-		color: rgba(0, 0, 0, 0.2);
+	.pretyped {
+		color: rgba(255, 255, 255, 0.2);
 	}
 </style>
