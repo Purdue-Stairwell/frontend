@@ -10,10 +10,8 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
-}
-
-h1 {
-	font-family: "ADLaM Display", cursive;
+	/*font-family: "ADLaM Display", cursive; */
+	font-family: "Acumin Pro", sans-serif;
 }
 
 #app {
