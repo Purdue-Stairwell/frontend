@@ -1,5 +1,5 @@
 <script>
-    import { createEventDispatcher, onMount } from "svelte";
+    import { createEventDispatcher } from "svelte";
 
     const dispatch = createEventDispatcher();
 
@@ -29,7 +29,7 @@
 </script>
 
 {#if isTyped}
-    <span style={style}>{typed}<span class="pretyped">{pretyped}</span></span>
+    <span style={style}>{typed}<span style={style} class="pretyped">{pretyped}</span></span>
 {:else}
     <span style={style}>{text}</span> 
 {/if}

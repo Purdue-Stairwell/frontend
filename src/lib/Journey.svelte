@@ -117,14 +117,6 @@
 	function saveSquiggle() {
 		squiggle.saveSketch();
 	}
-
-	onMount(() => {
-		document.body.addEventListener("click", () => {
-			if (screenLocation >= 0 && screenLocation < 15) {
-				document.documentElement.style.setProperty("background-color", "#4b48b9");
-			}
-		});
-	});
 </script>
 
 <svelte:window bind:innerHeight={screenHeight} />

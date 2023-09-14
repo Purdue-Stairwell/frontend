@@ -3,7 +3,7 @@
 		[
 			{
 				"text": "Welcome to StairWELL, an interactive sculpture and gathering place.  ",
-				"style" : "",
+				"style" : "font-size: 24pt;",
 				"typed": true
 			},
 			{
@@ -29,70 +29,95 @@
 		],
 		[
 			{
-				"text": "",
+				"text": "…draw a “squiggle” to capture how you’re feeling today.",
 				"style" : "",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "",
+				"text": "That moment you just had–that was reflection! Thinking about how you’re feeling is important",
 				"style" : "",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "",
+				"text": "Sometimes we’re feeling up… Sometimes we’re feeling down… Sometimes we’re feeling something else… or somewhere in between",
 				"style" : "",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "",
+				"text": "Ok, we’ll come back to that squiggle in just a second. But now, let’s zoom out a bit.",
 				"style" : "",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "",
+				"text": "Think about how you’ve been feeling the last two weeks as you answer these five quick questions.",
 				"style" : "",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "",
+				"text": "Over the last two weeks:",
+				"style" : "font-weight: bold;",
+				"typed": true
+			},
+			{
+				"text": "I have felt cheerful and in good spirits",
 				"style" : "",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "",
+				"text": "Over the last two weeks:",
+				"style" : "font-weight: bold;",
+				"typed": true
+			},
+			{
+				"text": "I have felt calm and relaxed",
 				"style" : "",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "",
+				"text": "Over the last two weeks:",
+				"style" : "font-weight: bold;",
+				"typed": true
+			},
+			{
+				"text": "I have felt active and vigorous",
 				"style" : "",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "",
+				"text": "Over the last two weeks:",
+				"style" : "font-weight: bold;",
+				"typed": true
+			},
+			{
+				"text": "I woke up feeling fresh and rested",
 				"style" : "",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "",
+				"text": "Over the last two weeks:",
+				"style" : "font-weight: bold;",
+				"typed": true
+			},
+			{
+				"text": "My daily life has been filled with things that interest me",
 				"style" : "",
 				"typed": true
 			}

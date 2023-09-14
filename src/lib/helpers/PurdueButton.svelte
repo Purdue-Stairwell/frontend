@@ -5,27 +5,34 @@
 
 	export let text;
 	export let size = 1;
+	export let textColor = 'white';
 
 	function clicked() {
 		dispatch('click', text);
 	}
 </script>
 
-<button on:click={clicked} style="--size: {size * 10}px">{text}</button>
+<button on:click={clicked} style="--size: {size * 10}px; color: {textColor};">
+	<img src="/icons/white-next.svg" width="50px"  alt="arrow pointing forwards" />
+	{text}
+	<img src="/icons/white-next.svg" width="50px" alt="arrow pointing forwards" />
+</button>
 
 <style>
 	button {
 		padding: var(--size) 2px;
 		background: none;
 		border: 2px solid rgb(142, 111, 62);
-		font-size: 18px;
+		font-size: 40px;
 		font-weight: 400;
 		width: 100%;
+		display: grid;
+		place-items: center center;
+		grid-template-columns: repeat(3, 1fr);
 	}
 
 	button:hover,
 	button:active {
 		background-color: rgb(142, 111, 62);
-		color: white;
 	}
 </style>
