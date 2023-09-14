@@ -56,7 +56,7 @@
 		border: #ffffff 3px solid;
 		border-radius: 15px;
 		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
-		background-color: #3ae7c7;
+		background-color: aquamarine;
 		color: #ffffff;
 		transition-duration: 0.1s;
 		padding: 0 0.5rem;
