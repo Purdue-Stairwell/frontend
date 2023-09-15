@@ -36,7 +36,7 @@
 		font-family: "Acumin Pro", sans-serif;
 	}
 	main {
-		background-color: #ffffff;
+		background-color: #000000;
 		margin: 0 auto;
 		width: 100%;
 		height: 100dvh;
@@ -46,6 +46,7 @@
 		justify-content: flex-start;
 		flex-flow: column nowrap;
 		gap: 0.5rem;
+		color: white;
 	}
 
 	p {

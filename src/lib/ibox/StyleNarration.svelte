@@ -16,7 +16,7 @@
 	let currentTyper = 0;
 	function nextTyper() {
 		currentTyper++;
-		if(typers[currentTyper] !== undefined) {
+		if(typers[currentTyper] !== undefined && typers[currentTyper].typeWriter !== null) {
 			typers[currentTyper].typeWriter();
 		}
 	}
@@ -30,7 +30,7 @@
 
 <main>
 	{#each scriptPage as line, i}
-		<Typer bind:this={typers[i]} isTyped={line.typed} style={line.style} text={line.text} on:typingfinished={nextTyper} />
+		<Typer bind:this={typers[i]} isTyped={line.typed} highlight={line.class == "script-emphasis"} styleClass={line.class} text={line.text} on:typingfinished={nextTyper} />
 	{/each}
 </main>
 

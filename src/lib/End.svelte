@@ -14,10 +14,6 @@
 		console.log("end state changed: ", event.detail);
 		endState = event.detail;
 	}
-
-	onMount(() => {
-		document.documentElement.style.setProperty("background-color", "#fff");
-	});
 </script>
 
 <main in:fade>

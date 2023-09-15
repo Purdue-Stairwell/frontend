@@ -1,11 +1,12 @@
 <script>
-    import { createEventDispatcher, onMount } from "svelte";
+    import { createEventDispatcher } from "svelte";
 
     const dispatch = createEventDispatcher();
 
     export let text;
-    export let style;
+    export let styleClass;
     export let isTyped;
+	export let highlight = false;
 
     function typingfinished() {
         dispatch("typingfinished");
@@ -17,31 +18,65 @@
 	let pretyped = text;
 
 	export function typeWriter() {
-		if (i < text.length && isTyped) {
+		if (i < text.length && isTyped && !highlight) {
 			typed += text.charAt(i);
 			pretyped = pretyped.slice(1);
 			i++;
 			setTimeout(typeWriter, speed);
-		} else {
+		} else if (highlight) {
+			typed = pretyped;
+			pretyped = "";
+			typingfinished();
+		}else {
 			typingfinished();
 		}
 	}
 </script>
 
 {#if isTyped}
-    <span style={style}>{typed}<span class="pretyped">{pretyped}</span></span>
+    <span class={"default "+styleClass}>{typed}<span class={"pretyped " + styleClass}>{pretyped}</span></span>
 {:else}
-    <span style={style}>{text}</span> 
+    <span class={styleClass}>{text}</span> 
 {/if}
 
 <style>
-    span {
-        font-family: "Acumin Pro", sans-serif;
+	
+
+	.default {
         font-size: 16pt;
 		color: white;
 		transition-duration: 0.1s;
 		text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
 	}
+
+	.who-five-emphasis {
+		font-weight: bolder;
+		font-size: 20pt;
+		display: block;
+		color: aquamarine;
+
+	}
+
+	.script-emphasis {
+		text-align: center;
+		display: block;
+		font-weight: bolder;
+		font-size: 30pt;
+		color: aquamarine;
+		text-shadow: 0px 0px 10px rgba(255, 255, 255, 1.0);
+		transition-duration: 1s;
+		opacity: 1;
+	}
+
+	.script-emphasis.pretyped {
+		text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.0);
+		opacity: 0;
+		transition-duration: 1s;
+	}
+	.script-larger {
+		font-size: 24pt;
+	}
+
 	.pretyped {
 		color: rgba(255, 255, 255, 0.2);
 	}

@@ -62,7 +62,7 @@
 		width: 100%;
 		aspect-ratio: 1;
 		border-radius: 15px;
-		border: #ffffff solid 3px;
+		/* border: #ffffff solid 3px; */
 		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
 	}
 

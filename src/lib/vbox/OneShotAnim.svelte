@@ -75,7 +75,7 @@
 		width: 100%;
 		border-radius: 15px;
 		aspect-ratio: 1;
-		border: #ffffff solid 3px;
+		/* border: #ffffff solid 3px; */
 		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
 	}
 </style>
