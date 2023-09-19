@@ -304,7 +304,7 @@
 			if (!noDraw  && !saveMode) {
 				if (p5.pmouseX < p5.width && p5.pmouseX > 0) {
 					if (p5.pmouseY < p5.height && p5.pmouseY > 0) {
-						gest.points = [];
+						gest.points = [p5.createVector(p5.pmouseX, p5.pmouseY)];
 					}
 				}
 			}

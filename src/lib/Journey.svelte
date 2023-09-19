@@ -57,21 +57,12 @@
 	export let reduceMotion;
 	let oneShotEnded = false;
 
-	let whoFiveScores = [undefined, undefined, undefined, undefined, undefined];
+	let whoFiveScores = [0, 0, 0, 0, 0];
 	let points = [];
 	let spriteChoice = '/anim/star01.gif';
 	let colorChoice = '#4d26db';
 
 	let screenHeight;
-
-	//PLACEHOLDER
-	let attributes = {
-		girth: 15,
-		color: "#3c3e78",
-		opacity: 1,
-		speed: 10,
-		wiggle: 7,
-	};
 
 	function nextPage() {
 		oneShotEnded = false;
@@ -80,6 +71,7 @@
 		} else {
 			changeStage("end");
 		}
+		console.log("POINTS:",points);
 	}
 
 	function backPage() {
@@ -151,7 +143,7 @@
 	<!--anim squig animm anim anim anim who who who who who anim anim squig squiq squiq-->
 
 	<!-- IS THERE NOT A PRE ANIM OR IS IT FINISHED OR NO MOTION?-->
-	{#if !preAnim[screenLocation] || oneShotEnded || reduceMotion}
+	{#if (!preAnim[screenLocation] || oneShotEnded || reduceMotion ) || (screenLocation == 1 && points.length > 0)}
 		<!-- IS IT AN ANIMATION?-->
 		{#if journeyState[screenLocation] === 0}
 			<LoopingAnim {screenLocation} {reduceMotion} />
@@ -161,9 +153,9 @@
 			<Squiggle
 				{screenLocation}
 				saveMode={screenLocation === 15}
-				bind:hex={colorChoice}
-				bind:spriteChoice={spriteChoice}
-				bind:globalPoints={points}
+				hex={colorChoice}
+				spriteChoice={spriteChoice}
+				globalPoints={points}
 				bind:this={squiggle}
 				on:squiggleDrawn={updatePoints}
 				sketchWidth={300}
@@ -182,7 +174,7 @@
 
 	<!--ACTION BOX-->
 	<DefaultButton
-		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion}
+		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion && screenLocation == 1 && points.length == 0}
 		showProject={screenLocation === 14}
 		showSave={screenLocation === 15}
 		on:next={nextPage}

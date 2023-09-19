@@ -41,7 +41,7 @@
 		<div class="spacer" />
 	{/if}
 
-	<button on:click={goNext}><!-- {disabled} -->
+	<button on:click={goNext} {disabled}>
 		<img src="/icons/white-next.svg" width={projectFontSize} alt="arrow pointing forwards" />
 	</button>
 </main>
@@ -84,7 +84,8 @@
 	}
 
 	button:disabled {
-
+		background-color: rgb(68, 62, 51);
+		color: #383838;
 	}
 
 	.project {
