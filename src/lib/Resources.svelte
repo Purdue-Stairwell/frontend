@@ -31,10 +31,11 @@
 		<Modal bind:showModal>
 			<div class="modal-container">
 				<div class="modal-button">
-					<img
+					<!-- <img
 						src={result.resourceInfo[index].image}
 						alt={result.resourceInfo[index].name}
-					/>
+					/> -->
+					<h1 style="color: black;">{result.resourceInfo[index].name}</h1>
 				</div>
 				<p>{result.resourceInfo[index].info}</p>
 				<a href={result.resourceInfo[index].link}
