@@ -16,7 +16,7 @@
 	let currentTyper = 0;
 	function nextTyper() {
 		currentTyper++;
-		if(typers[currentTyper] !== undefined && typers[currentTyper].typeWriter !== null) {
+		if(typers[currentTyper] !== undefined&& typers[currentTyper].typeWriter !== null) {
 			typers[currentTyper].typeWriter();
 		}
 	}
@@ -38,5 +38,6 @@
 	main {
 		margin: 0 25px;
 		transition-duration: 0.1s;
+		z-index: 5;
 	}
 </style>

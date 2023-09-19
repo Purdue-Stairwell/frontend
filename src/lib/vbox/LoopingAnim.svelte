@@ -11,22 +11,22 @@
 		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 0, 0];
 
 	let srcs = [
-		"/anim/intro.mp4",
+		"/anim/intro_endloop.mp4",
 		"SQUIGGLE",
-		"/anim/barret_idle.mp4",
+		"/anim/kikithinks.mp4",
 		"/anim/goingup.mp4",
-		"/anim/barret_talking.mp4",
-		"/anim/barret_talking.mp4",
+		"/anim/barret_idle.mp4",
+		"/anim/stair_comp.mp4",
 		"WHO",
 		"WHO",
 		"WHO",
 		"WHO",
 		"WHO",
-		"/anim/kiki_idle.mp4",
-		"/anim/kiki_idle.mp4",
+		"/anim/all_characters.mp4",
+		"/anim/all_characters.mp4",
 		"SQUIGGLE",
-		"/kiki.png",
-		"/kiki.png",
+		"SQUIGGLE",
+		"SQUIGGLE",
 		"/looping_intro.mp4",
 	];
 
@@ -50,27 +50,18 @@
 
 <style>
 	main {
-		margin: 1rem auto;
 		aspect-ratio: 1;
-		border-radius: 15px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 80%;
 	}
 	img {
 		width: 100%;
 		aspect-ratio: 1;
-		border-radius: 15px;
-		/* border: #ffffff solid 3px; */
-		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
 	}
 
 	video {
 		width: 100%;
-		border-radius: 15px;
 		aspect-ratio: 1;
-		border: #ffffff solid 3px;
-		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
 	}
 </style>

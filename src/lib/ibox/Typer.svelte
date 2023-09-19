@@ -57,24 +57,35 @@
 
 	}
 
+	.who-five-emphasis.pretyped {
+		font-weight: bolder;
+		font-size: 20pt;
+		display: block;
+	}
+
 	.script-emphasis {
 		text-align: center;
-		display: block;
+		display: inline-block;
 		font-weight: bolder;
+		margin-top: -10px;
 		font-size: 30pt;
 		color: aquamarine;
 		text-shadow: 0px 0px 10px rgba(255, 255, 255, 1.0);
 		transition-duration: 1s;
-		opacity: 1;
 	}
 
 	.script-emphasis.pretyped {
-		text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.0);
+		text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.0);
+		color: rgba(0, 0, 0, 0);
 		opacity: 0;
 		transition-duration: 1s;
 	}
 	.script-larger {
 		font-size: 24pt;
+	}
+
+	.script-medium {
+		font-size: 20pt;
 	}
 
 	.pretyped {

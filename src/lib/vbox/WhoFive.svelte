@@ -42,18 +42,14 @@
 
 <style>
 	main {
-		margin: 0.5rem auto;
-		width: 80%;
 		aspect-ratio: 1;
-		border-radius: 15px;
-		background-color: #90d7ff;
 		font-size: 1.6rem;
-		box-shadow: 3px 3px 2px #000015;
-		padding: 0.2rem 1rem;
 		display: flex;
 		justify-content: space-evenly;
-		border: 3px solid white;
 		flex-flow: column nowrap;
+		color: #FFFFFF;
+		width: 80%;
+		margin: 2rem auto;
 	}
 
 	input[type="radio"] {
@@ -63,10 +59,10 @@
 		/* Not removed via appearance */
 		margin: 0 0 0 1rem;
 		font: inherit;
-		color: #000000;
+		color: #FFFFFF;
 		width: 1em;
 		height: 1em;
-		border: 0.15em solid #000000;
+		border: 0.15em solid #FFFFFF;
 		border-radius: 50%;
 		transform: translateY(0.2em);
 		display: grid;
@@ -80,7 +76,7 @@
 		border-radius: 50%;
 		transform: scale(0);
 		transition: 120ms transform ease-in-out;
-		box-shadow: inset 1em 1em #000000;
+		box-shadow: inset 1em 1em #FFFFFF;
 	}
 	input[type="radio"]:checked::before {
 		transform: scale(1);

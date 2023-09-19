@@ -21,12 +21,12 @@
 	<Header {reduceMotion} mode="purdue" />
 	{#if endState === "Back"}
 	<p>Purdue has an amazing collection of people and services to help you thrive. Check out this portal…</p>
-		<PurdueButton on:click={changeEndState} size={2} text="Resources" />
-		<a href="https://it.purdue.edu/services/qualtrics.php"><PurdueButton text="Take a 2 min survey!" /></a>
+		<PurdueButton on:click={changeEndState} size={1} text="Resources" />
+		<a href="https://it.purdue.edu/services/qualtrics.php"><PurdueButton text="Take a 2 min survey!" arrow="next" /></a>
 		<PurdueButton on:click={changeEndState} text="Sponsors" />
 		<PurdueButton on:click={changeEndState} text="Credits" />
 		<hr>
-		<PurdueButton
+		<PurdueButton arrow="back"
 			on:click={(e) => {
 				location.reload();
 			}}
@@ -49,7 +49,7 @@
 		font-family: "Acumin Pro", sans-serif;
 	}
 	main {
-		background-color: #ffffff;
+		background-color: #000000;
 		margin: 0 auto;
 		width: 100%;
 		max-width: 500px;
@@ -66,5 +66,6 @@
 	p {
 		text-align: center;
 		font-size: 1.5rem;
+		color: white;
 	}
 </style>

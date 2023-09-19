@@ -28,7 +28,7 @@
 		margin: auto auto;
 	}
 	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.3);
+		background: rgba(255, 255, 255, 0.3);
 	}
 	dialog > div {
 		padding: 1em;
@@ -62,13 +62,13 @@
 		border: 2px solid rgb(142, 111, 62);
 		background-color: transparent;
 		padding: 0rem 0.5rem;
-		color: black;
+		color: white;
 		font-weight: bolder;
 	}
 
 	button:hover,
 	button:active {
 		background-color: rgb(142, 111, 62);
-		color: white;
+		color: black;
 	}
 </style>

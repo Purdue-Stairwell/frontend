@@ -15,9 +15,9 @@
 	const sprites = [
 		'/anim/star01.gif',
 		'/anim/newblob.gif',
-		'/anim/star01.gif',
-		'/anim/star01.gif',
-		'/anim/star01.gif',
+		'/anim/head.gif',
+		'/anim/sprite03.gif',
+		'/anim/drops.gif',
 	];
 
 	let images = [];
@@ -27,6 +27,10 @@
 	let maxPoints = 48;
 	let noDraw = false;
 	let saveFlag = false;
+
+	if (screenLocation == 14) {
+		noDraw = true;
+	}
 
 	let gest;
 	let cnv;
@@ -248,8 +252,13 @@
 		let index = 0;
 
 		p5.draw = () => {
-			p5.background(255);
-			if(!saveMode) {
+			p5.clear();
+			p5.background(255,255,255,30);
+			if (screenLocation == 14) {
+				noDraw = true;
+			}
+			
+			if(!saveMode && !noDraw) {
 				if (p5.pmouseX < p5.width && p5.pmouseX > 0) {
 					if (p5.pmouseY < p5.height && p5.pmouseY > 0) {
 						if (p5.mouseIsPressed && gest.points.length < maxPoints) {
@@ -273,7 +282,19 @@
 			gest.drawSprites(spriteChoice);
 
 			if(saveFlag) {
+				let shareData = {
+						title: 'My Squiggle',
+						text: 'Check out my squiggle!',
+						url: cnv.canvas.toDataURL("image/png"),
+					}
+				if(navigator.canShare(shareData)) {
+					navigator.share(shareData).catch(
+						p5.saveCanvas(cnv, 'mySquiggle', 'jpg')
+					);
+				} else {
 				p5.saveCanvas(cnv, 'mySquiggle', 'jpg');
+				
+				}
 				saveFlag = false;
 			}
 		};
@@ -363,13 +384,13 @@
 
 <style>
 	main {
-		margin: 0.5rem auto;
+		margin: 0 auto;
 		aspect-ratio: 1;
 		display: flex;
 		flex-flow: column;
 		justify-content: center;
 		align-items: center;
-		width: 80%;
+		width: 95%;
 	}
 
 	main > div {
@@ -401,10 +422,6 @@
 	}
 
 	:global(.p5Canvas) {
-		padding: 0px;
 		border-radius: 15px;
-		max-width: 100%;
-		aspect-ratio: 1;
-		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
 	}
 </style>
