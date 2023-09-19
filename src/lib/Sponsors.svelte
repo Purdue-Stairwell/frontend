@@ -43,7 +43,7 @@
 				/>
 				<p>{result.sponsorInfo[index].info}</p>
 				<a href={result.sponsorInfo[index].link}
-					><PurdueButton text="Website" /></a
+					><PurdueButton text="Website" textColor="black"/></a
 				>
 			</div>
 		</Modal>

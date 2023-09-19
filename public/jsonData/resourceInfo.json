@@ -2,7 +2,7 @@
 	"resourceInfo": [
 		{
 			"name": "COUNSELING AND PSYCHOLOGICAL SERVICES(CAPS)",
-			"image": "/CounPsy_H-Full-RGB_1.png",
+			"image": "/sponsors/caps.png",
 			"link": "https://www.purdue.edu/caps/",
 			"info": "CAPS offers mental health services via telehealth resources including screenings, individual therapy, psychiatry, care and case managers. Contact 765-494-6995 for assistance or visit the CAPS website for more information. To support mental health and well-being, CAPS has created a digital repository of applications and online resources written by CAPS staff that you can access at any time.EMERGENCY/CRISIS CONTACTCall 911 if you are experiencing a life threatening mental health emergency.Ask to speak to the Purdue Police CIT Officer.Call CAPS at (765) 494-6995 for mental health crisis situations. A therapist will conduct a crisis assessment and plan for next steps for you."
 		},
@@ -32,7 +32,7 @@
 		},
 		{
 			"name": "STEPS TO LEAPS RESOURCES",
-			"image": "",
+			"image": "/sponsors/stepstoleaps.png",
 			"link": "https://www.purdue.edu/stepstoleaps/resources/learn/campus-resources.php",
 			"info": ""
 		},

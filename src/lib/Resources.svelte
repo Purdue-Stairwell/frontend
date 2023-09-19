@@ -38,7 +38,7 @@
 				</div>
 				<p>{result.resourceInfo[index].info}</p>
 				<a href={result.resourceInfo[index].link}
-					><PurdueButton text="Website" /></a
+					><PurdueButton text="Website" textColor="black"/></a
 				>
 			</div>
 		</Modal>
@@ -63,15 +63,15 @@
 		justify-content: space-around;
 		flex-wrap: wrap;
 		height: 75%;
-		background-color: #ffffff;
+		background-color: #000000;
+		color: white;
 		width: 100%;
 		padding-top: 10px;
 	}
 
 	.modal-button {
 		width: 40%;
-		height: 90px;
-		color: #2c2e35;
+		color: white;
 		font-weight: bolder;
 		font-size: small;
 		padding: 5px;

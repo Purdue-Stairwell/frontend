@@ -24,8 +24,7 @@
 		<PurdueButton on:click={changeEndState} size={1} text="Resources" />
 		<a href="https://it.purdue.edu/services/qualtrics.php"><PurdueButton text="Take a 2 min survey!" arrow="next" /></a>
 		<PurdueButton on:click={changeEndState} text="Sponsors" />
-		<PurdueButton on:click={changeEndState} text="Credits" />
-		<hr>
+		<a href="https://convocations.purdue.edu/stairwell/"><PurdueButton  text="Credits" /></a>
 		<PurdueButton arrow="back"
 			on:click={(e) => {
 				location.reload();
