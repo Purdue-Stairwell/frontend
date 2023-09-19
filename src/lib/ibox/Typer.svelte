@@ -65,7 +65,7 @@
 
 	.script-emphasis {
 		text-align: center;
-		display: inline-block;
+		display: block;
 		font-weight: bolder;
 		margin-top: -10px;
 		font-size: 30pt;
