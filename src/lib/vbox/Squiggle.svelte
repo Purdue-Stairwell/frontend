@@ -280,23 +280,6 @@
 
 			gest.drawBezier(p5.frameCount * 0.001);
 			gest.drawSprites(spriteChoice);
-
-			if(saveFlag) {
-				let shareData = {
-						title: 'My Squiggle',
-						text: 'Check out my squiggle!',
-						url: cnv.canvas.toDataURL("image/png"),
-					}
-				if(navigator.canShare(shareData)) {
-					navigator.share(shareData).catch(
-						p5.saveCanvas(cnv, 'mySquiggle', 'jpg')
-					);
-				} else {
-				p5.saveCanvas(cnv, 'mySquiggle', 'jpg');
-				
-				}
-				saveFlag = false;
-			}
 		};
 
 		//handles reset
@@ -347,8 +330,19 @@
 		});
 	});
 
-	export const saveSketch = () => {
-		saveFlag = true;
+	export const saveSketch = async () => {
+		let shareData = {
+			title: 'My Squiggle',
+			text: 'Check out my squiggle!',
+			files: [cnv.canvas.toDataURL("image/png")],
+		}
+		if(navigator.canShare(shareData)) {
+			navigator.share(shareData)
+			.then(() => console.log("shared successfully"))
+			.catch(() =>console.log('share caught error'));
+		} else {
+			console.log("share cancelled");
+		}
 	}
 </script>
 
