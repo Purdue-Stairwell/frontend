@@ -2,6 +2,7 @@
 	import Start from "./lib/Start.svelte";
 	import Journey from "./lib/Journey.svelte";
 	import End from "./lib/End.svelte";
+  	import { onMount } from "svelte";
 
 	let reduceMotion = false;
 	function updateMotion(event) {
@@ -12,8 +13,13 @@
 	function changeStage(event) {
 		stage = event.detail;
 	}
-</script>
 
+	onMount(() => {
+		setTimeout(function () {
+			window.scrollTo(0, 100);
+		}, 1000);
+	});
+</script>
 <main>
 	{#if stage == "start"}
 		<Start {reduceMotion} on:changeStage={changeStage} on:updateMotion={updateMotion} />
@@ -29,6 +35,6 @@
 		width: 100%;
 		/* max-width: 500px; */
 		margin: 0 auto;
-		height: 100%;
+		height: 110vh;
 	}
 </style>

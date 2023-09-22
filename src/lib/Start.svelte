@@ -1,5 +1,5 @@
 <script>
-	import { createEventDispatcher } from "svelte";
+	import { createEventDispatcher, onMount } from "svelte";
 	import Header from "./Header.svelte";
 	import Toggle from "./helpers/Toggle.svelte";
 	import { fade } from "svelte/transition";
@@ -20,11 +20,12 @@
 </script>
 
 <main in:fade>
+	<div style="height: 100px"></div>
 	<!--HEADER-->
 	<Header {reduceMotion} mode="purdue" />
 	<p>Welcome to StairWELL, an interactive sculpture and gathering place.</p>
 	<img src="purdue_stairs.png" alt="Abstract representation of the StairWELL sculpture" />
-	<PurdueButton on:click={changeStage} text="Enter!" />
+	<PurdueButton on:click={changeStage} text="Enter!" arrow="next" />
 	<!-- <div>
 		<Toggle on:stateChange={updateMotion} />
 		<p>Toggle Reduce Motion</p>

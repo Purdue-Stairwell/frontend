@@ -15,7 +15,9 @@
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div on:click|stopPropagation>
 		<!-- svelte-ignore a11y-autofocus -->
-		<button autofocus on:click={() => dialog.close()}>X</button>
+		<button autofocus on:click={() => dialog.close()}>
+			<img src="/icons/close.svg" alt="Close modal" />
+		</button>
 		<slot name="header" />
 		<slot />
 	</div>
@@ -25,10 +27,8 @@
 	dialog {
 		width: 90dvw;
 		border: 2px solid rgb(142, 111, 62);
+		background-color: rgb(255, 255, 255);
 		margin: auto auto;
-	}
-	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.3);
 	}
 	dialog > div {
 		padding: 1em;
@@ -58,17 +58,24 @@
 	button {
 		margin-left: calc(100% - 3rem);
 		display: block;
-		font-size: 24pt;
 		border: 2px solid rgb(142, 111, 62);
 		background-color: transparent;
-		padding: 0rem 0.5rem;
-		color: black;
+		height: 2rem;
+		width: 2rem;
+		color: BLACK;
 		font-weight: bolder;
+		user-select: none;
+	} 
+
+	button > img {
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 1;
 	}
 
 	button:hover,
 	button:active {
 		background-color: rgb(142, 111, 62);
-		color: white;
+		color: black;
 	}
 </style>

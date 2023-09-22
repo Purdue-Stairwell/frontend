@@ -28,9 +28,11 @@
 </script>
 
 <main bind:clientWidth={w}>
+
 	<button on:click={goBack}>
-		<img src="/icons/back.svg" width={projectFontSize} alt="arrow pointing back" />
+		<img src="/icons/white-back.svg" width={projectFontSize} alt="arrow pointing back" />
 	</button>
+
 	{#if showProject}
 		<button class="project" style="font-size: {projectFontSize};" on:click={project}>Project!</button>
 	{:else if showSave}
@@ -38,8 +40,9 @@
 	{:else}
 		<div class="spacer" />
 	{/if}
-	<button on:click={goNext}><!-- {disabled} -->
-		<img src="/icons/next.svg" width={projectFontSize} alt="arrow pointing forwards" />
+
+	<button on:click={goNext} {disabled}>
+		<img src="/icons/white-next.svg" width={projectFontSize} alt="arrow pointing forwards" />
 	</button>
 </main>
 
@@ -53,10 +56,8 @@
 	}
 	button {
 		user-select: none;
-		border: #ffffff 3px solid;
-		border-radius: 15px;
-		box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
-		background-color: aquamarine;
+		border: rgb(142, 111, 62) 3px solid;
+		background-color: black;
 		color: #ffffff;
 		transition-duration: 0.1s;
 		padding: 0 0.5rem;
@@ -71,38 +72,24 @@
 	}
 
 	button:hover:enabled {
-		background-color: #a8ffef;
+		background-color: rgb(142, 111, 62);
 		color: #000000;
 	}
 
 	button:active:enabled {
 		color: #000000;
-		background-color: #a8ffef;
+		background-color: rgb(142, 111, 62);
 		transform: translate(5px, 5px);
 		box-shadow: 0px 0px;
 	}
 
 	button:disabled {
-		background-color: #4d756e;
-		color: #8f8f8f;
-		border-color: #bab9b9;
+		background-color: rgb(68, 62, 51);
+		color: #383838;
 	}
 
 	.project {
-		background-color: #ff8f8f;
 		flex: 2;
-	}
-
-	.project:hover:enabled {
-		background-color: #fcacac;
-	}
-
-	.project:active:enabled {
-		background-color: #fcacac;
-	}
-
-	.project:disabled {
-		background-color: #a16666;
 	}
 
 	.spacer {

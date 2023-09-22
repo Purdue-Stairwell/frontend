@@ -17,18 +17,21 @@
 
 	//live URL
 	const socket = SocketIO("wss://navinate.com", { secure: true });
+	//local backend testing URL
+	//const socket = SocketIO("http://localhost:3000", { secure: false });
 
 	//const socket = SocketIO();
 	console.log("connected to websocket");
 
-	const script = fetch("/jsonData/script.json").then((res) => res.json());
+	//old script code
+	/* const script = fetch("/jsonData/script.json").then((res) => res.json()); */
 
 	const styleScript = fetch("/jsonData/styleScript.json").then((res) => res.json());
 
 	let journeyState =
 		//0     1     2   3    4    5    6   7   8   9   10  11   12   13    14     15-->
 		//anim squig anim anim anim anim who who who who who anim anim squig squig static-->
-		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 1, 0];
+		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 1, 1];
 
 	//             0     1     2      3      4      5      6      7      8      9      10     11     12     13     14     15
 	let preAnim = [
@@ -54,21 +57,12 @@
 	export let reduceMotion;
 	let oneShotEnded = false;
 
-	let whoFiveScores = [undefined, undefined, undefined, undefined, undefined];
+	let whoFiveScores = [0, 0, 0, 0, 0];
 	let points = [];
-	let spriteChoice;
-	let colorChoice;
+	let spriteChoice = '/anim/star01.gif';
+	let colorChoice = '#4d26db';
 
 	let screenHeight;
-
-	//PLACEHOLDER
-	let attributes = {
-		girth: 15,
-		color: "#3c3e78",
-		opacity: 1,
-		speed: 10,
-		wiggle: 7,
-	};
 
 	function nextPage() {
 		oneShotEnded = false;
@@ -77,6 +71,7 @@
 		} else {
 			changeStage("end");
 		}
+		console.log("POINTS:",points);
 	}
 
 	function backPage() {
@@ -123,6 +118,7 @@
 
 <main in:fade class={reduceMotion ? "reduceMotion" : "motion"}>
 	<!--HEADER-->
+	<div style="height: 100px"></div>
 	{#if screenHeight > 800}
 		<Header {reduceMotion} mode="stairwell" />
 	{/if}
@@ -144,10 +140,10 @@
 
 	<!--VISUAL BOX-->
 	<!-- 0---1-----2-----3----4----5----6---7---8---9---10--11---12---13----14-----15-->
-	<!--anim squig animm anim anim anim who who who who who anim anim squig static static-->
+	<!--anim squig animm anim anim anim who who who who who anim anim squig squiq squiq-->
 
 	<!-- IS THERE NOT A PRE ANIM OR IS IT FINISHED OR NO MOTION?-->
-	{#if !preAnim[screenLocation] || oneShotEnded || reduceMotion}
+	{#if (!preAnim[screenLocation] || oneShotEnded || reduceMotion ) || (screenLocation == 1 && points.length > 0)}
 		<!-- IS IT AN ANIMATION?-->
 		{#if journeyState[screenLocation] === 0}
 			<LoopingAnim {screenLocation} {reduceMotion} />
@@ -156,7 +152,7 @@
 			{#key screenLocation}
 			<Squiggle
 				{screenLocation}
-				saveMode={screenLocation === 14}
+				saveMode={screenLocation === 15}
 				hex={colorChoice}
 				spriteChoice={spriteChoice}
 				globalPoints={points}
@@ -178,9 +174,9 @@
 
 	<!--ACTION BOX-->
 	<DefaultButton
-		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion}
-		showProject={screenLocation === 13}
-		showSave={screenLocation === 14}
+		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion && screenLocation == 1 && points.length == 0}
+		showProject={screenLocation === 14}
+		showSave={screenLocation === 15}
 		on:next={nextPage}
 		on:project={projectSquiggle}
 		on:save={saveSquiggle}

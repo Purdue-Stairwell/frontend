@@ -6,6 +6,7 @@
 	export let text;
 	export let size = 1;
 	export let textColor = 'white';
+	export let arrow = 'none';
 
 	function clicked() {
 		dispatch('click', text);
@@ -13,9 +14,18 @@
 </script>
 
 <button on:click={clicked} style="--size: {size * 10}px; color: {textColor};">
-	<img src="/icons/white-next.svg" width="50px"  alt="arrow pointing forwards" />
-	{text}
-	<img src="/icons/white-next.svg" width="50px" alt="arrow pointing forwards" />
+	{#if arrow === 'back'}
+		<img src="/icons/white-back.svg" width="50px" alt="arrow pointing backwards" />
+	{:else if arrow === 'next'}
+		<img src="/icons/white-next.svg" width="50px" alt="arrow pointing forwards" />
+	{/if}
+	<span style="grid-column: 2;">{text}</span>
+	
+	{#if arrow === 'back'}
+		<img src="/icons/white-back.svg" width="50px" alt="arrow pointing backwards" />
+	{:else if arrow === 'next'}
+		<img src="/icons/white-next.svg" width="50px" alt="arrow pointing forwards" />
+	{/if}
 </button>
 
 <style>
@@ -23,12 +33,12 @@
 		padding: var(--size) 2px;
 		background: none;
 		border: 2px solid rgb(142, 111, 62);
-		font-size: 40px;
+		font-size: 30px;
 		font-weight: 400;
 		width: 100%;
 		display: grid;
 		place-items: center center;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: 1fr 2fr 1fr;
 	}
 
 	button:hover,

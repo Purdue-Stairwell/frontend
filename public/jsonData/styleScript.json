@@ -12,13 +12,8 @@
 				"typed": true
 			},
 			{
-				"text": "YOU",
+				"text": "YOU create the art.",
 				"class" : "script-emphasis",
-				"typed": true
-			},
-			{
-				"text": "create the art.  ",
-				"class" : "",
 				"typed": true
 			},
 			{
@@ -29,15 +24,15 @@
 		],
 		[
 			{
-				"text": "…draw a “squiggle” to capture how you’re feeling today.",
-				"class" : "",
+				"text": "…draw a “squiggle” to capture how you’re feeling today. (just draw again if you don’t like it)",
+				"class" : "script-larger",
 				"typed": true
 			}
 		],
 		[
 			{
-				"text": "That moment you just had–that was reflection! Thinking about how you’re feeling is important",
-				"class" : "",
+				"text": "That moment you just had–that was reflection! Thinking about how you’re feeling is important.",
+				"class" : "script-medium",
 				"typed": true
 			}
 		],
@@ -50,8 +45,13 @@
 		],
 		[
 			{
-				"text": "Ok, we’ll come back to that squiggle in just a second. But now, let’s zoom out a bit.",
+				"text": "Ok, we’ll come back to that squiggle in just a second.",
 				"class" : "",
+				"typed": true
+			},
+			{
+				"text": "But now, let’s zoom out a bit.",
+				"class" : "who-five-emphasis",
 				"typed": true
 			}
 		],
