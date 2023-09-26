@@ -18,6 +18,7 @@
 		'/anim/head.gif',
 		'/anim/sprite03.gif',
 		'/anim/drops.gif',
+		/* '/anim/empty.gif', */
 	];
 
 	let images = [];
@@ -28,13 +29,13 @@
 	let noDraw = false;
 	let saveFlag = false;
 
-	if (screenLocation == 14) {
+	if (screenLocation == 13 || screenLocation == 14 || screenLocation == 15) {
 		noDraw = true;
 	}
 
 	let gest;
 	let cnv;
-	export let spriteChoice = sprites[0];
+	export let spriteChoice = sprites[-1];
 	export let hex = colors[0];
 
 	function squiggleDrawn() {
@@ -96,15 +97,19 @@
 			}
 
 			drawSprites(spriteChoice) {
-				let img = images[sprites.indexOf(spriteChoice)];
-				for (let i = 0; i < this.points.length; i += 2) {
-					p5.tint(hex);
-					if(saveMode) {
-						img.pause();
-						img.setFrame(0);
-						p5.image(img, this.points[i].x - 25, this.points[i].y - 25, 50, 50);
-					} else {
-						p5.image(img, this.points[i].x - 25, this.points[i].y - 25, 50, 50);
+				if (spriteChoice == "/anim/empty.gif") {
+					return;
+				} else {
+					let img = images[sprites.indexOf(spriteChoice)];
+					for (let i = 0; i < this.points.length; i += 2) {
+						p5.tint(hex);
+						if(saveMode) {
+							img.pause();
+							img.setFrame(0);
+							p5.image(img, this.points[i].x - 25, this.points[i].y - 25, 50, 50);
+						} else {
+							p5.image(img, this.points[i].x - 25, this.points[i].y - 25, 50, 50);
+						}
 					}
 				}
 			}
@@ -249,7 +254,6 @@
 
 		};
 
-		let index = 0;
 
 		p5.draw = () => {
 			p5.clear();
@@ -263,10 +267,6 @@
 					if (p5.pmouseY < p5.height && p5.pmouseY > 0) {
 						if (p5.mouseIsPressed && gest.points.length < maxPoints) {
 							gest.addPoint(p5.pmouseX, p5.pmouseY);
-							index++;
-							if (index > maxPoints) {
-								index = 0;
-							}
 						}
 					}
 				}
@@ -280,6 +280,11 @@
 
 			gest.drawBezier(p5.frameCount * 0.001);
 			gest.drawSprites(spriteChoice);
+
+			if(saveFlag) {
+				saveFlag = false;
+				p5.saveCanvas('mySquiggle', 'jpg');
+			}
 		};
 
 		//handles reset
@@ -331,19 +336,31 @@
 	});
 
 	export const saveSketch = async () => {
-		let shareData = {
-			title: 'My Squiggle',
-			text: 'Check out my squiggle!',
-			files: [cnv.canvas.toDataURL("image/png")],
-		}
-		if(navigator.canShare(shareData)) {
-			navigator.share(shareData)
-			.then(() => console.log("shared successfully"))
-			.catch(() =>console.log('share caught error'));
-		} else {
-			console.log("share cancelled");
-		}
-	}
+    // Convert the Data URL to an ArrayBuffer
+    const dataUrl = cnv.canvas.toDataURL();
+    const response = await fetch(dataUrl);
+    const blob = await response.blob();
+
+
+    // Create a File object from the blob
+    const file = new File([blob], "squiggle.png", { type: "image/png" });
+
+    const data = {
+        text: 'Check out my squiggle!',
+        files: [file],
+        title: "StairWELL"
+    };
+
+    if (navigator.share && typeof navigator.share === 'function') {
+        try {
+            await navigator.share(data);
+        } catch (error) {
+            console.error('Sharing failed:', error);
+        }
+    } else {
+		saveFlag = true;
+    }
+};
 </script>
 
 <main in:fade>
@@ -352,7 +369,7 @@
 			{#each sprites as sprite}
 				<input
 					bind:group={spriteChoice}
-					on:click={squiggleDrawn}
+					on:change={squiggleDrawn}
 					name="spriteChoice"
 					type="radio"
 					value={sprite}
@@ -368,7 +385,7 @@
 					value={color}
 					style="background-color: {color};"
 					bind:group={hex}
-					on:click={squiggleDrawn}
+					on:change={squiggleDrawn}
 				/>
 			{/each}
 		</div>

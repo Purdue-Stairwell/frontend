@@ -10,7 +10,6 @@
 	export let reduceMotion = false;
 
 	function updateMotion(event) {
-		console.log("motion updated: ", event.detail);
 		dispatch("updateMotion", event.detail);
 	}
 

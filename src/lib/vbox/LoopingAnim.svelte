@@ -15,7 +15,7 @@
 		"SQUIGGLE",
 		"/anim/kikithinks.mp4",
 		"/anim/goingup.mp4",
-		"/anim/barret_idle.mp4",
+		"/anim/reflection.mp4",
 		"/anim/stair_comp.mp4",
 		"WHO",
 		"WHO",
@@ -29,10 +29,6 @@
 		"SQUIGGLE",
 		"/looping_intro.mp4",
 	];
-
-	onMount(() => {
-		console.log("looping loaded");
-	});
 </script>
 
 <main>
@@ -61,7 +57,7 @@
 	}
 
 	video {
-		width: 100%;
+		width: 100vw;
 		aspect-ratio: 1;
 		box-shadow: 0px 0px -10px 0px rgba(0, 0, 0, 0.75);
 	}
