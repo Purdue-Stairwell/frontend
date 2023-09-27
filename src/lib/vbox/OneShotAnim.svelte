@@ -13,9 +13,9 @@
 	let srcs = [
 		"/anim/intro.mp4",
 		"/anim/user_sketch_light.mp4",
-		"/anim/kikithinks.mp4",
-		"/anim/goingup.mp4",
 		"/anim/reflection.mp4",
+		"/anim/goingup.mp4",
+		"/anim/kikithinks.mp4",
 		"/anim/stair_comp.mp4",
 		"WHO",
 		"WHO",
