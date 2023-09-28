@@ -31,7 +31,7 @@
 	<p>Welcome to StairWELL, an interactive sculpture and gathering place.</p>
 	<img src="purdue_stairs.png" alt="Abstract representation of the StairWELL sculpture" />
 	<label>
-		Are you over 18? <input type="checkbox" bind:checked={isOver18} on:change={updateAge} />
+		Are you 18 or older? <input type="checkbox" bind:checked={isOver18} on:change={updateAge} />
 	</label>
 	<PurdueButton on:click={changeStage} text="Enter!" arrow="next" />
 	<!-- <div>
