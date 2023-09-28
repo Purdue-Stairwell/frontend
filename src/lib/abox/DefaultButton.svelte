@@ -36,12 +36,12 @@
 	{#if showProject}
 		<button class="project" style="font-size: {projectFontSize};" on:click={project}>Project!</button>
 	{:else if showSave}
-		<button class="project" style="font-size: {projectFontSize};" on:click={save}>Save!</button>
+		<button class="project" style="font-size: {projectFontSize};" on:click={save}>Share!</button>
 	{:else}
 		<div class="spacer" />
 	{/if}
 
-	<button on:click={goNext} {disabled}>
+	<button on:click={goNext} {disabled} >
 		<img src="/icons/white-next.svg" width={projectFontSize} alt="arrow pointing forwards" />
 	</button>
 </main>

@@ -30,7 +30,7 @@
 
 <main>
 	{#each scriptPage as line, i}
-		<Typer bind:this={typers[i]} isTyped={line.typed} highlight={line.class == "script-emphasis"} styleClass={line.class} text={line.text} on:typingfinished={nextTyper} />
+		<Typer bind:this={typers[i]} isTyped={line.typed} styleClass={line.class} text={line.text} on:typingfinished={nextTyper} />
 	{/each}
 </main>
 

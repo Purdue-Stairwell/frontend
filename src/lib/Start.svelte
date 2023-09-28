@@ -12,7 +12,6 @@
 	export let isOver18 = false;
 
 	function updateMotion(event) {
-		console.log("motion updated: ", event.detail);
 		dispatch("updateMotion", event.detail);
 	}
 

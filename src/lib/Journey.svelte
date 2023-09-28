@@ -32,6 +32,8 @@
 		//0     1     2   3    4    5    6   7   8   9   10  11   12   13    14     15-->
 		//anim squig anim anim anim anim who who who who who anim anim squig squig static-->
 		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 1, 1];
+	const saveScreen = 14;
+	const projectScreen = 15;
 
 	//             0     1     2      3      4      5      6      7      8      9      10     11     12     13     14     15
 	let preAnim = [
@@ -59,7 +61,7 @@
 
 	let whoFiveScores = [0, 0, 0, 0, 0];
 	let points = [];
-	let spriteChoice = '/anim/star01.gif';
+	let spriteChoice = '/anim/empty.gif';
 	let colorChoice = '#4d26db';
 	export let isOver18 = false;
 
@@ -72,7 +74,6 @@
 		} else {
 			changeStage("end");
 		}
-		console.log("POINTS:",points);
 	}
 
 	function backPage() {
@@ -120,7 +121,7 @@
 
 <main in:fade class={reduceMotion ? "reduceMotion" : "motion"}>
 	<!--HEADER-->
-	<div style="height: 100px"></div>
+	<div style="height: 100px; color: white;"></div>
 	{#if screenHeight > 800}
 		<Header {reduceMotion} mode="stairwell" />
 	{/if}
@@ -154,7 +155,7 @@
 			{#key screenLocation}
 			<Squiggle
 				{screenLocation}
-				saveMode={screenLocation === 15}
+				saveMode={screenLocation === saveScreen}
 				hex={colorChoice}
 				spriteChoice={spriteChoice}
 				globalPoints={points}
@@ -177,8 +178,8 @@
 	<!--ACTION BOX-->
 	<DefaultButton
 		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion && screenLocation == 1 && points.length == 0}
-		showProject={screenLocation === 14}
-		showSave={screenLocation === 15}
+		showProject={screenLocation === projectScreen}
+		showSave={screenLocation === saveScreen}
 		on:next={nextPage}
 		on:project={projectSquiggle}
 		on:save={saveSquiggle}

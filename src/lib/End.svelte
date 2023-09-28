@@ -11,7 +11,7 @@
 	let endState = "Back";
 
 	function changeEndState(event) {
-		console.log("end state changed: ", event.detail);
+
 		endState = event.detail;
 	}
 </script>
