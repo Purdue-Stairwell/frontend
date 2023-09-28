@@ -13,7 +13,7 @@
     }
 
     let i = 0;
-	let speed = 20; /* The speed/duration of the effect in milliseconds */
+	let speed = 15; /* The speed/duration of the effect in milliseconds */
 	let typed = "";
 	let pretyped = text;
 
@@ -34,7 +34,7 @@
 </script>
 
 {#if isTyped}
-	<p class={"default "+styleClass}><span>{typed}</span><span class="pretyped">{pretyped}</span></p>
+	<p class={"default "+styleClass}>{typed}<span class="pretyped">{pretyped}</span></p>
 {:else}
     <p class={styleClass}>{text}</p> 
 {/if}
@@ -81,6 +81,8 @@
 	}
 
 	.pretyped {
+		font-style: inherit;
+		font-weight: inherit;
 		color: rgba(255, 255, 255, 0.2);
 	}
 </style>

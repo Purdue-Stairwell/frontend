@@ -18,12 +18,6 @@
 	function changeStage(event) {
 		stage = event.detail;
 	}
-
-	onMount(() => {
-		setTimeout(function () {
-			window.scrollTo(0, 100);
-		}, 1000);
-	});
 </script>
 <main>
 	{#if stage == "start"}

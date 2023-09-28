@@ -15,16 +15,16 @@
 
 <button on:click={clicked} style="--size: {size * 10}px; color: {textColor};">
 	{#if arrow === 'back'}
-		<img src="/icons/white-back.svg" width="50px" alt="arrow pointing backwards" />
+		<img src="/icons/white-back.svg" width="30px" alt="arrow pointing backwards" />
 	{:else if arrow === 'next'}
-		<img src="/icons/white-next.svg" width="50px" alt="arrow pointing forwards" />
+		<img src="/icons/white-next.svg" width="30px" alt="arrow pointing forwards" />
 	{/if}
 	<span style="grid-column: 2;">{text}</span>
 	
 	{#if arrow === 'back'}
-		<img src="/icons/white-back.svg" width="50px" alt="arrow pointing backwards" />
+		<img src="/icons/white-back.svg" width="30px" alt="arrow pointing backwards" />
 	{:else if arrow === 'next'}
-		<img src="/icons/white-next.svg" width="50px" alt="arrow pointing forwards" />
+		<img src="/icons/white-next.svg" width="30px" alt="arrow pointing forwards" />
 	{/if}
 </button>
 

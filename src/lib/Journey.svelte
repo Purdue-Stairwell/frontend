@@ -120,18 +120,6 @@
 <svelte:window bind:innerHeight={screenHeight} />
 
 <main in:fade class={reduceMotion ? "reduceMotion" : "motion"}>
-	<!--HEADER-->
-	<div style="height: 100px; color: white;"></div>
-	{#if screenHeight > 800}
-		<Header {reduceMotion} mode="stairwell" />
-	{/if}
-	<!-- {#key screenLocation}
-		{#await script}
-			<p>Loading Script :)</p>
-		{:then result}
-			<Narration {reduceMotion} scriptPage={result.script[screenLocation]} />
-		{/await}
-	{/key} -->
 	{#key screenLocation}
 		<!--INFO BOX-->
 		{#await styleScript}

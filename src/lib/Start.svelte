@@ -26,7 +26,6 @@
 </script>
 
 <main in:fade>
-	<div style="height: 100px"></div>
 	<!--HEADER-->
 	<Header {reduceMotion} mode="purdue" />
 	<p>Welcome to StairWELL, an interactive sculpture and gathering place.</p>
