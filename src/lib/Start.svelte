@@ -9,9 +9,16 @@
 
 	export let reduceMotion = false;
 
+	export let isOver18 = false;
+
 	function updateMotion(event) {
 		console.log("motion updated: ", event.detail);
 		dispatch("updateMotion", event.detail);
+	}
+
+	function updateAge(event) {
+		console.log("age updated: ", isOver18);
+		dispatch("updateAge", isOver18);
 	}
 
 	function changeStage() {
@@ -25,6 +32,9 @@
 	<Header {reduceMotion} mode="purdue" />
 	<p>Welcome to StairWELL, an interactive sculpture and gathering place.</p>
 	<img src="purdue_stairs.png" alt="Abstract representation of the StairWELL sculpture" />
+	<label>
+		Are you over 18? <input type="checkbox" bind:checked={isOver18} on:change={updateAge} />
+	</label>
 	<PurdueButton on:click={changeStage} text="Enter!" arrow="next" />
 	<!-- <div>
 		<Toggle on:stateChange={updateMotion} />
@@ -53,6 +63,17 @@
 	p {
 		text-align: center;
 		font-size: 2rem;
+	}
+	label {
+		width: 100%;
+		text-align: center;
+		font-size: 1.5rem;
+	}
+
+	/* checkbox*/
+	input[type="checkbox"] {
+		height: 1.5rem;
+		width: 1.5rem;
 	}
 	img {
 		width: 70%;

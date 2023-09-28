@@ -61,6 +61,7 @@
 	let points = [];
 	let spriteChoice = '/anim/star01.gif';
 	let colorChoice = '#4d26db';
+	export let isOver18 = false;
 
 	let screenHeight;
 
@@ -99,8 +100,9 @@
 
 	async function projectSquiggle() {
 		try {
-			await socket.emit("frontend to backend", points, whoFiveScores, spriteChoice, colorChoice);
+			await socket.emit("frontend to backend", points, whoFiveScores, spriteChoice, colorChoice, isOver18);
 			console.log("projecting squiggle");
+			console.log("over 18?", isOver18);
 			nextPage();
 		} catch (error) {
 			console.log(error);
