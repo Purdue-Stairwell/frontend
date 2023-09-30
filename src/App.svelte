@@ -5,26 +5,25 @@
   	import { onMount } from "svelte";
 
 	let reduceMotion = false;
+	let isOver18 = false;
 	function updateMotion(event) {
 		reduceMotion = event.detail;
+	}
+
+	function updateAge(event) {
+		isOver18 = event.detail;
 	}
 
 	let stage = "start";
 	function changeStage(event) {
 		stage = event.detail;
 	}
-
-	onMount(() => {
-		setTimeout(function () {
-			window.scrollTo(0, 100);
-		}, 1000);
-	});
 </script>
 <main>
 	{#if stage == "start"}
-		<Start {reduceMotion} on:changeStage={changeStage} on:updateMotion={updateMotion} />
+		<Start {reduceMotion} {isOver18} on:changeStage={changeStage} on:updateMotion={updateMotion} on:updateAge={updateAge} />
 	{:else if stage == "journey"}
-		<Journey {reduceMotion} on:changeStage={changeStage} />
+		<Journey {reduceMotion} {isOver18} on:changeStage={changeStage} />
 	{:else if stage == "end"}
 		<End {reduceMotion} />
 	{/if}

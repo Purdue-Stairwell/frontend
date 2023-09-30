@@ -64,6 +64,7 @@
 	let spriteChoice = '/anim/empty.gif';
 	let baseChoice = '/anim/empty.gif';
 	let colorChoice = '#4d26db';
+	export let isOver18 = false;
 
 	let screenHeight;
 
@@ -102,8 +103,9 @@
 
 	async function projectSquiggle() {
 		try {
-			await socket.emit("frontend to backend", points, whoFiveScores, spriteChoice, colorChoice, baseChoice);
+			await socket.emit("frontend to backend", points, whoFiveScores, spriteChoice, colorChoice, isOver18, baseChoice);
 			console.log("projecting squiggle");
+			console.log("over 18?", isOver18);
 			nextPage();
 		} catch (error) {
 			console.log(error);
@@ -120,18 +122,6 @@
 <svelte:window bind:innerHeight={screenHeight} />
 
 <main in:fade class={reduceMotion ? "reduceMotion" : "motion"}>
-	<!--HEADER-->
-	<div style="height: 100px; color: white;"></div>
-	{#if screenHeight > 800}
-		<Header {reduceMotion} mode="stairwell" />
-	{/if}
-	<!-- {#key screenLocation}
-		{#await script}
-			<p>Loading Script :)</p>
-		{:then result}
-			<Narration {reduceMotion} scriptPage={result.script[screenLocation]} />
-		{/await}
-	{/key} -->
 	{#key screenLocation}
 		<!--INFO BOX-->
 		{#await styleScript}
