@@ -62,6 +62,7 @@
 	let whoFiveScores = [0, 0, 0, 0, 0];
 	let points = [];
 	let spriteChoice = '/anim/empty.gif';
+	let baseChoice = '/anim/empty.gif';
 	let colorChoice = '#4d26db';
 
 	let screenHeight;
@@ -96,11 +97,12 @@
 		points = event.detail[0];
 		spriteChoice = event.detail[1];
 		colorChoice = event.detail[2];
+		baseChoice = event.detail[3];
 	}
 
 	async function projectSquiggle() {
 		try {
-			await socket.emit("frontend to backend", points, whoFiveScores, spriteChoice, colorChoice);
+			await socket.emit("frontend to backend", points, whoFiveScores, spriteChoice, colorChoice, baseChoice);
 			console.log("projecting squiggle");
 			nextPage();
 		} catch (error) {
@@ -156,6 +158,7 @@
 				saveMode={screenLocation === saveScreen}
 				hex={colorChoice}
 				spriteChoice={spriteChoice}
+				baseChoice={baseChoice}
 				globalPoints={points}
 				bind:this={squiggle}
 				on:squiggleDrawn={updatePoints}
