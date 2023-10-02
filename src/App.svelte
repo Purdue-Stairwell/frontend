@@ -14,7 +14,7 @@
 		isOver18 = event.detail;
 	}
 
-	let stage = "start";
+	let stage = "end";
 	function changeStage(event) {
 		stage = event.detail;
 	}
@@ -31,8 +31,9 @@
 
 <style>
 	main {
-		width: 100%;
-		/* max-width: 500px; */
+		width: 100vw;
+		max-width: 500px;
+		padding: 0;
 		margin: 0 auto;
 		height: 110vh;
 	}

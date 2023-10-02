@@ -36,6 +36,7 @@
 		font-size: 30px;
 		font-weight: 400;
 		width: 100%;
+		margin: 9 auto;
 		display: grid;
 		place-items: center center;
 		grid-template-columns: 1fr 2fr 1fr;

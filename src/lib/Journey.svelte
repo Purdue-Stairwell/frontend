@@ -1,14 +1,12 @@
 <script>
-	import Header from "./Header.svelte";
 	import LoopingAnim from "./vbox/LoopingAnim.svelte";
 	import OneShotAnim from "./vbox/OneShotAnim.svelte";
 	import Squiggle from "./vbox/Squiggle.svelte";
-	import Narration from "./ibox/Narration.svelte";
 	import StyleNarration from "./ibox/StyleNarration.svelte";
 	import DefaultButton from "./abox/DefaultButton.svelte";
 	import WhoFive from "./vbox/WhoFive.svelte";
 	import { fade } from "svelte/transition";
-	import { createEventDispatcher, onMount } from "svelte";
+	import { createEventDispatcher } from "svelte";
 
 	import SocketIO from "socket.io-client";
 	import AudioPlayer from "./helpers/AudioPlayer.svelte";
