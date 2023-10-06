@@ -40,10 +40,11 @@
 	{:else}
 		<div class="spacer" />
 	{/if}
-
-	<button on:click={goNext} {disabled} >
-		<img src="/icons/white-next.svg" width={projectFontSize} alt="arrow pointing forwards" />
-	</button>
+	{#if !showProject}
+		<button on:click={goNext} {disabled} >
+			<img src="/icons/white-next.svg" width={projectFontSize} alt="arrow pointing forwards" />
+		</button>
+	{/if}
 </main>
 
 <style>

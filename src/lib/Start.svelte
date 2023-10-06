@@ -34,10 +34,13 @@
 		Are you 18 or older? <input type="checkbox" bind:checked={isOver18} on:change={updateAge} />
 	</label>
 	<PurdueButton on:click={changeStage} text="Enter!" arrow="next" />
-	<!-- <div>
-		<Toggle on:stateChange={updateMotion} />
-		<p>Toggle Reduce Motion</p>
-	</div> -->
+	<p class="irb-blurb">
+		Participation in this project is part of a research study. Participation is voluntary.<br/>
+		PI: Dr. Carl Krieger - <a href="mailto:ckrieger@purdue.edu">ckrieger@purdue.edu</a><br/>
+		Understanding the emotional ecosystem at Purdue on students and the impact of the StairWell project on shaping their perceptions<br/>
+		IRB-2023-1434<br/>
+		<a href="/">click here to learn how your responses in the app will be used</a>
+	</p>
 </main>
 
 <style>
@@ -78,16 +81,9 @@
 		margin: 0 auto;
 	}
 
-	div {
-		width: 100%;
-		display: flex;
-		justify-content: space-around;
-		gap: 0.5rem;
-		padding: 1rem 1rem;
-	}
-
-	div p {
-		font-size: 1.5rem;
-		padding-top: 0.2rem;
+	.irb-blurb {
+		text-align: start;
+		font-size: 0.75rem;
+		text-align: center;
 	}
 </style>
