@@ -9,7 +9,8 @@
 
 	export let reduceMotion = false;
 
-	export let isOver18 = false;
+	let isOver18 = false;
+	let isPurdueStudent = false;
 
 	function updateMotion(event) {
 		dispatch("updateMotion", event.detail);
@@ -17,7 +18,7 @@
 
 	function updateAge(event) {
 		console.log("age updated: ", isOver18);
-		dispatch("updateAge", isOver18);
+		dispatch("updateAge", isOver18 && isPurdueStudent);
 	}
 
 	function changeStage() {
@@ -32,6 +33,9 @@
 	<img src="purdue_stairs.png" alt="Abstract representation of the StairWELL sculpture" />
 	<label>
 		Are you 18 or older? <input type="checkbox" bind:checked={isOver18} on:change={updateAge} />
+	</label>
+	<label>
+		Are you a current Purdue Student? <input type="checkbox" bind:checked={isPurdueStudent} on:change={updateAge} />
 	</label>
 	<PurdueButton on:click={changeStage} text="Enter!" arrow="next" />
 	<p class="irb-blurb">
@@ -57,18 +61,18 @@
 		display: flex;
 		justify-content: flex-start;
 		flex-flow: column nowrap;
-		gap: 0.5rem;
+		gap: 0.1rem;
 		color: white;
 	}
 
 	p {
 		text-align: center;
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
 	label {
 		width: 100%;
-		text-align: center;
-		font-size: 1.5rem;
+		text-align: end;
+		font-size: 1.2rem;
 	}
 
 	/* checkbox*/

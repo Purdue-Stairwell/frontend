@@ -31,9 +31,10 @@
 
 <style>
 	main {
-		width: 100%;
-		/* max-width: 500px; */
-		margin: 0 auto;
+		width: 100vw;
+		max-width: 500px;
+		padding: 0;
+		margin: 0;
 		height: 110vh;
 	}
 </style>

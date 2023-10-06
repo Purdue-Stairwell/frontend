@@ -1,14 +1,12 @@
 <script>
-	import Header from "./Header.svelte";
 	import LoopingAnim from "./vbox/LoopingAnim.svelte";
 	import OneShotAnim from "./vbox/OneShotAnim.svelte";
 	import Squiggle from "./vbox/Squiggle.svelte";
-	import Narration from "./ibox/Narration.svelte";
 	import StyleNarration from "./ibox/StyleNarration.svelte";
 	import DefaultButton from "./abox/DefaultButton.svelte";
 	import WhoFive from "./vbox/WhoFive.svelte";
 	import { fade } from "svelte/transition";
-	import { createEventDispatcher, onMount } from "svelte";
+	import { createEventDispatcher } from "svelte";
 
 	import SocketIO from "socket.io-client";
 	import AudioPlayer from "./helpers/AudioPlayer.svelte";
@@ -62,6 +60,7 @@
 	let whoFiveScores = [0, 0, 0, 0, 0];
 	let points = [];
 	let spriteChoice = '/anim/empty.gif';
+	let baseChoice = '/anim/empty.gif';
 	let colorChoice = '#4d26db';
 	export let isOver18 = false;
 
@@ -97,11 +96,12 @@
 		points = event.detail[0];
 		spriteChoice = event.detail[1];
 		colorChoice = event.detail[2];
+		baseChoice = event.detail[3];
 	}
 
 	async function projectSquiggle() {
 		try {
-			await socket.emit("frontend to backend", points, whoFiveScores, spriteChoice, colorChoice, isOver18);
+			await socket.emit("frontend to backend", points, whoFiveScores, spriteChoice, colorChoice, isOver18, baseChoice);
 			console.log("projecting squiggle");
 			console.log("over 18?", isOver18);
 			nextPage();
@@ -146,6 +146,7 @@
 				saveMode={screenLocation === saveScreen}
 				hex={colorChoice}
 				spriteChoice={spriteChoice}
+				baseChoice={baseChoice}
 				globalPoints={points}
 				bind:this={squiggle}
 				on:squiggleDrawn={updatePoints}

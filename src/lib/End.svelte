@@ -24,7 +24,7 @@
 		<PurdueButton on:click={changeEndState} size={1} text="Resources" />
 		<a href="https://it.purdue.edu/services/qualtrics.php"><PurdueButton text="Take a 2 min survey!" arrow="next" /></a>
 		<PurdueButton on:click={changeEndState} text="Sponsors" />
-		<a href="https://convocations.purdue.edu/stairwell/"><PurdueButton  text="Credits" /></a>
+		<PurdueButton on:click={changeEndState}  text="Credits" />
 		<PurdueButton arrow="back"
 			on:click={(e) => {
 				location.reload();
@@ -49,13 +49,14 @@
 	}
 	main {
 		background-color: #000000;
-		margin: 0 auto;
-		width: 100%;
+		margin: 0 0.5rem;
+		width: calc(100% - 1rem);
 		max-width: 500px;
-		height: 100vh;
-		padding: 0 1rem;
+		height: 100%;
+		padding: 0;
 		display: flex;
 		flex-flow: column nowrap;
+		align-items: center;
 		gap: 0.5rem;
 	}
 	a {

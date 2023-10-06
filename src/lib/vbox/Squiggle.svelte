@@ -20,8 +20,17 @@
 		'/anim/drops.gif',
 		/* '/anim/empty.gif', */
 	];
+	const bases = [
+		'/anim/star01.gif',
+		'/anim/newblob.gif',
+		'/anim/head.gif',
+		'/anim/sprite03.gif',
+		'/anim/drops.gif',
+		/* '/anim/empty.gif', */
+	];
 
 	let images = [];
+	let baseImages = [];
 
 	const dispatch = createEventDispatcher();
 
@@ -36,11 +45,12 @@
 	let gest;
 	let cnv;
 	export let spriteChoice = sprites[-1];
+	export let baseChoice = bases[-1];
 	export let hex = colors[0];
 
 	function squiggleDrawn() {
 		globalPoints = gest.points;
-		dispatch('squiggleDrawn', [globalPoints, spriteChoice, hex]);
+		dispatch('squiggleDrawn', [globalPoints, spriteChoice, hex, baseChoice]);
 	}
 
 	const sketch = (p5) => {
@@ -96,12 +106,27 @@
 				p5.pop();
 			}
 
-			drawSprites(spriteChoice) {
+			drawSprites(spriteChoice, baseChoice) {
+				if (baseChoice == "/anim/empty.gif") {
+					return;
+				} else {
+					let img = baseImages[bases.indexOf(baseChoice)];
+					for (let i = 1; i < this.points.length; i++) {
+						p5.tint(hex);
+						if(saveMode) {
+							img.pause();
+							img.setFrame(0);
+							p5.image(img, this.points[i].x - 30, this.points[i].y - 30, 60, 60);
+						} else {
+							p5.image(img, this.points[i].x - 30, this.points[i].y - 30, 60, 60);
+						}
+					}
+				}
 				if (spriteChoice == "/anim/empty.gif") {
 					return;
 				} else {
 					let img = images[sprites.indexOf(spriteChoice)];
-					for (let i = 0; i < this.points.length; i += 2) {
+					for (let i = 0; i < this.points.length-1; i += 2) {
 						p5.tint(hex);
 						if(saveMode) {
 							img.pause();
@@ -251,7 +276,10 @@
 			for (let i = 0; i < sprites.length; i++) {
 				images[i] = p5.loadImage(sprites[i]);
 			}
-
+			
+			for (let i = 0; i < bases.length; i++) {
+				baseImages[i] = p5.loadImage(bases[i]);
+			}
 		};
 
 
@@ -279,7 +307,7 @@
 			}
 
 			gest.drawBezier(p5.frameCount * 0.001);
-			gest.drawSprites(spriteChoice);
+			gest.drawSprites(spriteChoice, baseChoice);
 
 			if(saveFlag) {
 				saveFlag = false;
@@ -374,6 +402,18 @@
 					type="radio"
 					value={sprite}
 					style="background-image: url({sprite}); background-color: white;"
+				/>
+			{/each}
+		</div>
+		<div>
+			{#each bases as base}
+				<input
+					bind:group={baseChoice}
+					on:change={squiggleDrawn}
+					name="baseChoice"
+					type="radio"
+					value={base}
+					style="background-image: url({base}); background-color: white;"
 				/>
 			{/each}
 		</div>
