@@ -21,7 +21,7 @@
 </script>
 <main>
 	{#if stage == "start"}
-		<Start {reduceMotion} {isOver18} on:changeStage={changeStage} on:updateMotion={updateMotion} on:updateAge={updateAge} />
+		<Start {reduceMotion} on:changeStage={changeStage} on:updateMotion={updateMotion} on:updateAge={updateAge} />
 	{:else if stage == "journey"}
 		<Journey {reduceMotion} {isOver18} on:changeStage={changeStage} />
 	{:else if stage == "end"}
