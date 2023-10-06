@@ -15,32 +15,27 @@
 		"SQUIGGLE",
 		"/anim/reflection.mp4",
 		"/anim/goingup.mp4",
+		"/anim/zoom.mp4",
 		"/anim/kikithinks.mp4",
+		"WHO",
+		"WHO",
+		"WHO",
+		"WHO",
+		"WHO",
 		"/anim/stair_comp.mp4",
-		"WHO",
-		"WHO",
-		"WHO",
-		"WHO",
-		"WHO",
-		"/anim/all_characters.mp4",
 		"/anim/all_characters.mp4",
 		"SQUIGGLE",
 		"SQUIGGLE",
 		"SQUIGGLE",
-		"/looping_intro.mp4",
 	];
 </script>
 
 <main>
 	<!-- svelte-ignore a11y-media-has-caption -->
 	{#key screenLocation}
-		{#if screenLocation < 14}
-			<video autoplay={!reduceMotion} muted={reduceMotion} {loop} playsinline>
-				<source src={srcs[screenLocation]} type="video/mp4" />
-			</video>
-		{:else if screenLocation >= 14}
-			<img src={srcs[screenLocation]} alt="Narrative Character reading the text" />
-		{/if}
+		<video autoplay={!reduceMotion} muted={reduceMotion} {loop} playsinline>
+			<source src={srcs[screenLocation]} type="video/mp4" />
+		</video>
 	{/key}
 </main>
 
@@ -51,14 +46,8 @@
 		justify-content: center;
 		align-items: center;
 	}
-	img {
+	video {
 		width: 100%;
 		aspect-ratio: 1;
-	}
-
-	video {
-		width: 100vw;
-		aspect-ratio: 1;
-		box-shadow: 0px 0px -10px 0px rgba(0, 0, 0, 0.75);
 	}
 </style>

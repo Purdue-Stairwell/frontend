@@ -309,6 +309,10 @@
 			gest.drawBezier(p5.frameCount * 0.001);
 			gest.drawSprites(spriteChoice, baseChoice);
 
+			if (saveMode) {
+				//GRAPHIC FOR SAVE MODE, FRAME, #TAG
+			}
+
 			if(saveFlag) {
 				saveFlag = false;
 				p5.saveCanvas('mySquiggle', 'jpg');

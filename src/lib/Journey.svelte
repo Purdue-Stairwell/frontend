@@ -50,7 +50,7 @@
 		false,
 		false, //second squiggle
 		false,
-		false,
+		true, //project screen
 	];
 
 	let screenLocation = 0;
@@ -166,7 +166,7 @@
 
 	<!--ACTION BOX-->
 	<DefaultButton
-		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion && screenLocation == 1 && points.length == 0}
+		disabled={!oneShotEnded && preAnim[screenLocation] && !reduceMotion && (screenLocation == 1 || screenLocation == 15) && points.length == 0}
 		showProject={screenLocation === projectScreen}
 		showSave={screenLocation === saveScreen}
 		on:next={nextPage}

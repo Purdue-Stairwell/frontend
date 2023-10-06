@@ -15,19 +15,18 @@
 		"/anim/user_sketch_light.mp4",
 		"/anim/reflection.mp4",
 		"/anim/goingup.mp4",
+		"/anim/zoom.mp4",
 		"/anim/kikithinks.mp4",
+		"WHO",
+		"WHO",
+		"WHO",
+		"WHO",
+		"WHO",
 		"/anim/stair_comp.mp4",
-		"WHO",
-		"WHO",
-		"WHO",
-		"WHO",
-		"WHO",
-		"/anim/all_characters.mp4",
 		"/anim/all_characters.mp4",
 		"SQUIGGLE",
 		"SQUIGGLE",
-		"SQUIGGLE",
-		"/looping_intro.mp4",
+		"/anim/kikithinks.mp4",
 	];
 
 	onMount(() => {
@@ -38,7 +37,6 @@
 <main in:fade>
 	<!-- svelte-ignore a11y-media-has-caption -->
 	{#key screenLocation}
-		{#if screenLocation < 14}
 			<video
 				autoplay={!reduceMotion}
 				muted={reduceMotion}
@@ -49,9 +47,6 @@
 			>
 				<source src={srcs[screenLocation]} type="video/mp4" />
 			</video>
-		{:else if screenLocation >= 14}
-			<img src={srcs[screenLocation]} alt="Narrative Character reading the text" />
-		{/if}
 	{/key}
 </main>
 
@@ -62,11 +57,6 @@
 		justify-content: center;
 		align-items: center;
 	}
-	img {
-		width: 100%;
-		aspect-ratio: 1;
-	}
-
 	video {
 		width: 100%;
 		aspect-ratio: 1;
