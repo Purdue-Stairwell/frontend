@@ -26,8 +26,9 @@
 <main in:fade>
 	<!--HEADER-->
 	<Header {reduceMotion} mode="purdue" />
-	<p class="welcome">An interactive sculpture and gathering place.</p>
+	<!-- <p class="welcome">An interactive sculpture and gathering place.</p> -->
 	<img src="purdue_stairs.png" alt="Abstract representation of the StairWELL sculpture" />
+	<p class="welcome">Welcome! Are you:</p>
 	<IRBCheck on:updateIRB={updateIRB}/>
 	<PurdueButton on:click={changeStage} text="Enter!" arrow="next" />
 	

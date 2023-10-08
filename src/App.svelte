@@ -2,7 +2,6 @@
 	import Start from "./lib/Start.svelte";
 	import Journey from "./lib/Journey.svelte";
 	import End from "./lib/End.svelte";
-  	import { onMount } from "svelte";
 
 	let reduceMotion = false;
 	let isOver18 = false;

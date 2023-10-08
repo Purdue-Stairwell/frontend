@@ -19,16 +19,18 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
 			{#if !showModal}
-				<!--  -->
-				<button
-					class="sponsor-button"
-					on:click={() => {
-						showModal = true;
-						index = i;
-					}}
-				>
-					<img src={sponsor.image} alt="Logo for {sponsor.name}" />
-				</button>
+				<a href={sponsor.link}>
+					<button class="sponsor-button">
+					<!-- <button
+						class="sponsor-button"
+						on:click={() => {
+							showModal = true;
+							index = i;
+						}}
+					> -->
+						<img src={sponsor.image} alt="Logo for {sponsor.name}" />
+					</button>
+				</a>
 			{:else}
 				<button class="sponsor-button">
 					<img src={sponsor.image} alt="Logo for {sponsor.name}" />
