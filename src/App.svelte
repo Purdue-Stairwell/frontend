@@ -10,8 +10,9 @@
 		reduceMotion = event.detail;
 	}
 
-	function updateAge(event) {
+	function updateIRB(event) {
 		isOver18 = event.detail;
+		console.log(isOver18);
 	}
 
 	let stage = "start";
@@ -21,7 +22,7 @@
 </script>
 <main>
 	{#if stage == "start"}
-		<Start {reduceMotion} on:changeStage={changeStage} on:updateMotion={updateMotion} on:updateAge={updateAge} />
+		<Start {reduceMotion} on:changeStage={changeStage} on:updateMotion={updateMotion} on:updateIRB={updateIRB} />
 	{:else if stage == "journey"}
 		<Journey {reduceMotion} {isOver18} on:changeStage={changeStage} />
 	{:else if stage == "end"}
