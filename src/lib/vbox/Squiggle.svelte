@@ -23,7 +23,7 @@
 	const bases = [
 		'/anim/base/circle.gif',
 		'/anim/base/cube.gif',
-		'/anim/head.gif',
+		'/anim/base/spiky.gif',
 		'/anim/sprite03.gif',
 		'/anim/drops.gif',
 		/* '/anim/empty.gif', */

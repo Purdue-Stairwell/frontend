@@ -106,7 +106,7 @@
 				"typed": true
 			},
 			{
-				"text": " as you answer these five quick questions.",
+				"text": " as you consider these five short statements.",
 				"class" : "",
 				"typed": true
 			}
@@ -173,7 +173,30 @@
 		],
 		[
 			{
-				"text": "Maybe you've felt some of those ups, downs, or in-betweens. Reflection isn't always easy - it takes honesty and bravery - yet it's a healthy thing to do.",
+				"text": "Maybe you've felt some of those ups,",
+				"class" : "",
+				"typed": true
+			},
+			{
+				"text": "downs, or in-betweens.",
+				"class" : "",
+				"typed": true,
+				"delay": 500
+			},
+			{
+				"text": "Reflection isn't always easy",
+				"class" : "",
+				"typed": true,
+				"delay": 500
+			},
+			{
+				"text": "- it takes honesty and bravery -",
+				"class" : "italic",
+				"typed": true,
+				"delay": 500
+			},
+			{
+				"text": "yet it's a healthy thing to do.",
 				"class" : "",
 				"typed": true
 			}
@@ -182,7 +205,8 @@
 			{
 				"text": "The squiggles on StairWELL celebrate each person who has taken time to reflect -",
 				"class" : "",
-				"typed": true
+				"typed": true,
+				"delay": 500
 			},
 			{
 				"text" : "just like you.",
@@ -192,7 +216,7 @@
 		],
 		[
 			{
-				"text": "Let's get back to that squiggle... You can customize it now",
+				"text": "Personalize your Squiggle now to reflect how you're feeling... ",
 				"class" : "",
 				"typed": true
 			}
@@ -201,6 +225,11 @@
 			{
 				"text": "Thanks for your moment of reflection - it's a powerful thing to do",
 				"class" : "",
+				"typed": true
+			},
+			{
+				"text": "Join the community of people who have reflected on StairWELL with #mySTAIRWELL",
+				"class" : "italic",
 				"typed": true
 			}
 		],
