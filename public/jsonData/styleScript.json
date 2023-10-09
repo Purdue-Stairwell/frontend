@@ -223,13 +223,8 @@
 		],
 		[
 			{
-				"text": "Thanks for your moment of reflection - it's a powerful thing to do",
+				"text": "Thanks! Reflection is a powerful thing–and you can do it anytime you need it.",
 				"class" : "",
-				"typed": true
-			},
-			{
-				"text": "Join the community of people who have reflected on StairWELL with #mySTAIRWELL",
-				"class" : "italic",
 				"typed": true
 			}
 		],
@@ -250,9 +245,14 @@
 				"typed": true
 			},
 			{
-				"text": "...And thanks for adding to the beauty of StairWELL.",
+				"text": "...and join the community of people who have taken a moment to reflect!",
 				"class" : "",
 				"typed": true
+			}
+		],
+		[
+			{
+				"text": ""
 			}
 		]
 	]

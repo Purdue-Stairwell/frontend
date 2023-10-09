@@ -1,12 +1,6 @@
 {
     "sponsorInfo": [
         {
-            "name": "Purdue Counseling and Psychological Services",
-            "image": "/sponsors/caps.png",
-            "link": "https://www.purdue.edu/caps/",
-            "info": ""
-        },
-        {
             "name": "Purdue Convocations",
             "image": "/sponsors/convos.png",
             "link": "https://convocations.purdue.edu/",
@@ -52,18 +46,6 @@
             "name": "Purdue Polytechnic Institute",
             "image": "/sponsors/polytechnic.png",
             "link": "https://polytechnic.purdue.edu/",
-            "info": ""
-        },
-        {
-            "name": "Purdue Steps to Leaps",
-            "image": "/sponsors/stepstoleaps.png",
-            "link": "https://www.purdue.edu/stepstoleaps/",
-            "info": ""
-        },
-        {
-            "name": "Purdue Department of Theatre",
-            "image": "/sponsors/theatre.png",
-            "link": "https://www.cla.purdue.edu/academic/rueffschool/theatre/index.html",
             "info": ""
         }
         

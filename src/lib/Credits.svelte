@@ -41,6 +41,7 @@
 		object-fit: cover;
 		width: 40%;
 		background-color: white;
+		border: rgb(142, 111, 62) 2px solid;
 	}
 
 	h1, h3 {
