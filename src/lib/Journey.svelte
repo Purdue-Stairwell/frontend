@@ -27,10 +27,10 @@
 	const styleScript = fetch("/jsonData/styleScript.json").then((res) => res.json());
 
 	let journeyState =
-		//0     1     2   3    4    5    6   7   8   9   10  11   12   13    14     15-->
-		//anim squig anim anim anim anim who who who who who anim anim squig squig static-->
-		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 1, 1];
-	const saveScreen = 14;
+		//0     1     2   3    4    5    6   7   8   9   10  11   12   13    14    15    16
+		//anim squig anim anim anim anim who who who who who anim anim squig squig squig squig
+		[0, 1, 0, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 1, 1, 1, 1];
+	const saveScreen = 16;
 	const projectScreen = 15;
 
 	//             0     1     2      3      4      5      6      7      8      9      10     11     12     13     14     15
@@ -48,9 +48,10 @@
 		false,
 		false,
 		false,
-		false, //second squiggle
+		false, //customize squiggle
 		false,
 		true, //project screen
+		false, //save screen
 	];
 
 	let screenLocation = 0;
@@ -68,7 +69,7 @@
 
 	function nextPage() {
 		oneShotEnded = false;
-		if (screenLocation < 15) {
+		if (screenLocation < 16) {
 			screenLocation++;
 		} else {
 			changeStage("end");
@@ -130,8 +131,8 @@
 	{/key}
 
 	<!--VISUAL BOX-->
-	<!-- 0---1-----2-----3----4----5----6---7---8---9---10--11---12---13----14-----15-->
-	<!--anim squig animm anim anim anim who who who who who anim anim squig squiq squiq-->
+	<!-- 0---1-----2-----3----4----5----6---7---8---9---10--11---12---13----14-----15---16-->
+	<!--anim squig animm anim anim anim who who who who who anim anim squig squiq squiq squig-->
 
 	<!-- IS THERE NOT A PRE ANIM OR IS IT FINISHED OR NO MOTION?-->
 	{#if (!preAnim[screenLocation] || oneShotEnded || reduceMotion ) || (screenLocation == 1 && points.length > 0)}
