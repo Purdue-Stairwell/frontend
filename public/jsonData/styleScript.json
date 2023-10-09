@@ -38,7 +38,8 @@
 			{
 				"text": " reflection!",
 				"class" : "emphasis italic larger",
-				"typed": true
+				"typed": true,
+				"delay": 1000
 			},
 			{
 				"text": "Thinking about how you’re feeling is important.",
@@ -50,17 +51,20 @@
 			{
 				"text": "Sometimes we’re feeling up…",
 				"class" : "",
-				"typed": true
+				"typed": true,
+				"delay": 1000
 			},
 			{
 				"text": "Sometimes we’re feeling down…",
 				"class" : "",
-				"typed": true
+				"typed": true,
+				"delay": 1000
 			},
 			{
 				"text": "Sometimes we’re feeling something else…",
 				"class" : "",
-				"typed": true
+				"typed": true,
+				"delay": 1000
 			},
 			{
 				"text": "or somewhere in between",

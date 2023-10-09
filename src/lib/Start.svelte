@@ -27,10 +27,13 @@
 	<!--HEADER-->
 	<Header {reduceMotion} mode="purdue" />
 	<!-- <p class="welcome">An interactive sculpture and gathering place.</p> -->
+	<br/>
 	<img src="purdue_stairs.png" alt="Abstract representation of the StairWELL sculpture" />
+	<br/>
 	<p class="welcome">Welcome! Are you:</p>
+	<br/>
 	<IRBCheck on:updateIRB={updateIRB}/>
-	<PurdueButton on:click={changeStage} text="Enter!" arrow="next" />
+	<PurdueButton isReversed={true} on:click={changeStage} text="Enter!" arrow="next" />
 	
 	<p class="irb-blurb">
 		Participation in this project is part of a research study. Participation is voluntary.<br/>

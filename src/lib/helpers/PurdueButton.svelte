@@ -7,13 +7,14 @@
 	export let size = 1;
 	export let textColor = 'white';
 	export let arrow = 'none';
+	export let isReversed = false;
 
 	function clicked() {
 		dispatch('click', text);
 	}
 </script>
 
-<button on:click={clicked} style="--size: {size * 10}px; color: {textColor};">
+<button on:click={clicked} class={isReversed ? "reverse": ""} style=" --size: {size * 10}px; color: {textColor};">
 	{#if arrow === 'back'}
 		<img src="/icons/white-back.svg" width="30px" alt="arrow pointing backwards" />
 	{:else if arrow === 'next'}
@@ -45,5 +46,13 @@
 	button:hover,
 	button:active {
 		background-color: rgb(142, 111, 62);
+	}
+
+	.reverse {
+		background-color: rgb(142, 111, 62);
+	}
+
+	.reverse:hover, .reverse:active {
+		background-color: black;
 	}
 </style>

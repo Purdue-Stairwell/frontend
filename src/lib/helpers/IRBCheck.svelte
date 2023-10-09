@@ -20,7 +20,7 @@ function checkForIRB(event) {
 <!-- <p>Are you a current Purdue Student?</p> -->
 <div class="option-container">
     <input id="wl" type="radio" bind:group={isPurdueStudent} value="w" on:change={checkForIRB} />
-    <label for="wl">West Lafeyette Student</label>
+    <label for="wl">Purdue WL Student</label>
     <input id="pg" type="radio" bind:group={isPurdueStudent} value="p" on:change={checkForIRB} />
     <label for="pg">Purdue Global Student</label>
     <input id="na" type="radio" bind:group={isPurdueStudent} value="n" on:change={checkForIRB} />
@@ -45,6 +45,7 @@ function checkForIRB(event) {
     }
     input[type="radio"] {
         display: none;
+        
     }
     label {
         display: grid;
@@ -53,6 +54,7 @@ function checkForIRB(event) {
         flex-grow: 1;
         border: 2px solid rgb(142, 111, 62);
         padding: 0.25rem 0.5rem;
+        min-height: 3rem;
 
     }
 

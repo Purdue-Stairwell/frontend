@@ -7,13 +7,14 @@
     export let styleClass;
     export let isTyped;
 	export let highlight = false;
+	export let speed = 15;
+	export let delay = 0;
 
     function typingfinished() {
         dispatch("typingfinished");
     }
 
     let i = 0;
-	let speed = 15; /* The speed/duration of the effect in milliseconds */
 	let typed = "";
 	let pretyped = text;
 
@@ -26,10 +27,14 @@
 		} else if (highlight) {
 			typed = pretyped;
 			pretyped = "";
-			typingfinished();
+			setTimeout(next, delay);
 		}else {
-			typingfinished();
+			setTimeout(next, delay);
 		}
+	}
+
+	function next() {
+		typingfinished();
 	}
 </script>
 

@@ -21,8 +21,8 @@
 		/* '/anim/empty.gif', */
 	];
 	const bases = [
-		'/anim/star01.gif',
-		'/anim/newblob.gif',
+		'/anim/base/circle.gif',
+		'/anim/base/cube.gif',
 		'/anim/head.gif',
 		'/anim/sprite03.gif',
 		'/anim/drops.gif',
