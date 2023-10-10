@@ -141,7 +141,7 @@
 			<LoopingAnim {screenLocation} {reduceMotion} />
 			<!-- IS IT A SQUIGGLE?-->
 		{:else if journeyState[screenLocation] === 1}
-			{#key screenLocation}
+			<!-- {#key screenLocation} -->
 			<Squiggle
 				{screenLocation}
 				saveMode={screenLocation === saveScreen}
@@ -154,7 +154,7 @@
 				sketchWidth={300}
 				sketchHeight={300}
 			/>
-			{/key}
+			<!-- {/key} -->
 			<!-- IS IT A WHO FIVE?-->
 		{:else if journeyState[screenLocation] === 2}
 			{#key screenLocation}
