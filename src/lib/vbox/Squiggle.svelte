@@ -34,7 +34,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	let maxPoints = 48;
+	let maxPoints = 96;
 	let noDraw = false;
 	let saveFlag = false;
 
@@ -257,7 +257,7 @@
 		//setup of canvas and gesture
 		p5.setup = () => {
 			cnv = p5.createCanvas(sketchWidth, sketchHeight);
-			p5.frameRate(24);
+			p5.frameRate(48);
 			// seed, colorVar, girth, cap, join, x, y, speed, wiggle, smoothness
 			gest = new Gesture(
 				100,
