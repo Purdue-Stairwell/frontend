@@ -22,10 +22,10 @@
 	];
 	const bases = [
 		'/anim/base/circle.gif',
+		'/anim/base/cloud.gif',
 		'/anim/base/cube.gif',
+		'/anim/base/heart.gif',
 		'/anim/base/spiky.gif',
-		'/anim/sprite03.gif',
-		'/anim/drops.gif',
 		/* '/anim/empty.gif', */
 	];
 

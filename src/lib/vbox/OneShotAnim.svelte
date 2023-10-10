@@ -26,7 +26,7 @@
 		"/anim/all_characters.mp4",
 		"SQUIGGLE",
 		"SQUIGGLE",
-		"/anim/kikithinks.mp4",
+		"/anim/jump_in.mp4",
 	];
 
 	onMount(() => {
