@@ -34,7 +34,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	let maxPoints = 96;
+	let maxPoints = 48;
 	let noDraw = false;
 	let saveFlag = false;
 
@@ -111,8 +111,8 @@
 					return;
 				} else {
 					let img = baseImages[bases.indexOf(baseChoice)];
+					p5.tint(hex);
 					for (let i = 1; i < this.points.length-2; i+=3) {
-						p5.tint(hex);
 						if(saveMode) {
 							img.pause();
 							img.setFrame(0);
@@ -126,8 +126,8 @@
 					return;
 				} else {
 					let img = images[sprites.indexOf(spriteChoice)];
+					p5.tint(hex);
 					for (let i = 0; i < this.points.length-3; i += 4) {
-						p5.tint(hex);
 						if(saveMode) {
 							img.pause();
 							img.setFrame(0);
