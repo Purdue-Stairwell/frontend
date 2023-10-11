@@ -107,11 +107,12 @@
 			}
 
 			drawSprites(spriteChoice, baseChoice) {
+				p5.tint(hex);
 				if (baseChoice == "/anim/empty.gif") {
 					return;
 				} else {
 					let img = baseImages[bases.indexOf(baseChoice)];
-					p5.tint(hex);
+					
 					for (let i = 1; i < this.points.length-2; i+=3) {
 						if(saveMode) {
 							img.pause();
