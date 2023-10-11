@@ -111,7 +111,7 @@
 					return;
 				} else {
 					let img = baseImages[bases.indexOf(baseChoice)];
-					for (let i = 1; i < this.points.length; i++) {
+					for (let i = 1; i < this.points.length-2; i+=2) {
 						p5.tint(hex);
 						if(saveMode) {
 							img.pause();
@@ -126,7 +126,7 @@
 					return;
 				} else {
 					let img = images[sprites.indexOf(spriteChoice)];
-					for (let i = 0; i < this.points.length-1; i += 2) {
+					for (let i = 0; i < this.points.length-2; i += 3) {
 						p5.tint(hex);
 						if(saveMode) {
 							img.pause();
