@@ -22,7 +22,7 @@
 	{#if endState === "Back"}
 	<p>Purdue has an amazing collection of people and services to help you thrive. Check out this portal…</p>
 		<PurdueButton on:click={changeEndState} size={1} text="Resources" />
-		<a href="https://it.purdue.edu/services/qualtrics.php"><PurdueButton text="Take a 2 min survey!" arrow="next" /></a>
+		<a href="https://purdue.ca1.qualtrics.com/jfe/form/SV_1yJKX4IyLJ3jsl8"><PurdueButton text="Take a 2 min survey!" arrow="next" /></a>
 		<PurdueButton on:click={changeEndState} text="Sponsors" />
 		<PurdueButton on:click={changeEndState}  text="Credits" />
 		<PurdueButton arrow="back"

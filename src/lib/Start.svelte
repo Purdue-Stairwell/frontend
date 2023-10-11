@@ -40,7 +40,7 @@
 		PI: Dr. Carl Krieger - <a href="mailto:ckrieger@purdue.edu">ckrieger@purdue.edu</a><br/>
 		Understanding the emotional ecosystem at Purdue on students and the impact of the StairWell project on shaping their perceptions<br/>
 		IRB-2023-1434<br/>
-		<a href="/">click here to learn how your responses in the app will be used</a>
+		<a href="https://purdue.ca1.qualtrics.com/jfe/form/SV_24gI5p5Abmn7fka">click here to learn how your responses in the app will be used</a>
 	</p>
 </main>
 
