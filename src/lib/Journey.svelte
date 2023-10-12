@@ -177,7 +177,8 @@
 	/>
 
 	{#key journeyState[screenLocation]}
-		{#if screenLocation !== 13}
+		<!--BASE 2-->
+		{#if !(screenLocation >= 13) }
 			<AudioPlayer state={journeyState[screenLocation]} />
 		{/if}
 	{/key}
@@ -185,6 +186,7 @@
 		<AudioPlayer state={4} loop={screenLocation >= 14 ? false : true} />
 		<AudioPlayer state={5} loop={screenLocation >= 14 ? false : true} />
 	{/if}
+	<!--BASE 1 TRACK-->
 	<AudioPlayer state={3} loop={screenLocation > 10 ? false : true} />
 </main>
 
