@@ -29,6 +29,9 @@
 		/* '/anim/empty.gif', */
 	];
 
+	let saveGraphic;
+	let saveGraphicPath = "/kiki.png";
+
 	let images = [];
 	let baseImages = [];
 
@@ -281,6 +284,7 @@
 			for (let i = 0; i < bases.length; i++) {
 				baseImages[i] = p5.loadImage(bases[i]);
 			}
+			saveGraphic = p5.loadImage(saveGraphicPath);
 		};
 
 
@@ -311,7 +315,8 @@
 			gest.drawSprites(spriteChoice, baseChoice);
 
 			if (saveMode) {
-				//GRAPHIC FOR SAVE MODE, FRAME, #TAG
+				p5.tint(255);
+				p5.image(saveGraphic, 0, 0, sketchWidth, sketchHeight);
 			}
 
 			if(saveFlag) {
