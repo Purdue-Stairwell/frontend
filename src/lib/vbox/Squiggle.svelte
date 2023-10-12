@@ -1,5 +1,5 @@
 <script>
-	import { fade } from 'svelte/transition';
+	import { fade, scale } from 'svelte/transition';
 	import { createEventDispatcher, onMount } from 'svelte';
 	import P5 from 'p5-svelte';
 
@@ -30,7 +30,7 @@
 	];
 
 	let saveGraphic;
-	let saveGraphicPath = "/kiki.png";
+	let saveGraphicPath = "/frame_stairwell.png";
 
 	let images = [];
 	let baseImages = [];
@@ -310,13 +310,18 @@
 					p5.text('Draw Here', 50, 150);
 				}
 			}
-
+			if(saveMode) {
+				p5.push();
+				p5.scale(0.7);
+				p5.translate(70,50);
+			}
 			gest.drawBezier(p5.frameCount * 0.001);
 			gest.drawSprites(spriteChoice, baseChoice);
 
 			if (saveMode) {
+				p5.pop();
 				p5.tint(255);
-				p5.image(saveGraphic, 0, 0, sketchWidth, sketchHeight);
+				p5.image(saveGraphic, -5, -5, sketchWidth+5, sketchHeight+10);
 			}
 
 			if(saveFlag) {
