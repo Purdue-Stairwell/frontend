@@ -37,7 +37,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	let maxPoints = 48;
+	let maxPoints = 32;
 	let noDraw = false;
 	let saveFlag = false;
 
